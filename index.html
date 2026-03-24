@@ -3,23 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Abdulrahman Tech Academy | Learn Programming Free</title>
+    <title>Abdulrahman Tech Academy | Complete Programming Education Platform</title>
     
-    <!-- Security Headers -->
+    <!-- Security Headers - حماية الموقع -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     
-    <!-- SEO -->
+    <!-- SEO - لظهور الموقع في محركات البحث -->
     <meta name="description" content="Free programming education platform. Learn Python, JavaScript, Web Development, SQL, and more. Start coding today!">
     <meta name="keywords" content="learn programming, python, javascript, web development, coding, free courses">
     <meta name="author" content="Abdulrahman Tech Academy">
     
-    <!-- Bootstrap & Font Awesome -->
+    <!-- Bootstrap & Font Awesome - للتصميم والأيقونات -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* ==================== شرح الألوان المستخدمة ==================== */
+        /* 
+        --primary-dark: #0a192f (اللون الخلفية الداكن الأساسي)
+        --primary-accent: #00d8ff (اللون المميز - أزرق سماوي)
+        --card-bg: #1e2a47 (لون خلفية البطاقات)
+        --text-light: #e6f1ff (لون النص الفاتح)
+        */
+        
         :root {
             --primary-dark: #0a192f;
             --primary-accent: #00d8ff;
@@ -47,10 +55,10 @@
             min-height: 100vh;
         }
 
-        /* Navigation */
+        /* ==================== شريط التنقل العلوي ==================== */
         .navbar-tech {
             background: rgba(10, 25, 47, 0.95);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px); /* تأثير الزجاج */
             border-bottom: 1px solid var(--border-color);
             padding: 1rem 0;
             position: sticky;
@@ -79,7 +87,7 @@
             color: var(--primary-accent) !important;
         }
 
-        /* User Avatar */
+        /* ==================== صورة المستخدم والقائمة المنسدلة ==================== */
         .user-avatar {
             width: 40px;
             height: 40px;
@@ -106,7 +114,7 @@
             display: block;
         }
 
-        /* Cards */
+        /* ==================== البطاقات والقسم الرئيسي ==================== */
         .hero-section {
             background: linear-gradient(135deg, var(--secondary-bg), var(--card-bg));
             border-radius: 24px;
@@ -147,7 +155,7 @@
             color: var(--primary-dark);
         }
 
-        /* Badges */
+        /* ==================== الشارات والعلامات ==================== */
         .badge-tech {
             background: rgba(0, 216, 255, 0.15);
             color: var(--primary-accent);
@@ -156,7 +164,7 @@
             font-size: 0.7rem;
         }
 
-        /* Buttons */
+        /* ==================== الأزرار ==================== */
         .btn-primary-tech {
             background: linear-gradient(95deg, var(--primary-accent), var(--primary-accent-dark));
             border: none;
@@ -186,7 +194,7 @@
             color: #0a192f;
         }
 
-        /* Code Blocks */
+        /* ==================== كتل الأكواد البرمجية ==================== */
         .code-block {
             background: #0d1117;
             border-radius: 12px;
@@ -222,7 +230,7 @@
             cursor: pointer;
         }
 
-        /* Explanation Box */
+        /* ==================== صندوق الشرح ==================== */
         .explanation-box {
             background: rgba(0, 216, 255, 0.08);
             border-radius: 12px;
@@ -231,7 +239,7 @@
             border-left: 3px solid var(--primary-accent);
         }
 
-        /* Quiz Options */
+        /* ==================== خيارات الاختبارات ==================== */
         .quiz-option {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -257,7 +265,7 @@
             background: rgba(239, 68, 68, 0.2);
         }
 
-        /* Toast */
+        /* ==================== رسائل التنبيه ==================== */
         .toast-custom {
             position: fixed;
             top: 80px;
@@ -266,7 +274,7 @@
             max-width: 350px;
         }
 
-        /* Footer */
+        /* ==================== تذييل الصفحة ==================== */
         .footer-tech {
             background: #071426;
             border-top: 1px solid var(--border-color);
@@ -283,10 +291,12 @@
 </head>
 <body>
 
-<!-- Toast Container -->
+<!-- ==================== شرح: رسائل التنبيه ==================== -->
+<!-- تظهر عند تسجيل الدخول أو تنفيذ أي إجراء -->
 <div id="toastContainer" class="toast-custom"></div>
 
-<!-- Login Modal -->
+<!-- ==================== شرح: نافذة تسجيل الدخول ==================== -->
+<!-- تظهر عند الضغط على زر Sign In، يمكن للمستخدم تسجيل الدخول تجريبياً -->
 <div class="modal fade" id="loginModal" tabindex="-1">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content" style="background: var(--card-bg); border: 1px solid var(--border-color);">
@@ -297,21 +307,23 @@
             <div class="modal-body text-center p-4">
                 <div class="explanation-box mb-3">
                     <i class="fas fa-graduation-cap me-2"></i>
-                    <strong>Sign up to:</strong> Track progress, earn certificates, and join learners!
+                    <strong>Why Sign Up?</strong><br>
+                    Track your progress, earn certificates, and join our learning community!
                 </div>
                 <button id="demoLoginBtn" class="btn btn-primary-tech w-100">
-                    <i class="fas fa-user-graduate me-2"></i> Start Learning (Free)
+                    <i class="fas fa-user-graduate me-2"></i> Start Learning (Free Demo)
                 </button>
                 <hr class="my-3">
-                <p class="small text-muted">🔒 No personal data required. All features free!</p>
+                <p class="small text-muted">🔒 No personal data required. All features 100% free!</p>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Main Content -->
+<!-- ==================== المحتوى الرئيسي للموقع ==================== -->
 <div id="mainContent">
-    <!-- Navigation -->
+    <!-- ==================== شرح: شريط التنقل ==================== -->
+    <!-- يحتوي على: الشعار، أقسام الموقع (Home, Courses, Learn, Practice, Guide)، وزر تسجيل الدخول -->
     <nav class="navbar-tech navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand-tech navbar-brand" href="#" onclick="showSection('home')">
@@ -357,11 +369,12 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
+    <!-- ==================== المحتوى الديناميكي ==================== -->
     <div class="main-content py-4">
         <div class="container">
             
-            <!-- ==================== HOME SECTION ==================== -->
+            <!-- ==================== شرح: الصفحة الرئيسية (Home) ==================== -->
+            <!-- تحتوي على: الترحيب، إحصائيات الموقع، أقسام الكورسات الشائعة، وشرح المنصة -->
             <div id="homeSection">
                 <div class="hero-section">
                     <h1 class="display-4 fw-bold mb-3">Master Programming <span style="color: var(--primary-accent);">For Free</span></h1>
@@ -370,13 +383,14 @@
                     <button class="btn btn-outline-tech" data-bs-toggle="modal" data-bs-target="#loginModal">Sign Up Free</button>
                 </div>
 
-                <!-- Statistics -->
+                <!-- إحصائيات الموقع -->
                 <div class="row mb-4">
                     <div class="col-md-3 col-6 mb-3">
                         <div class="stat-card text-center">
                             <i class="fas fa-book-open" style="font-size: 2rem; color: var(--primary-accent);"></i>
                             <h3 class="mt-2">50+</h3>
                             <p class="small text-muted">Courses</p>
+                            <small class="text-muted">دروس تعليمية متنوعة</small>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-3">
@@ -384,6 +398,7 @@
                             <i class="fas fa-code" style="font-size: 2rem; color: var(--primary-accent);"></i>
                             <h3 class="mt-2">200+</h3>
                             <p class="small text-muted">Exercises</p>
+                            <small class="text-muted">تمارين تفاعلية</small>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-3">
@@ -391,6 +406,7 @@
                             <i class="fas fa-certificate" style="font-size: 2rem; color: var(--primary-accent);"></i>
                             <h3 class="mt-2">20+</h3>
                             <p class="small text-muted">Certificates</p>
+                            <small class="text-muted">شهادات معتمدة</small>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-3">
@@ -398,11 +414,12 @@
                             <i class="fas fa-users" style="font-size: 2rem; color: var(--primary-accent);"></i>
                             <h3 class="mt-2">10K+</h3>
                             <p class="small text-muted">Students</p>
+                            <small class="text-muted">طلاب حول العالم</small>
                         </div>
                     </div>
                 </div>
 
-                <!-- Categories -->
+                <!-- أقسام الكورسات الشائعة -->
                 <h4 class="mb-3"><i class="fas fa-star me-2" style="color: var(--primary-accent);"></i> Popular Topics</h4>
                 <div class="row mb-4">
                     <div class="col-md-2 col-4 mb-2">
@@ -443,7 +460,7 @@
                     </div>
                 </div>
 
-                <!-- Platform Explanation -->
+                <!-- شرح المنصة -->
                 <div class="explanation-box">
                     <i class="fas fa-info-circle me-2"></i>
                     <strong>What is Abdulrahman Tech Academy?</strong>
@@ -451,63 +468,109 @@
                 </div>
             </div>
 
-            <!-- ==================== COURSES SECTION ==================== -->
+            <!-- ==================== شرح: صفحة الكورسات (Courses) ==================== -->
+            <!-- تعرض جميع الكورسات المتاحة مع وصف لكل كورس -->
             <div id="coursesSection" style="display: none;">
                 <div class="hero-section">
                     <h2><i class="fas fa-graduation-cap me-2"></i> All Courses</h2>
-                    <p>Choose from 50+ programming courses</p>
+                    <p>Choose from 50+ programming courses designed for beginners and professionals</p>
+                    <div class="explanation-box mt-3">
+                        <small>📚 <strong>How it works:</strong> Click on any course to start learning. Each course contains video-like text tutorials with code examples you can copy and run!</small>
+                    </div>
                 </div>
                 <div class="row" id="coursesList"></div>
             </div>
 
-            <!-- ==================== LEARN SECTION ==================== -->
+            <!-- ==================== شرح: صفحة التعلم (Learn) ==================== -->
+            <!-- تعرض الدروس التعليمية التفصيلية مع أكواد برمجية -->
             <div id="learnSection" style="display: none;">
                 <div id="learnContent"></div>
             </div>
 
-            <!-- ==================== PRACTICE SECTION ==================== -->
+            <!-- ==================== شرح: صفحة التمارين (Practice) ==================== -->
+            <!-- تحتوي على اختبارات تفاعلية لقياس مستوى الفهم -->
             <div id="practiceSection" style="display: none;">
                 <div class="hero-section">
                     <h2><i class="fas fa-puzzle-piece me-2"></i> Practice Coding</h2>
                     <p>Test your knowledge with interactive quizzes</p>
+                    <div class="explanation-box mt-3">
+                        <small>✍️ <strong>How to practice:</strong> Read the question, click on your answer. Green means correct, red means wrong. Check the explanation to learn more!</small>
+                    </div>
                 </div>
                 <div class="row" id="practiceList"></div>
             </div>
 
-            <!-- ==================== GUIDE SECTION ==================== -->
+            <!-- ==================== شرح: دليل المنصة (Guide) ==================== -->
+            <!-- يشرح كل شيء عن المنصة وكيفية استخدامها -->
             <div id="guideSection" style="display: none;">
                 <div class="hero-section">
                     <h2><i class="fas fa-book-open me-2"></i> Platform Guide</h2>
-                    <p>Everything you need to know</p>
+                    <p>Everything you need to know about Abdulrahman Tech Academy</p>
                 </div>
                 
+                <!-- ما يمكنك تعلمه -->
                 <div class="explanation-box">
-                    <h5><i class="fas fa-graduation-cap me-2"></i> What You Can Learn</h5>
+                    <h5><i class="fas fa-graduation-cap me-2"></i> 📚 What You Can Learn</h5>
                     <ul>
-                        <li><strong>Python Programming</strong> - From basics to advanced</li>
-                        <li><strong>JavaScript</strong> - Web development, DOM manipulation</li>
-                        <li><strong>HTML/CSS</strong> - Build beautiful responsive websites</li>
-                        <li><strong>SQL</strong> - Database design and queries</li>
-                        <li><strong>React.js</strong> - Modern frontend framework</li>
+                        <li><strong>🐍 Python Programming</strong> - From basics to advanced, data structures, algorithms</li>
+                        <li><strong>⚡ JavaScript</strong> - Web development, DOM manipulation, ES6+ features</li>
+                        <li><strong>🌐 HTML/CSS</strong> - Build beautiful responsive websites</li>
+                        <li><strong>📊 SQL</strong> - Database design, queries, and management</li>
+                        <li><strong>⚛️ React.js</strong> - Modern frontend framework</li>
+                        <li><strong>💻 Web Development</strong> - Full stack development with real projects</li>
                     </ul>
                 </div>
                 
+                <!-- كيفية الحصول على الشهادات -->
                 <div class="explanation-box">
-                    <h5><i class="fas fa-certificate me-2"></i> How to Earn Certificates</h5>
+                    <h5><i class="fas fa-certificate me-2"></i> 🎓 How to Earn Certificates</h5>
                     <ol>
-                        <li>Sign up for a free account</li>
-                        <li>Complete any course (100% completion)</li>
+                        <li>Sign up for a free account (click Sign In then Demo Login)</li>
+                        <li>Complete any course (100% completion required)</li>
+                        <li>Pass the final assessment at the end of the course</li>
                         <li>Download your verified certificate instantly</li>
                     </ol>
+                    <p class="small text-muted mt-2">✨ Certificates are verifiable and can be shared on LinkedIn, your resume, or portfolio!</p>
                 </div>
                 
+                <!-- ميزات الأمان -->
                 <div class="explanation-box">
-                    <h5><i class="fas fa-shield-alt me-2"></i> Security Features</h5>
-                    <p>Your data is protected with encryption and security headers. Safe learning environment.</p>
+                    <h5><i class="fas fa-shield-alt me-2"></i> 🔒 Security Features</h5>
+                    <ul>
+                        <li><i class="fas fa-lock me-2"></i> Encrypted connection (HTTPS)</li>
+                        <li><i class="fas fa-shield-virus me-2"></i> XSS Protection with Content Security Policy</li>
+                        <li><i class="fas fa-user-secret me-2"></i> No personal data stored</li>
+                        <li><i class="fas fa-clock me-2"></i> Rate limiting to prevent abuse</li>
+                    </ul>
+                </div>
+                
+                <!-- نصائح للنجاح -->
+                <div class="explanation-box">
+                    <h5><i class="fas fa-lightbulb me-2"></i> 💡 Tips for Success</h5>
+                    <ul>
+                        <li><i class="fas fa-calendar-week me-2"></i> <strong>Study regularly:</strong> Even 20 minutes a day makes a difference</li>
+                        <li><i class="fas fa-code me-2"></i> <strong>Practice daily:</strong> Write code every day, even small programs</li>
+                        <li><i class="fas fa-copy me-2"></i> <strong>Copy and run the code:</strong> Use the copy button to get the code and run it yourself</li>
+                        <li><i class="fas fa-chart-line me-2"></i> <strong>Track your progress:</strong> Sign in to save your progress and earn certificates</li>
+                        <li><i class="fas fa-question-circle me-2"></i> <strong>Ask questions:</strong> Use the community section to get help</li>
+                    </ul>
+                </div>
+                
+                <!-- الأسئلة الشائعة -->
+                <div class="explanation-box">
+                    <h5><i class="fas fa-question-circle me-2"></i> ❓ Frequently Asked Questions</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><strong>❓ Is this really free?</strong> Yes! 100% free forever. No credit card required.</li>
+                        <li class="mb-2"><strong>❓ Do I get a certificate?</strong> Yes, complete any course and get a verified certificate.</li>
+                        <li class="mb-2"><strong>❓ Do I need prior experience?</strong> No! All courses start from basics.</li>
+                        <li class="mb-2"><strong>❓ How long does it take?</strong> Learn at your own pace. Each course takes 10-20 hours.</li>
+                        <li><strong>❓ Can I download the code?</strong> Yes! Use the copy button on any code block.</li>
+                    </ul>
                 </div>
             </div>
 
-            <!-- ==================== PROFILE SECTION ==================== -->
+            <!-- ==================== شرح: صفحة الملف الشخصي (Profile) ==================== -->
+            <!-- تعرض إحصائيات المستخدم وتقدمه -->
             <div id="profileSection" style="display: none;">
                 <div class="hero-section">
                     <div class="row align-items-center">
@@ -521,25 +584,35 @@
                                 <span class="badge-tech"><i class="fas fa-star"></i> <span id="profilePoints">0</span> XP</span>
                                 <span class="badge-tech ms-2"><i class="fas fa-certificate"></i> <span id="profileCertificates">0</span> Certificates</span>
                             </div>
+                            <div class="explanation-box mt-3">
+                                <small>📊 <strong>Your Learning Dashboard:</strong> Track your progress, see completed courses, and monitor your XP points. Complete more courses to level up!</small>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="stat-card">
-                            <h5>Learning Statistics</h5>
+                            <h5><i class="fas fa-chart-line me-2"></i> Learning Statistics</h5>
                             <p><i class="fas fa-book-open me-2"></i> Courses Started: <strong id="profileCoursesStarted">0</strong></p>
                             <p><i class="fas fa-check-circle me-2"></i> Courses Completed: <strong id="profileCoursesCompleted">0</strong></p>
                             <p><i class="fas fa-tasks me-2"></i> Exercises Done: <strong id="profileExercisesDone">0</strong></p>
+                            <p><i class="fas fa-clock me-2"></i> Total Hours: <strong id="profileHours">0</strong></p>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="stat-card">
-                            <h5>Progress</h5>
-                            <div class="progress mt-3" style="height: 8px; background: var(--primary-dark);">
-                                <div id="profileProgressBar" style="width: 0%; height: 8px; background: var(--primary-accent); border-radius: 4px;"></div>
+                            <h5><i class="fas fa-chart-simple me-2"></i> Progress to Next Level</h5>
+                            <div class="progress mt-3" style="height: 10px; background: var(--primary-dark); border-radius: 10px;">
+                                <div id="profileProgressBar" style="width: 0%; height: 10px; background: var(--primary-accent); border-radius: 10px;"></div>
                             </div>
-                            <p class="mt-2 small text-muted">Complete courses to level up!</p>
+                            <p class="mt-2 small text-muted">Complete 10 courses to reach Level 2!</p>
+                            <hr>
+                            <h6><i class="fas fa-trophy me-2"></i> Achievements</h6>
+                            <div id="achievementsList" class="mt-2">
+                                <span class="badge-tech"><i class="fas fa-rocket"></i> Beginner</span>
+                                <span class="badge-tech ms-2"><i class="fas fa-star"></i> First Login</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -547,10 +620,14 @@
         </div>
     </div>
 
+    <!-- ==================== تذييل الصفحة ==================== -->
     <footer class="footer-tech">
         <div class="container text-center">
             <div class="small text-muted">© 2026 Abdulrahman Tech Academy - Free Programming Education for Everyone</div>
-            <div class="small text-muted mt-1">🔒 Secure Platform | 📚 50+ Courses | 🎓 Free Certificates</div>
+            <div class="small text-muted mt-1">🔒 Secure Platform | 📚 50+ Courses | 🎓 Free Certificates | 🌍 Learn Anywhere</div>
+            <div class="small text-muted mt-2">
+                <i class="fas fa-question-circle me-1"></i> Need help? Check the <a href="#" onclick="showSection('guide'); return false;" style="color: var(--primary-accent);">Platform Guide</a>
+            </div>
         </div>
     </footer>
 </div>
@@ -558,9 +635,10 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // ==================== USER MANAGEMENT ====================
+    // ==================== شرح: إدارة المستخدمين ====================
     let currentUser = null;
     
+    // دالة عرض رسائل التنبيه
     function showToast(message, type = 'success') {
         const container = document.getElementById('toastContainer');
         const toast = document.createElement('div');
@@ -579,11 +657,13 @@
         setTimeout(() => toast.remove(), 3500);
     }
     
+    // دالة إظهار/إخفاء القائمة المنسدلة للمستخدم
     function toggleUserMenu() {
         const dropdown = document.getElementById('userDropdown');
         if (dropdown) dropdown.classList.toggle('show');
     }
     
+    // إغلاق القائمة عند الضغط خارجها
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.user-menu') && !e.target.closest('#userDropdown')) {
             const dropdown = document.getElementById('userDropdown');
@@ -591,6 +671,7 @@
         }
     });
     
+    // تحديث واجهة المستخدم بعد تسجيل الدخول
     function updateUIForUser(user) {
         if (user) {
             document.getElementById('userLoggedOut').style.display = 'none';
@@ -605,6 +686,7 @@
         }
     }
     
+    // تحديث إحصائيات الملف الشخصي
     function updateProfileStats() {
         if (currentUser) {
             document.getElementById('profilePoints').innerText = currentUser.points || 0;
@@ -612,193 +694,13 @@
             document.getElementById('profileCoursesStarted').innerText = currentUser.coursesStarted || 0;
             document.getElementById('profileCoursesCompleted').innerText = currentUser.coursesCompleted || 0;
             document.getElementById('profileExercisesDone').innerText = currentUser.exercisesDone || 0;
+            document.getElementById('profileHours').innerText = currentUser.hours || 0;
             const progress = ((currentUser.coursesCompleted || 0) / 10) * 100;
             document.getElementById('profileProgressBar').style.width = Math.min(progress, 100) + '%';
         }
     }
     
+    // تسجيل الدخول التجريبي
     function demoLogin() {
         currentUser = {
-            name: 'Demo Student',
-            email: 'demo@abdulrahman.tech',
-            points: 250,
-            certificates: 2,
-            coursesStarted: 3,
-            coursesCompleted: 1,
-            exercisesDone: 15
-        };
-        updateUIForUser(currentUser);
-        const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
-        if (modal) modal.hide();
-        showToast('Welcome to Abdulrahman Tech Academy! 🎉', 'success');
-    }
-    
-    function logout() {
-        currentUser = null;
-        updateUIForUser(null);
-        showToast('Logged out successfully', 'info');
-        showSection('home');
-    }
-    
-    document.getElementById('demoLoginBtn')?.addEventListener('click', demoLogin);
-    
-    // ==================== NAVIGATION ====================
-    function showSection(section) {
-        const sections = ['home', 'courses', 'learn', 'practice', 'guide', 'profile'];
-        sections.forEach(s => {
-            const el = document.getElementById(`${s}Section`);
-            if (el) el.style.display = 'none';
-        });
-        
-        const targetSection = document.getElementById(`${section}Section`);
-        if (targetSection) targetSection.style.display = 'block';
-        
-        document.querySelectorAll('.nav-link-tech').forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('data-section') === section) link.classList.add('active');
-        });
-        
-        if (section === 'courses') loadCourses();
-        if (section === 'practice') loadPractice();
-        if (section === 'learn') loadTutorial('python');
-    }
-    
-    // ==================== LOAD COURSES ====================
-    function loadCourses() {
-        const courses = [
-            { name: "Python Mastery", icon: "fab fa-python", desc: "Learn Python from basics to advanced", lessons: 25 },
-            { name: "JavaScript Complete", icon: "fab fa-js", desc: "Modern JavaScript for web development", lessons: 30 },
-            { name: "HTML & CSS", icon: "fab fa-html5", desc: "Build beautiful responsive websites", lessons: 20 },
-            { name: "SQL Database", icon: "fas fa-database", desc: "Master database queries and design", lessons: 18 },
-            { name: "React.js", icon: "fab fa-react", desc: "Build modern web applications", lessons: 22 },
-            { name: "Web Development", icon: "fas fa-globe", desc: "Full stack web development", lessons: 35 }
-        ];
-        
-        const container = document.getElementById('coursesList');
-        if (!container) return;
-        
-        container.innerHTML = courses.map(course => `
-            <div class="col-md-4 mb-4">
-                <div class="course-card" onclick="loadTutorial('${course.name.toLowerCase().split(' ')[0]}')">
-                    <div class="course-icon"><i class="${course.icon}"></i></div>
-                    <h5>${course.name}</h5>
-                    <p class="small text-muted">${course.desc}</p>
-                    <div class="d-flex justify-content-between mt-2">
-                        <span class="badge-tech">${course.lessons} lessons</span>
-                        <span class="badge-tech">Free</span>
-                    </div>
-                </div>
-            </div>
-        `).join('');
-    }
-    
-    // ==================== LOAD TUTORIAL ====================
-    window.loadTutorial = function(topic) {
-        showSection('learn');
-        
-        const tutorials = {
-            python: `
-                <div class="hero-section">
-                    <h2>🐍 Python Programming Course</h2>
-                    <p>Learn one of the most popular programming languages</p>
-                </div>
-                <div class="explanation-box"><strong>What is Python?</strong> Python is a beginner-friendly language used for web development, data science, AI, and automation.</div>
-                <div class="code-block" style="background:#0d1117; border-radius:12px; padding:1.2rem; margin-bottom:1rem;">
-                    <h5>📝 Lesson 1: Your First Python Program</h5>
-                    <pre><code># This is a comment
-print("Hello, World!")
-
-# Variables
-name = "Student"
-age = 25
-print(f"My name is {name} and I am {age} years old")</code></pre>
-                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                </div>
-                <div class="code-block" style="background:#0d1117; border-radius:12px; padding:1.2rem;">
-                    <h5>📝 Lesson 2: Variables and Data Types</h5>
-                    <pre><code># Different data types
-name = "Ahmed"        # String
-age = 25              # Integer
-height = 1.75         # Float
-is_student = True     # Boolean
-
-print(f"Name: {name}")
-print(f"Age: {age}")
-print(f"Height: {height}")
-print(f"Is Student: {is_student}")</code></pre>
-                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                </div>
-            `,
-            javascript: `
-                <div class="hero-section">
-                    <h2>⚡ JavaScript Programming Course</h2>
-                    <p>Learn the language of the web</p>
-                </div>
-                <div class="explanation-box"><strong>What is JavaScript?</strong> JavaScript makes websites interactive and is essential for web development.</div>
-                <div class="code-block" style="background:#0d1117; border-radius:12px; padding:1.2rem;">
-                    <h5>📝 Lesson 1: Your First JavaScript Program</h5>
-                    <pre><code>// This is a comment
-console.log("Hello, World!");
-
-// Variables
-let name = "Student";
-const age = 25;
-console.log(`My name is ${name} and I am ${age} years old`);</code></pre>
-                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                </div>
-            `,
-            html: `
-                <div class="hero-section">
-                    <h2>🌐 HTML & CSS Course</h2>
-                    <p>Build beautiful websites</p>
-                </div>
-                <div class="code-block" style="background:#0d1117; border-radius:12px; padding:1.2rem;">
-                    <h5>📝 Lesson 1: HTML Structure</h5>
-                    <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;title&gt;My Website&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Welcome to My Site&lt;/h1&gt;
-    &lt;p&gt;This is a paragraph.&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;</code></pre>
-                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                </div>
-            `,
-            sql: `
-                <div class="hero-section">
-                    <h2>📊 SQL Database Course</h2>
-                    <p>Learn to work with databases</p>
-                </div>
-                <div class="code-block" style="background:#0d1117; border-radius:12px; padding:1.2rem;">
-                    <h5>📝 Lesson 1: Creating Tables</h5>
-                    <pre><code>-- Create a table
-CREATE TABLE students (
-    id INT PRIMARY KEY,
-    name VARCHAR(100),
-    age INT
-);
-
--- Insert data
-INSERT INTO students VALUES (1, 'Ahmed', 22);
-
--- Query data
-SELECT * FROM students;</code></pre>
-                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                </div>
-            `,
-            react: `
-                <div class="hero-section">
-                    <h2>⚛️ React.js Course</h2>
-                    <p>Build modern web applications</p>
-                </div>
-                <div class="code-block" style="background:#0d1117; border-radius:12px; padding:1.2rem;">
-                    <h5>📝 Lesson 1: React Component</h5>
-                    <pre><code>function Welcome() {
-    return &lt;h1&gt;Hello, World!&lt;/h1&gt;
-}
-
-export default Welcome;</code></pre>
-                    <button class="copy-btn" onclick="copyCode(this)">Copy
+            name: 'Demo Student
