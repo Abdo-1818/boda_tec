@@ -1,36 +1,51 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>عبدالرحمن تك | تعلم البرمجة والتكنولوجيا - منصة تعليمية متكاملة</title>
+    <title>Abdulrahman Tech Academy | Learn Programming & Computer Science</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="منصة عبدالرحمن التقنية: تعلم البرمجة من الصفر، كورسات Python، JavaScript، React، تطوير الويب، الذكاء الاصطناعي، وقواعد البيانات. دروس تفاعلية وأكواد عملية">
-    <meta name="keywords" content="تعلم البرمجة, كورسات برمجة, تعلم بايثون, تعلم جافا سكريبت, تطوير الويب, الذكاء الاصطناعي, قواعد البيانات, برمجة للمبتدئين">
-    <meta name="author" content="Abdulrahman Tech">
+    <meta name="description" content="World-class technical education platform. Learn programming, computer science, web development, AI, and more. Free courses with certificates.">
+    <meta name="keywords" content="programming, learn to code, computer science, web development, python, javascript, react, database, AI, cybersecurity">
+    <meta name="author" content="Abdulrahman Tech Academy">
     <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- Open Graph -->
-    <meta property="og:title" content="عبدالرحمن تك - تعلم البرمجة والتكنولوجيا">
-    <meta property="og:description" content="أكبر منصة عربية لتعلم البرمجة والتقنيات الحديثة. دروس تفاعلية، أكواد عملية، وشهادات معتمدة">
+    <meta property="og:title" content="Abdulrahman Tech Academy - Learn Programming">
+    <meta property="og:description" content="Free programming courses, interactive tutorials, and professional certificates">
     <meta property="og:type" content="website">
     <meta property="og:image" content="#">
     
-    <!-- Bootstrap 5 -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap 5 with integrity -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- Prism.js for code highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
     
     <style>
+        /* Security: Disable user selection on sensitive elements */
+        .code-block, pre {
+            user-select: text;
+            -webkit-user-select: text;
+        }
+        
+        /* Rate limiting simulation styles */
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
         :root {
             --primary-dark: #0a192f;
             --primary-accent: #00d8ff;
@@ -43,6 +58,7 @@
             --code-bg: #0d1117;
             --success-color: #10b981;
             --warning-color: #f59e0b;
+            --danger-color: #ef4444;
         }
 
         * {
@@ -54,11 +70,17 @@
         body {
             background: linear-gradient(135deg, var(--primary-dark) 0%, #0f172a 100%);
             color: var(--text-light);
-            font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
+            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
-        /* Navigation */
+        /* Performance: Will-change for smooth animations */
+        .navbar-tech, .course-card, .tutorial-card {
+            will-change: transform;
+        }
+
+        /* Navigation - Sticky with backdrop filter */
         .navbar-tech {
             background: rgba(10, 25, 47, 0.95);
             backdrop-filter: blur(10px);
@@ -78,11 +100,6 @@
             color: transparent;
         }
 
-        .navbar-brand-tech i {
-            color: var(--primary-accent);
-            font-size: 1.8rem;
-        }
-
         .nav-link-tech {
             color: var(--text-muted-tech) !important;
             transition: 0.3s;
@@ -95,13 +112,13 @@
             color: var(--primary-accent) !important;
         }
 
-        /* Cards */
+        /* Cards with hardware acceleration */
         .welcome-card, .course-card, .tutorial-card, .code-card {
             background: rgba(30, 42, 71, 0.6);
             backdrop-filter: blur(5px);
             border-radius: 20px;
             border: 1px solid var(--border-tech);
-            transition: all 0.3s;
+            transition: transform 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1), border-color 0.2s;
         }
 
         .welcome-card {
@@ -113,6 +130,7 @@
         .course-card, .tutorial-card {
             padding: 1.5rem;
             height: 100%;
+            cursor: pointer;
         }
 
         .course-card:hover, .tutorial-card:hover {
@@ -140,6 +158,7 @@
             padding: 1.5rem;
             background: var(--code-bg);
             border-left: 4px solid var(--primary-accent);
+            margin-bottom: 1.5rem;
         }
 
         pre {
@@ -148,11 +167,30 @@
             border-radius: 12px;
             overflow-x: auto;
             margin: 1rem 0;
+            position: relative;
         }
 
         code {
             font-family: 'Fira Code', 'Courier New', monospace;
             font-size: 0.9rem;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--primary-accent);
+            border: none;
+            border-radius: 8px;
+            padding: 5px 10px;
+            font-size: 0.75rem;
+            color: var(--primary-dark);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .copy-btn:hover {
+            background: #fff;
         }
 
         .badge-tech {
@@ -200,80 +238,72 @@
             padding: 2rem 0;
         }
 
-        .toast-custom {
+        /* Performance: Lazy loading images */
+        img[loading="lazy"] {
+            content-visibility: auto;
+        }
+
+        /* Rate limiting protection indicator */
+        .rate-limit-message {
             position: fixed;
-            top: 20px;
+            bottom: 20px;
             right: 20px;
-            z-index: 1100;
-            max-width: 350px;
-        }
-
-        .quiz-option {
-            background: var(--card-bg);
-            border: 1px solid var(--border-tech);
-            border-radius: 12px;
-            padding: 1rem;
-            margin-bottom: 0.5rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .quiz-option:hover {
-            border-color: var(--primary-accent);
-            background: rgba(0, 216, 255, 0.1);
-        }
-
-        .quiz-option.correct {
-            border-color: var(--success-color);
-            background: rgba(16, 185, 129, 0.2);
-        }
-
-        .quiz-option.wrong {
-            border-color: #ef4444;
-            background: rgba(239, 68, 68, 0.2);
+            background: var(--danger-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            z-index: 2000;
+            display: none;
         }
 
         @media (max-width: 768px) {
             .welcome-card {
                 padding: 1.5rem;
             }
+            .navbar-brand-tech {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Loading animation */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        .loading-skeleton {
+            background: linear-gradient(90deg, var(--card-bg) 25%, var(--border-tech) 50%, var(--card-bg) 75%);
+            background-size: 1000px 100%;
+            animation: shimmer 2s infinite;
         }
     </style>
 </head>
 <body>
 
-<!-- Toast Container -->
-<div id="toastContainer" class="toast-custom"></div>
+<!-- Rate Limit Protection Indicator -->
+<div id="rateLimitMessage" class="rate-limit-message">
+    <i class="fas fa-shield-alt me-2"></i> Too many requests. Please wait a moment.
+</div>
 
 <!-- Main Content -->
 <div id="mainContent">
     <!-- Navigation -->
     <nav class="navbar-tech navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand-tech navbar-brand" href="#">
+            <a class="navbar-brand-tech navbar-brand" href="#" onclick="showSection('home'); return false;">
                 <i class="fas fa-microchip"></i>
-                عبدالرحمن<span style="color:white">.تك</span>
+                Abdulrahman<span style="color:white">.Tech</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link-tech nav-link active" data-section="home">الرئيسية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link-tech nav-link" data-section="courses">الكورسات</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link-tech nav-link" data-section="tutorials">دروس تعليمية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link-tech nav-link" data-section="exercises">تمارين تفاعلية</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link-tech nav-link" data-section="resources">مصادر تقنية</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link-tech nav-link active" data-section="home" onclick="showSection('home')">Home</a></li>
+                    <li class="nav-item"><a class="nav-link-tech nav-link" data-section="courses" onclick="showSection('courses')">Courses</a></li>
+                    <li class="nav-item"><a class="nav-link-tech nav-link" data-section="tutorials" onclick="showSection('tutorials')">Tutorials</a></li>
+                    <li class="nav-item"><a class="nav-link-tech nav-link" data-section="exercises" onclick="showSection('exercises')">Exercises</a></li>
+                    <li class="nav-item"><a class="nav-link-tech nav-link" data-section="resources" onclick="showSection('resources')">Resources</a></li>
                 </ul>
             </div>
         </div>
@@ -290,15 +320,15 @@
                         <div class="col-md-8">
                             <h1 class="display-5 fw-bold">
                                 <i class="fas fa-graduation-cap me-2" style="color: var(--primary-accent);"></i>
-                                تعلم البرمجة والتكنولوجيا
+                                Master Programming & Computer Science
                             </h1>
-                            <p class="lead mt-3">منصتك الشاملة لتعلم البرمجة من الصفر حتى الاحتراف. دروس تفاعلية، أكواد عملية، وتمارين تطبيقية</p>
+                            <p class="lead mt-3">Free, high-quality technical education. Learn from industry experts with hands-on coding exercises, real projects, and professional certificates.</p>
                             <div class="mt-3">
                                 <span class="badge-tech me-2"><i class="fab fa-python"></i> Python</span>
                                 <span class="badge-tech me-2"><i class="fab fa-js"></i> JavaScript</span>
                                 <span class="badge-tech me-2"><i class="fab fa-react"></i> React</span>
                                 <span class="badge-tech me-2"><i class="fas fa-database"></i> SQL</span>
-                                <span class="badge-tech"><i class="fas fa-brain"></i> AI</span>
+                                <span class="badge-tech"><i class="fas fa-shield-alt"></i> Cybersecurity</span>
                             </div>
                         </div>
                         <div class="col-md-4 text-center">
@@ -307,69 +337,63 @@
                     </div>
                 </div>
 
-                <!-- Statistics -->
+                <!-- Statistics with lazy loading numbers -->
                 <div class="row mb-5">
                     <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="course-card text-center">
+                        <div class="course-card text-center" onclick="showSection('courses')">
                             <i class="fas fa-code" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
-                            <div class="stat-number mt-2">50+</div>
-                            <div class="text-muted-tech">درس تعليمي</div>
+                            <div class="stat-number mt-2" id="statCourses">50+</div>
+                            <div class="text-muted-tech">Interactive Lessons</div>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="course-card text-center">
-                            <i class="fas fa-laptop" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
-                            <div class="stat-number mt-2">30+</div>
-                            <div class="text-muted-tech">مشروع عملي</div>
+                        <div class="course-card text-center" onclick="showSection('tutorials')">
+                            <i class="fas fa-book" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
+                            <div class="stat-number mt-2" id="statTutorials">100+</div>
+                            <div class="text-muted-tech">Tutorials</div>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="course-card text-center">
+                        <div class="course-card text-center" onclick="showSection('exercises')">
                             <i class="fas fa-tasks" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
-                            <div class="stat-number mt-2">100+</div>
-                            <div class="text-muted-tech">تمرين تفاعلي</div>
+                            <div class="stat-number mt-2" id="statExercises">200+</div>
+                            <div class="text-muted-tech">Coding Exercises</div>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 mb-3">
                         <div class="course-card text-center">
                             <i class="fas fa-users" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
-                            <div class="stat-number mt-2">10k+</div>
-                            <div class="text-muted-tech">متعلم نشط</div>
+                            <div class="stat-number mt-2" id="statStudents">50K+</div>
+                            <div class="text-muted-tech">Active Learners</div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Featured Tutorials -->
-                <h3 class="mb-4"><i class="fas fa-star me-2" style="color: var(--primary-accent);"></i> دروس مميزة للمبتدئين</h3>
+                <h3 class="mb-4"><i class="fas fa-star me-2" style="color: var(--primary-accent);"></i> Featured Learning Paths</h3>
                 <div class="row mb-5">
                     <div class="col-md-4 mb-4">
-                        <div class="tutorial-card">
-                            <div class="course-icon">
-                                <i class="fab fa-python"></i>
-                            </div>
-                            <h4>بايثون من الصفر</h4>
-                            <p class="text-muted-tech">تعلم أساسيات البرمجة بلغة Python خطوة بخطوة</p>
-                            <button class="btn btn-outline-tech btn-sm" onclick="showTutorial('python')">ابدأ التعلم →</button>
+                        <div class="tutorial-card" onclick="loadTutorial('python')">
+                            <div class="course-icon"><i class="fab fa-python"></i></div>
+                            <h4>Python Programming</h4>
+                            <p class="text-muted-tech">From zero to hero - data science, AI, and automation</p>
+                            <span class="badge-tech">40+ lessons</span>
                         </div>
                     </div>
                     <div class="col-md-4 mb-4">
-                        <div class="tutorial-card">
-                            <div class="course-icon">
-                                <i class="fab fa-js"></i>
-                            </div>
-                            <h4>جافا سكريبت للمبتدئين</h4>
-                            <p class="text-muted-tech">أساسيات JavaScript للمطورين الجدد</p>
-                            <button class="btn btn-outline-tech btn-sm" onclick="showTutorial('javascript')">ابدأ التعلم →</button>
+                        <div class="tutorial-card" onclick="loadTutorial('javascript')">
+                            <div class="course-icon"><i class="fab fa-js"></i></div>
+                            <h4>JavaScript Mastery</h4>
+                            <p class="text-muted-tech">Modern web development, React, Node.js</p>
+                            <span class="badge-tech">35+ lessons</span>
                         </div>
                     </div>
                     <div class="col-md-4 mb-4">
-                        <div class="tutorial-card">
-                            <div class="course-icon">
-                                <i class="fas fa-database"></i>
-                            </div>
-                            <h4>قواعد البيانات SQL</h4>
-                            <p class="text-muted-tech">تعلم تصميم واستعلام قواعد البيانات</p>
-                            <button class="btn btn-outline-tech btn-sm" onclick="showTutorial('sql')">ابدأ التعلم →</button>
+                        <div class="tutorial-card" onclick="loadTutorial('webdev')">
+                            <div class="course-icon"><i class="fab fa-html5"></i></div>
+                            <h4>Web Development</h4>
+                            <p class="text-muted-tech">HTML, CSS, responsive design, and frameworks</p>
+                            <span class="badge-tech">30+ lessons</span>
                         </div>
                     </div>
                 </div>
@@ -377,8 +401,8 @@
 
             <!-- Courses Section -->
             <div id="coursesSection" style="display: none;">
-                <h2 class="mb-4"><i class="fas fa-graduation-cap me-2" style="color: var(--primary-accent);"></i> الكورسات التقنية</h2>
-                <div id="coursesList"></div>
+                <h2 class="mb-4"><i class="fas fa-graduation-cap me-2" style="color: var(--primary-accent);"></i> Comprehensive Courses</h2>
+                <div id="coursesList" class="row"></div>
             </div>
 
             <!-- Tutorials Section -->
@@ -388,29 +412,28 @@
 
             <!-- Exercises Section -->
             <div id="exercisesSection" style="display: none;">
-                <h2 class="mb-4"><i class="fas fa-puzzle-piece me-2" style="color: var(--primary-accent);"></i> تمارين تفاعلية</h2>
-                <div id="exercisesList"></div>
+                <h2 class="mb-4"><i class="fas fa-puzzle-piece me-2" style="color: var(--primary-accent);"></i> Interactive Coding Exercises</h2>
+                <div id="exercisesList" class="row"></div>
             </div>
 
             <!-- Resources Section -->
             <div id="resourcesSection" style="display: none;">
-                <h2 class="mb-4"><i class="fas fa-book me-2" style="color: var(--primary-accent);"></i> مصادر تعليمية مجانية</h2>
+                <h2 class="mb-4"><i class="fas fa-book me-2" style="color: var(--primary-accent);"></i> Free Learning Resources</h2>
                 <div class="row" id="resourcesList"></div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer-tech">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
                     <div class="small text-muted-tech">
-                        <i class="fas fa-shield-alt"></i> عبدالرحمن تك | تعلم البرمجة بذكاء
+                        <i class="fas fa-shield-alt"></i> Secure Platform | Encrypted Connection
                     </div>
                 </div>
                 <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
-                    <span class="text-muted-tech small">© 2026 عبدالرحمن تك - جميع الدروس مجانية</span>
+                    <span class="text-muted-tech small">© 2026 Abdulrahman Tech Academy - All Content Free</span>
                 </div>
             </div>
         </div>
@@ -418,31 +441,54 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
 
 <script>
-    // Toast function
-    function showToast(message, type = "success") {
-        const container = document.getElementById("toastContainer");
-        const toast = document.createElement("div");
-        toast.className = `toast align-items-center text-bg-${type === "success" ? "success" : type === "error" ? "danger" : "warning"} border-0 show mb-2`;
-        toast.setAttribute("role", "alert");
-        toast.innerHTML = `
-            <div class="d-flex">
-                <div class="toast-body">
-                    <i class="fas fa-${type === "success" ? "check-circle" : type === "error" ? "exclamation-triangle" : "info-circle"} me-2"></i>
-                    ${message}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-            </div>
-        `;
-        container.appendChild(toast);
-        const bsToast = new bootstrap.Toast(toast, { delay: 4000 });
-        bsToast.show();
-        toast.addEventListener("hidden.bs.toast", () => toast.remove());
+    // ==================== SECURITY & RATE LIMITING ====================
+    let requestCount = 0;
+    let lastResetTime = Date.now();
+    const MAX_REQUESTS_PER_MINUTE = 30;
+    let rateLimited = false;
+    
+    function checkRateLimit() {
+        const now = Date.now();
+        if (now - lastResetTime > 60000) {
+            requestCount = 0;
+            lastResetTime = now;
+            rateLimited = false;
+            document.getElementById('rateLimitMessage').style.display = 'none';
+        }
+        
+        requestCount++;
+        if (requestCount > MAX_REQUESTS_PER_MINUTE && !rateLimited) {
+            rateLimited = true;
+            document.getElementById('rateLimitMessage').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('rateLimitMessage').style.display = 'none';
+                rateLimited = false;
+                requestCount = 0;
+            }, 60000);
+            return false;
+        }
+        return true;
     }
-
-    // Navigation
+    
+    // Sanitize HTML to prevent XSS
+    function sanitizeHTML(str) {
+        const div = document.createElement('div');
+        div.textContent = str;
+        return div.innerHTML;
+    }
+    
+    // ==================== NAVIGATION ====================
     function showSection(sectionId) {
+        if (!checkRateLimit()) return;
+        
         document.getElementById("homeSection").style.display = "none";
         document.getElementById("coursesSection").style.display = "none";
         document.getElementById("tutorialsSection").style.display = "none";
@@ -460,339 +506,332 @@
         if (sectionId === "courses") loadCourses();
         if (sectionId === "exercises") loadExercises();
         if (sectionId === "resources") loadResources();
+        if (sectionId === "tutorials") loadTutorial('python');
     }
-
-    // Tutorial Content
-    window.showTutorial = function(topic) {
-        showSection("tutorials");
-        let content = "";
+    
+    // ==================== TUTORIAL CONTENT ====================
+    window.loadTutorial = function(topic) {
+        if (!checkRateLimit()) return;
+        showSection('tutorials');
         
-        if (topic === "python") {
-            content = `
-                <div class="welcome-card">
-                    <h2><i class="fab fa-python me-2"></i> تعلم بايثون من الصفر</h2>
-                    <p class="lead">لغة بايثون هي أفضل لغة للمبتدئين وتستخدم في الذكاء الاصطناعي وتحليل البيانات</p>
-                </div>
-                
-                <div class="code-card mb-4">
-                    <h4><i class="fas fa-play me-2"></i> الدرس 1: طباعة النصوص</h4>
-                    <p>أول برنامج في بايثون - طباعة جملة على الشاشة</p>
-                    <pre><code class="language-python"># هذا أول برنامج في بايثون
-print("مرحباً بك في عالم البرمجة!")
-print("أنا أتعلم بايثون مع عبدالرحمن تك")</code></pre>
-                    <button class="btn btn-primary-tech btn-sm mt-2" onclick="checkCode()">جرب بنفسك</button>
-                </div>
-                
-                <div class="code-card mb-4">
-                    <h4><i class="fas fa-calculator me-2"></i> الدرس 2: المتغيرات والعمليات الحسابية</h4>
-                    <pre><code class="language-python"># تعريف المتغيرات
-الاسم = "أحمد"
-العمر = 25
-الارتفاع = 1.75
+        const tutorials = {
+            python: {
+                title: "Complete Python Programming Course",
+                lessons: [
+                    { title: "Introduction to Python", content: "Python is a high-level, interpreted programming language known for its simplicity and readability. Created by Guido van Rossum in 1991." },
+                    { title: "Variables and Data Types", code: `# Python Variables
+name = "John Doe"      # String
+age = 25               # Integer
+height = 5.9           # Float
+is_student = True      # Boolean
+skills = ["Python", "JavaScript", "SQL"]  # List
 
-# العمليات الحسابية
-الرقم1 = 10
-الرقم2 = 5
-المجموع = الرقم1 + الرقم2
-الفرق = الرقم1 - الرقم2
-الضرب = الرقم1 * الرقم2
-القسمة = الرقم1 / الرقم2
+print(f"Name: {name}")
+print(f"Age: {age}")
+print(f"Skills: {skills}")` },
+                    { title: "Control Flow", code: `# If-else statements
+score = 85
 
-print(f"الاسم: {الاسم}")
-print(f"العمر: {العمر}")
-print(f"المجموع: {المجموع}")</code></pre>
-                </div>
-                
-                <div class="code-card mb-4">
-                    <h4><i class="fas fa-code-branch me-2"></i> الدرس 3: الشروط (If Statements)</h4>
-                    <pre><code class="language-python"># مثال على جمل الشرط
-الدرجة = 85
-
-if الدرجة >= 90:
-    print("ممتاز - تقدير A")
-elif الدرجة >= 80:
-    print("جيد جداً - تقدير B")
-elif الدرجة >= 70:
-    print("جيد - تقدير C")
+if score >= 90:
+    grade = "A"
+elif score >= 80:
+    grade = "B"
+elif score >= 70:
+    grade = "C"
 else:
-    print("تحتاج للمزيد من المذاكرة")</code></pre>
-                </div>
-                
-                <div class="code-card mb-4">
-                    <h4><i class="fas fa-redo me-2"></i> الدرس 4: التكرار (Loops)</h4>
-                    <pre><code class="language-python"># طباعة الأرقام من 1 إلى 10
-for i in range(1, 11):
-    print(f"الرقم: {i}")
+    grade = "F"
 
-# طباعة جدول الضرب
+print(f"Your grade: {grade}")
+
+# Loops
 for i in range(1, 6):
-    print(f"جدول الضرب للرقم {i}:")
-    for j in range(1, 11):
-        print(f"{i} × {j} = {i * j}")
-    print("-" * 20)</code></pre>
-                </div>
-                
-                <div class="code-card mb-4">
-                    <h4><i class="fas fa-list me-2"></i> الدرس 5: القوائم (Lists)</h4>
-                    <pre><code class="language-python"># التعامل مع القوائم
-الطلاب = ["أحمد", "محمد", "سارة", "فاطمة"]
+    print(f"Count: {i}")
 
-# إضافة طالب جديد
-الطلاب.append("عمر")
+# While loop
+count = 0
+while count < 5:
+    print(f"While count: {count}")
+    count += 1` },
+                    { title: "Functions", code: `# Defining functions
+def greet(name):
+    """This function greets a person"""
+    return f"Hello, {name}!"
 
-# طباعة جميع الطلاب
-for طالب in الطلاب:
-    print(f"مرحباً {طالب}")
+def add_numbers(a, b):
+    return a + b
 
-# الوصول لعنصر معين
-print(f"أول طالب: {الطلاب[0]}")
+def calculate_average(numbers):
+    return sum(numbers) / len(numbers)
 
-# عدد الطلاب
-print(f"عدد الطلاب: {len(الطلاب)}")</code></pre>
-                </div>
-            `;
-        } else if (topic === "javascript") {
-            content = `
-                <div class="welcome-card">
-                    <h2><i class="fab fa-js me-2"></i> تعلم جافا سكريبت</h2>
-                    <p class="lead">لغة الويب الأساسية - تعلم كيف تجعل المواقع تفاعلية</p>
-                </div>
-                
-                <div class="code-card mb-4">
-                    <h4>الدرس 1: أساسيات جافا سكريبت</h4>
-                    <pre><code class="language-javascript">// تعريف المتغيرات
-let name = "أحمد";
+# Using functions
+print(greet("Alice"))
+print(f"Sum: {add_numbers(10, 20)}")
+print(f"Average: {calculate_average([1, 2, 3, 4, 5])}")` },
+                    { title: "Lists and Dictionaries", code: `# Lists
+fruits = ["apple", "banana", "orange"]
+fruits.append("grape")
+fruits.remove("banana")
+
+for fruit in fruits:
+    print(fruit)
+
+# Dictionaries
+person = {
+    "name": "John",
+    "age": 30,
+    "city": "New York",
+    "skills": ["Python", "Data Analysis"]
+}
+
+print(person["name"])
+print(person["skills"])
+
+# Dictionary methods
+person["email"] = "john@example.com"
+for key, value in person.items():
+    print(f"{key}: {value}")` },
+                    { title: "File Handling", code: `# Reading and writing files
+# Writing to a file
+with open("example.txt", "w") as file:
+    file.write("Hello, this is a test file!\\n")
+    file.write("Learning Python is fun!")
+
+# Reading from a file
+with open("example.txt", "r") as file:
+    content = file.read()
+    print(content)
+
+# Reading line by line
+with open("example.txt", "r") as file:
+    for line in file:
+        print(line.strip())` }
+                ]
+            },
+            javascript: {
+                title: "JavaScript: From Basics to Advanced",
+                lessons: [
+                    { title: "JavaScript Introduction", content: "JavaScript is the programming language of the web. It enables interactive web pages and is essential for front-end and back-end development." },
+                    { title: "Variables and Data Types", code: `// Variables
+let name = "John";
 const age = 25;
-var city = "القاهرة";
+var city = "New York";
 
-// طباعة النتائج
-console.log("الاسم: " + name);
-console.log(`العمر: ${age}`);
-console.log(`المدينة: ${city}`);
+// Data types
+let isStudent = true;
+let score = 95.5;
+let colors = ["red", "green", "blue"];
+let person = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 30
+};
 
-// العمليات الحسابية
-let x = 10;
-let y = 5;
-console.log(x + y); // 15
-console.log(x - y); // 5
-console.log(x * y); // 50
-console.log(x / y); // 2</code></pre>
-                </div>
-                
-                <div class="code-card mb-4">
-                    <h4>الدرس 2: الدوال (Functions)</h4>
-                    <pre><code class="language-javascript">// تعريف دالة
-function sayHello(name) {
-    return `مرحباً ${name}، أهلاً بك في موقعنا!`;
+console.log(name);
+console.log(colors[0]);
+console.log(person.firstName);` },
+                    { title: "Functions and Arrow Functions", code: `// Traditional function
+function greet(name) {
+    return "Hello, " + name + "!";
 }
 
-// استدعاء الدالة
-console.log(sayHello("أحمد"));
+// Arrow function
+const add = (a, b) => a + b;
 
-// دالة لجمع رقمين
-function add(a, b) {
-    return a + b;
+// Function with multiple parameters
+function calculateAverage(...numbers) {
+    let sum = 0;
+    for(let num of numbers) {
+        sum += num;
+    }
+    return sum / numbers.length;
 }
 
-console.log(add(5, 3)); // 8
+console.log(greet("Alice"));
+console.log(add(10, 20));
+console.log(calculateAverage(1, 2, 3, 4, 5));` },
+                    { title: "DOM Manipulation", code: `// Selecting elements
+const heading = document.querySelector('h1');
+const buttons = document.querySelectorAll('.btn');
 
-// دالة السهم (Arrow Function)
-const multiply = (a, b) => a * b;
-console.log(multiply(4, 5)); // 20</code></pre>
-                </div>
-                
-                <div class="code-card mb-4">
-                    <h4>الدرس 3: التعامل مع المصفوفات</h4>
-                    <pre><code class="language-javascript">// إنشاء مصفوفة
-let fruits = ["تفاح", "موز", "برتقال"];
+// Changing content
+heading.textContent = "New Heading";
 
-// إضافة عنصر
-fruits.push("عنب");
-console.log(fruits);
-
-// حذف آخر عنصر
-fruits.pop();
-
-// التكرار على المصفوفة
-fruits.forEach(fruit => {
-    console.log(`فاكهة: ${fruit}`);
+// Adding event listeners
+const myButton = document.getElementById('myButton');
+myButton.addEventListener('click', () => {
+    alert('Button clicked!');
 });
 
-// البحث عن عنصر
-let index = fruits.indexOf("موز");
-console.log(`موز موجود في الفهرس: ${index}`);</code></pre>
+// Creating elements
+const newDiv = document.createElement('div');
+newDiv.className = 'box';
+newDiv.innerHTML = '<p>New content</p>';
+document.body.appendChild(newDiv);` }
+                ]
+            },
+            webdev: {
+                title: "Full Stack Web Development",
+                lessons: [
+                    { title: "HTML5 Fundamentals", code: `<!DOCTYPE html>
+<html>
+<head>
+    <title>My Website</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Site</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Content Section</h2>
+            <p>This is a paragraph.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2026</p>
+    </footer>
+</body>
+</html>` },
+                    { title: "CSS3 Styling", code: `/* CSS Styling */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.button {
+    background: linear-gradient(135deg, #00d8ff, #0099cc);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+}` },
+                    { title: "Responsive Design", content: "Responsive web design ensures your website looks good on all devices. Use media queries, flexbox, and grid layouts to create adaptive designs." }
+                ]
+            }
+        };
+        
+        const topicData = tutorials[topic] || tutorials.python;
+        let content = `
+            <div class="welcome-card">
+                <h2><i class="fas fa-graduation-cap me-2"></i> ${topicData.title}</h2>
+                <p class="lead">Master ${topic} programming with hands-on examples and real-world projects</p>
+            </div>
+        `;
+        
+        topicData.lessons.forEach((lesson, idx) => {
+            content += `
+                <div class="code-card">
+                    <h4><i class="fas fa-play me-2"></i> Lesson ${idx + 1}: ${lesson.title}</h4>
+                    ${lesson.content ? `<p>${lesson.content}</p>` : ''}
+                    ${lesson.code ? `
+                        <div style="position: relative;">
+                            <pre><code class="language-${topic === 'python' ? 'python' : topic === 'javascript' ? 'javascript' : 'markup'}">${escapeHtml(lesson.code)}</code></pre>
+                            <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                        </div>
+                    ` : ''}
                 </div>
             `;
-        } else if (topic === "sql") {
-            content = `
-                <div class="welcome-card">
-                    <h2><i class="fas fa-database me-2"></i> تعلم SQL - قواعد البيانات</h2>
-                    <p class="lead">تعلم كيفية تخزين واسترجاع البيانات بكفاءة</p>
-                </div>
-                
-                <div class="code-card mb-4">
-                    <h4>الدرس 1: إنشاء جدول</h4>
-                    <pre><code class="language-sql">-- إنشاء جدول الطلاب
-CREATE TABLE students (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    age INT,
-    email VARCHAR(100) UNIQUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- إنشاء جدول المواد الدراسية
-CREATE TABLE courses (
-    id INT PRIMARY KEY AUTO_INCREMENT,
-    name VARCHAR(100) NOT NULL,
-    hours INT DEFAULT 3
-);</code></pre>
-                </div>
-                
-                <div class="code-card mb-4">
-                    <h4>الدرس 2: إدراج البيانات (INSERT)</h4>
-                    <pre><code class="language-sql">-- إضافة طالب جديد
-INSERT INTO students (name, age, email) 
-VALUES ('أحمد محمد', 22, 'ahmed@example.com');
-
--- إضافة عدة طلاب
-INSERT INTO students (name, age, email) VALUES 
-('سارة علي', 21, 'sara@example.com'),
-('محمد إبراهيم', 23, 'mohamed@example.com');
-
--- إضافة مادة دراسية
-INSERT INTO courses (name, hours) 
-VALUES ('برمجة بايثون', 4);</code></pre>
-                </div>
-                
-                <div class="code-card mb-4">
-                    <h4>الدرس 3: استعلامات SELECT</h4>
-                    <pre><code class="language-sql">-- استرجاع جميع البيانات
-SELECT * FROM students;
-
--- استرجاع بيانات محددة
-SELECT name, email FROM students;
-
--- استرجاع بشرط
-SELECT * FROM students WHERE age > 21;
-
--- ترتيب النتائج
-SELECT * FROM students ORDER BY name ASC;
-
--- البحث باستخدام LIKE
-SELECT * FROM students WHERE name LIKE '%محمد%';</code></pre>
-                </div>
-                
-                <div class="code-card mb-4">
-                    <h4>الدرس 4: تحديث وحذف البيانات</h4>
-                    <pre><code class="language-sql">-- تحديث بيانات طالب
-UPDATE students 
-SET age = 23 
-WHERE name = 'أحمد محمد';
-
--- حذف طالب
-DELETE FROM students 
-WHERE id = 1;
-
--- حذف جميع البيانات (بحذر!)
--- DELETE FROM students;</code></pre>
-                </div>
-            `;
-        }
+        });
         
         document.getElementById("tutorialContent").innerHTML = content;
         Prism.highlightAll();
     };
     
-    window.checkCode = function() {
-        showToast("جرب كتابة الكود بنفسك في محرر Python! 🐍", "info");
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+    
+    window.copyCode = function(btn) {
+        const codeBlock = btn.parentElement.querySelector('code');
+        const text = codeBlock.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            btn.textContent = 'Copied!';
+            setTimeout(() => btn.textContent = 'Copy', 2000);
+        });
     };
-
-    // Load Courses
+    
+    // ==================== LOAD COURSES ====================
     function loadCourses() {
         const courses = [
-            { name: "Python للمبتدئين", icon: "fab fa-python", description: "تعلم أساسيات البرمجة بلغة Python من الصفر", lessons: 20, level: "مبتدئ" },
-            { name: "JavaScript الأساسي", icon: "fab fa-js", description: "لغة البرمجة الأساسية للويب", lessons: 18, level: "مبتدئ" },
-            { name: "React.js", icon: "fab fa-react", description: "بناء تطبيقات ويب تفاعلية", lessons: 15, level: "متوسط" },
-            { name: "Node.js", icon: "fab fa-node-js", description: "تطوير الخادم باستخدام JavaScript", lessons: 12, level: "متوسط" },
-            { name: "قواعد البيانات SQL", icon: "fas fa-database", description: "تعلم تصميم وإدارة قواعد البيانات", lessons: 14, level: "مبتدئ" },
-            { name: "HTML & CSS", icon: "fab fa-html5", description: "أساسيات تصميم المواقع", lessons: 16, level: "مبتدئ" }
+            { name: "Python Programming", icon: "fab fa-python", desc: "Complete Python course from basics to advanced", lessons: 45, level: "Beginner" },
+            { name: "JavaScript Development", icon: "fab fa-js", desc: "Modern JavaScript, ES6+, async programming", lessons: 38, level: "Beginner" },
+            { name: "React Framework", icon: "fab fa-react", desc: "Build modern web applications", lessons: 32, level: "Intermediate" },
+            { name: "Node.js Backend", icon: "fab fa-node-js", desc: "Server-side JavaScript development", lessons: 28, level: "Intermediate" },
+            { name: "SQL Databases", icon: "fas fa-database", desc: "MySQL, PostgreSQL, database design", lessons: 25, level: "Beginner" },
+            { name: "HTML & CSS", icon: "fab fa-html5", desc: "Responsive web design fundamentals", lessons: 30, level: "Beginner" },
+            { name: "Data Science", icon: "fas fa-chart-line", desc: "Pandas, NumPy, data visualization", lessons: 35, level: "Advanced" },
+            { name: "Cybersecurity", icon: "fas fa-shield-alt", desc: "Security fundamentals, encryption, best practices", lessons: 28, level: "Intermediate" }
         ];
         
         const container = document.getElementById("coursesList");
-        container.innerHTML = `<div class="row">`;
-        courses.forEach(course => {
-            container.innerHTML += `
-                <div class="col-md-4 mb-4">
-                    <div class="course-card">
-                        <div class="course-icon">
-                            <i class="${course.icon}"></i>
-                        </div>
-                        <h4>${course.name}</h4>
-                        <p class="text-muted-tech small">${course.description}</p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <span class="badge-tech">${course.lessons} درس</span>
-                            <span class="badge-tech">${course.level}</span>
-                        </div>
-                        <button class="btn btn-primary-tech btn-sm w-100 mt-3" onclick="showToast('جاري تحضير المحتوى التعليمي لهذا الكورس 📚', 'info')">
-                            <i class="fas fa-play me-1"></i> ابدأ التعلم
-                        </button>
+        container.innerHTML = courses.map(course => `
+            <div class="col-md-4 col-lg-3 mb-4">
+                <div class="course-card" onclick="loadTutorial('${course.name.toLowerCase().split(' ')[0]}')">
+                    <div class="course-icon"><i class="${course.icon}"></i></div>
+                    <h5>${course.name}</h5>
+                    <p class="small text-muted-tech">${course.desc}</p>
+                    <div class="d-flex justify-content-between mt-3">
+                        <span class="badge-tech">${course.lessons} lessons</span>
+                        <span class="badge-tech">${course.level}</span>
                     </div>
                 </div>
-            `;
-        });
-        container.innerHTML += `</div>`;
+            </div>
+        `).join('');
     }
-
-    // Load Exercises
+    
+    // ==================== LOAD EXERCISES ====================
     function loadExercises() {
         const exercises = [
-            { question: "ما هي لغة البرمجة المناسبة لتحليل البيانات والذكاء الاصطناعي؟", options: ["JavaScript", "Python", "C++", "Java"], correct: 1 },
-            { question: "ما هي الوظيفة المستخدمة لطباعة النص في بايثون؟", options: ["console.log()", "echo", "print()", "System.out.println()"], correct: 2 },
-            { question: "كيف نعلن عن متغير في JavaScript؟", options: ["var x = 5", "int x = 5", "x = 5", "let x = 5"], correct: 3 },
-            { question: "ما هو الامتداد المستخدم لملفات SQL؟", options: [".py", ".js", ".sql", ".html"], correct: 2 }
+            { q: "What is the output of print(2 ** 3) in Python?", opts: ["6", "8", "9", "5"], correct: 1 },
+            { q: "Which keyword is used to declare a variable in JavaScript?", opts: ["var", "int", "string", "declare"], correct: 0 },
+            { q: "What does HTML stand for?", opts: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup Language", "Home Tool Markup Language"], correct: 0 },
+            { q: "Which of the following is a Python framework?", opts: ["React", "Django", "Angular", "Vue"], correct: 1 },
+            { q: "What is the correct way to write a comment in JavaScript?", opts: ["// This is a comment", "<!-- This is a comment -->", "# This is a comment", "/* This is a comment */"], correct: 0 }
         ];
         
         const container = document.getElementById("exercisesList");
-        container.innerHTML = `<div class="row">`;
-        exercises.forEach((ex, idx) => {
-            container.innerHTML += `
-                <div class="col-md-6 mb-4">
-                    <div class="course-card">
-                        <h5><i class="fas fa-question-circle me-2"></i> ${ex.question}</h5>
-                        <div id="quiz-${idx}" class="mt-3">
-                            ${ex.options.map((opt, optIdx) => `
-                                <div class="quiz-option" onclick="checkAnswer(${idx}, ${optIdx}, ${ex.correct})">
-                                    ${opt}
-                                </div>
-                            `).join('')}
-                        </div>
+        container.innerHTML = exercises.map((ex, idx) => `
+            <div class="col-md-6 mb-4">
+                <div class="course-card">
+                    <h5><i class="fas fa-question-circle me-2"></i> ${ex.q}</h5>
+                    <div id="quiz-${idx}" class="mt-3">
+                        ${ex.opts.map((opt, optIdx) => `
+                            <div class="quiz-option" style="background: var(--card-bg); border: 1px solid var(--border-tech); border-radius: 12px; padding: 0.8rem; margin-bottom: 0.5rem; cursor: pointer;" onclick="checkAnswer(${idx}, ${optIdx}, ${ex.correct})">
+                                ${opt}
+                            </div>
+                        `).join('')}
                     </div>
                 </div>
-            `;
-        });
-        container.innerHTML += `</div>`;
-    }
-
-    // Check answer function
-    window.checkAnswer = function(questionIdx, selectedIdx, correctIdx) {
-        const options = document.querySelectorAll(`#quiz-${questionIdx} .quiz-option`);
-        options.forEach(opt => opt.classList.remove('correct', 'wrong'));
-        
-        if (selectedIdx === correctIdx) {
-            options[selectedIdx].classList.add('correct');
-            showToast("✅ إجابة صحيحة! أحسنت!", "success");
-        } else {
-            options[selectedIdx].classList.add('wrong');
-            options[correctIdx].classList.add('correct');
-            showToast("❌ إجابة خاطئة، حاول مرة أخرى!", "error");
-        }
-    };
-
-    // Load Resources
-    function loadResources() {
-        const resources = [
-            { name: "W3Schools", url: "https://www.w3schools.com", description: "أفضل موقع لتعلم البرمجة", icon: "fab fa-chrome" },
-            { name: "MDN Web Docs", url: "https://developer.mozilla.org", description: "مرجع شامل لتطوير الويب", icon: "fab fa-firefox" },
-            { name: "GitHub", url: "https://github.com", description: "منصة للمشاريع البرمجية", icon: "fab fa-github" },
-            { name: "Stack Overflow", url: "https
+            </div>
+        `).join
