@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Abdulrahman Tech Academy | World's Largest Free Programming Education</title>
+    <title>Abdulrahman Tech Academy | The Ultimate Programming Platform - Complete Guide</title>
     
-    <!-- Maximum Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';">
+    <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- SEO -->
-    <meta name="description" content="World's largest free programming education platform. 500+ courses, 2000+ exercises, Python, JavaScript, React, AI, Data Science, and more. Start coding today!">
-    <meta name="keywords" content="programming, coding, learn to code, python, javascript, react, web development, data science, AI, machine learning, free courses, programming tutorials">
+    <meta name="description" content="The Ultimate Programming Education Platform. 3000+ Courses, 15000+ Exercises, Complete Learning Paths, Professional Certificates. Learn Python, JavaScript, React, AI, Data Science, Cybersecurity, Cloud Computing, and more!">
+    <meta name="keywords" content="programming, coding, learn to code, python, javascript, react, web development, data science, AI, machine learning, cybersecurity, cloud computing, full stack, database, sql, django, flask, nodejs">
     <meta name="author" content="Abdulrahman Tech Academy">
     
     <!-- Bootstrap & Font Awesome -->
@@ -37,13 +35,12 @@
             --purple: #8b5cf6;
             --pink: #ec489a;
             --orange: #f97316;
+            --cyan: #06b6d4;
+            --emerald: #10b981;
+            --indigo: #6366f1;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background: linear-gradient(135deg, var(--primary-dark) 0%, #0f172a 100%);
@@ -66,7 +63,7 @@
         .navbar-brand-tech {
             font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #ffffff, var(--primary-accent), var(--purple));
+            background: linear-gradient(135deg, #ffffff, var(--primary-accent), var(--purple), var(--pink));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -92,273 +89,108 @@
             transition: width 0.3s;
         }
 
-        .nav-link-tech:hover::after, .nav-link-tech.active::after {
-            width: 100%;
-        }
+        .nav-link-tech:hover::after, .nav-link-tech.active::after { width: 100%; }
+        .nav-link-tech:hover, .nav-link-tech.active { color: var(--primary-accent) !important; }
 
-        .nav-link-tech:hover, .nav-link-tech.active {
-            color: var(--primary-accent) !important;
-        }
-
-        /* User Avatar */
+        /* User */
         .user-avatar {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
+            width: 42px; height: 42px; border-radius: 50%;
             border: 2px solid var(--primary-accent);
             cursor: pointer;
             object-fit: cover;
-            transition: transform 0.2s;
         }
-
-        .user-avatar:hover {
-            transform: scale(1.05);
-        }
-
         .user-dropdown {
-            position: absolute;
-            top: 55px;
-            right: 0;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 0.8rem;
-            min-width: 240px;
-            display: none;
-            z-index: 1001;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            position: absolute; top: 55px; right: 0;
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            border-radius: 16px; padding: 0.8rem; min-width: 240px;
+            display: none; z-index: 1001;
         }
+        .user-dropdown.show { display: block; }
 
-        .user-dropdown.show {
-            display: block;
-            animation: fadeIn 0.2s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero-section {
             background: linear-gradient(135deg, var(--secondary-bg), var(--card-bg));
-            border-radius: 32px;
-            padding: 3rem;
-            margin-bottom: 2rem;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            position: relative;
-            overflow: hidden;
+            border-radius: 32px; padding: 3rem; margin-bottom: 2rem;
+            text-align: center; position: relative; overflow: hidden;
         }
-
         .hero-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
+            content: ''; position: absolute; top: -50%; left: -50%;
+            width: 200%; height: 200%;
             background: radial-gradient(circle, rgba(0,216,255,0.1) 0%, transparent 70%);
             animation: rotate 20s linear infinite;
         }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
 
         /* Cards */
-        .stat-card, .course-card, .tutorial-card, .resource-card {
+        .stat-card, .course-card, .tutorial-card, .resource-card, .category-card, .guide-card {
             background: rgba(30, 42, 71, 0.7);
             backdrop-filter: blur(8px);
             border-radius: 24px;
             border: 1px solid var(--border-color);
-            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            transition: all 0.3s;
             padding: 1.5rem;
             height: 100%;
             cursor: pointer;
         }
-
-        .stat-card:hover, .course-card:hover, .tutorial-card:hover, .resource-card:hover {
+        .stat-card:hover, .course-card:hover, .tutorial-card:hover, .resource-card:hover, .category-card:hover, .guide-card:hover {
             transform: translateY(-8px);
             border-color: var(--primary-accent);
             box-shadow: 0 15px 35px rgba(0, 216, 255, 0.15);
         }
-
         .course-icon {
-            width: 70px;
-            height: 70px;
+            width: 70px; height: 70px;
             background: linear-gradient(135deg, var(--primary-accent), var(--purple));
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: flex; align-items: center; justify-content: center;
             margin-bottom: 1rem;
         }
-
-        .course-icon i {
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-        }
+        .course-icon i { font-size: 2.5rem; color: var(--primary-dark); }
 
         /* Badges */
-        .badge-tech {
-            background: rgba(0, 216, 255, 0.15);
-            color: var(--primary-accent);
-            padding: 5px 14px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 500;
-        }
-
-        .badge-level {
-            background: linear-gradient(135deg, var(--warning), #d97706);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-        }
-
-        .badge-hot {
-            background: linear-gradient(135deg, var(--danger), #dc2626);
-            color: white;
-        }
+        .badge-tech { background: rgba(0, 216, 255, 0.15); color: var(--primary-accent); padding: 5px 14px; border-radius: 30px; font-size: 0.7rem; }
+        .badge-hot { background: linear-gradient(135deg, var(--danger), #dc2626); color: white; }
+        .badge-new { background: linear-gradient(135deg, var(--success), #059669); color: white; }
+        .badge-advanced { background: linear-gradient(135deg, var(--purple), #7c3aed); color: white; }
 
         /* Buttons */
         .btn-primary-tech {
             background: linear-gradient(95deg, var(--primary-accent), var(--purple));
-            border: none;
-            border-radius: 40px;
-            padding: 12px 32px;
-            font-weight: 600;
-            color: #0a192f;
-            transition: all 0.2s;
+            border: none; border-radius: 40px; padding: 12px 32px;
+            font-weight: 600; color: #0a192f; transition: all 0.2s;
         }
-
-        .btn-primary-tech:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 216, 255, 0.4);
-        }
-
+        .btn-primary-tech:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0, 216, 255, 0.4); }
         .btn-outline-tech {
-            border: 1px solid var(--primary-accent);
-            border-radius: 40px;
-            background: transparent;
-            color: var(--primary-accent);
-            padding: 10px 24px;
+            border: 1px solid var(--primary-accent); border-radius: 40px;
+            background: transparent; color: var(--primary-accent); padding: 10px 24px;
             transition: 0.2s;
         }
-
-        .btn-outline-tech:hover {
-            background: var(--primary-accent);
-            color: #0a192f;
-        }
+        .btn-outline-tech:hover { background: var(--primary-accent); color: #0a192f; }
 
         /* Code Blocks */
-        .code-block {
-            background: #0d1117;
-            border-radius: 16px;
-            padding: 1.2rem;
-            margin: 1rem 0;
-            position: relative;
-            overflow-x: auto;
-            border: 1px solid var(--border-color);
-        }
-
-        pre {
-            background: #0d1117;
-            padding: 0;
-            margin: 0;
-            overflow-x: auto;
-        }
-
-        code {
-            font-family: 'Fira Code', 'Courier New', monospace;
-            font-size: 0.85rem;
-        }
-
-        .copy-btn {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: var(--primary-accent);
-            border: none;
-            border-radius: 8px;
-            padding: 4px 12px;
-            font-size: 0.7rem;
-            color: var(--primary-dark);
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .copy-btn:hover {
-            background: #ffffff;
-        }
+        .code-block { background: #0d1117; border-radius: 16px; padding: 1.2rem; margin: 1rem 0; position: relative; overflow-x: auto; }
+        pre { background: #0d1117; padding: 0; margin: 0; }
+        code { font-family: monospace; font-size: 0.85rem; }
+        .copy-btn { position: absolute; top: 12px; right: 12px; background: var(--primary-accent); border: none; border-radius: 8px; padding: 4px 12px; font-size: 0.7rem; color: var(--primary-dark); cursor: pointer; }
 
         /* Explanation Box */
-        .explanation-box {
-            background: rgba(0, 216, 255, 0.08);
-            border-radius: 16px;
-            padding: 1.2rem;
-            margin: 1rem 0;
-            border-left: 4px solid var(--primary-accent);
-        }
-
-        .detailed-explanation {
-            background: linear-gradient(135deg, rgba(0, 216, 255, 0.1), rgba(139, 92, 246, 0.05));
-            border-radius: 20px;
-            padding: 1.5rem;
-            margin: 1rem 0;
-            border: 1px solid var(--border-color);
-        }
+        .explanation-box { background: rgba(0, 216, 255, 0.08); border-radius: 16px; padding: 1.2rem; margin: 1rem 0; border-left: 4px solid var(--primary-accent); }
+        .detailed-explanation { background: linear-gradient(135deg, rgba(0, 216, 255, 0.1), rgba(139, 92, 246, 0.05)); border-radius: 20px; padding: 1.5rem; margin: 1rem 0; }
 
         /* Quiz */
-        .quiz-option {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 0.9rem;
-            margin-bottom: 0.6rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .quiz-option:hover {
-            border-color: var(--primary-accent);
-            background: rgba(0, 216, 255, 0.1);
-        }
-
-        .quiz-option.correct {
-            border-color: var(--success);
-            background: rgba(16, 185, 129, 0.2);
-        }
-
-        .quiz-option.wrong {
-            border-color: var(--danger);
-            background: rgba(239, 68, 68, 0.2);
-        }
+        .quiz-option { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 12px; padding: 0.9rem; margin-bottom: 0.6rem; cursor: pointer; }
+        .quiz-option:hover { border-color: var(--primary-accent); background: rgba(0, 216, 255, 0.1); }
+        .quiz-option.correct { border-color: var(--success); background: rgba(16, 185, 129, 0.2); }
+        .quiz-option.wrong { border-color: var(--danger); background: rgba(239, 68, 68, 0.2); }
 
         /* Toast */
-        .toast-custom {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            z-index: 1100;
-            max-width: 380px;
-        }
+        .toast-custom { position: fixed; top: 80px; right: 20px; z-index: 1100; max-width: 380px; }
 
         /* Footer */
-        .footer-tech {
-            background: #071426;
-            border-top: 1px solid var(--border-color);
-            margin-top: 4rem;
-            padding: 3rem 0;
-        }
+        .footer-tech { background: #071426; border-top: 1px solid var(--border-color); margin-top: 4rem; padding: 3rem 0; }
 
         @media (max-width: 768px) {
             .hero-section { padding: 1.5rem; }
             .stat-card { padding: 1rem; }
-            .navbar-brand-tech { font-size: 1.3rem; }
         }
     </style>
 </head>
@@ -378,14 +210,14 @@
             <div class="modal-body text-center p-4">
                 <div class="detailed-explanation mb-3">
                     <i class="fas fa-graduation-cap me-2" style="color: var(--primary-accent);"></i>
-                    <strong>🎓 Join the World's Largest Free Programming Platform!</strong>
-                    <p class="small mb-0 mt-2">500+ Courses • 2000+ Exercises • Free Certificates • Global Community</p>
+                    <strong>🎓 The Ultimate Programming Platform!</strong>
+                    <p class="small mb-0 mt-2">3000+ Courses • 15000+ Exercises • 500+ Certificates • 1M+ Students</p>
                 </div>
                 <button id="demoLoginBtn" class="btn btn-primary-tech w-100">
                     <i class="fas fa-user-graduate me-2"></i> Start Learning for Free
                 </button>
                 <hr class="my-3">
-                <p class="small text-muted">✨ 100% Free • No Credit Card • Learn at Your Own Pace • Earn Certificates</p>
+                <p class="small text-muted">✨ 100% Free • No Credit Card • Complete Learning Paths</p>
             </div>
         </div>
     </div>
@@ -410,6 +242,7 @@
                     <li class="nav-item"><a class="nav-link-tech nav-link" data-section="practice" onclick="showSection('practice')">✍️ Practice</a></li>
                     <li class="nav-item"><a class="nav-link-tech nav-link" data-section="resources" onclick="showSection('resources')">📘 Resources</a></li>
                     <li class="nav-item"><a class="nav-link-tech nav-link" data-section="guide" onclick="showSection('guide')">📖 Guide</a></li>
+                    <li class="nav-item"><a class="nav-link-tech nav-link" data-section="faq" onclick="showSection('faq')">❓ FAQ</a></li>
                 </ul>
                 <div id="userInfo" class="position-relative">
                     <div id="userLoggedOut" style="display: block;">
@@ -418,15 +251,12 @@
                         </button>
                     </div>
                     <div id="userLoggedIn" style="display: none;" class="d-flex align-items-center gap-2 position-relative">
-                        <span id="userNameDisplay" class="small fw-medium"></span>
+                        <span id="userNameDisplay" class="small"></span>
                         <img id="userAvatar" class="user-avatar" onclick="toggleUserMenu()">
                         <div id="userDropdown" class="user-dropdown">
                             <div class="d-flex align-items-center gap-2 p-2 border-bottom">
                                 <img id="dropdownAvatar" style="width: 40px; height: 40px; border-radius: 50%;">
-                                <div>
-                                    <div id="dropdownName" class="fw-bold small"></div>
-                                    <div id="dropdownEmail" class="small text-muted" style="font-size: 0.7rem;"></div>
-                                </div>
+                                <div><div id="dropdownName" class="fw-bold small"></div><div id="dropdownEmail" class="small text-muted"></div></div>
                             </div>
                             <div class="mt-2">
                                 <div class="dropdown-item p-2" onclick="showSection('profile')"><i class="fas fa-user me-2"></i>My Profile</div>
@@ -447,322 +277,110 @@
             <!-- ==================== HOME SECTION ==================== -->
             <div id="homeSection">
                 <div class="hero-section">
-                    <h1 class="display-3 fw-bold mb-3">Master Programming <span style="background: linear-gradient(135deg, var(--primary-accent), var(--purple)); -webkit-background-clip: text; background-clip: text; color: transparent;">For Free</span></h1>
-                    <p class="lead mb-4">The World's Largest Free Programming Education Platform. 500+ Courses, 2000+ Exercises, and Professional Certificates!</p>
+                    <h1 class="display-3 fw-bold mb-3">Become a <span style="background: linear-gradient(135deg, var(--primary-accent), var(--purple), var(--pink)); -webkit-background-clip: text; background-clip: text; color: transparent;">Professional Developer</span></h1>
+                    <p class="lead mb-4">The Ultimate Programming Platform. 3000+ Courses, 15000+ Exercises, and Professional Certificates!</p>
                     <button class="btn btn-primary-tech me-2" onclick="showSection('learn')">Start Learning →</button>
                     <button class="btn btn-outline-tech" data-bs-toggle="modal" data-bs-target="#loginModal">Sign Up Free</button>
                 </div>
 
-                <!-- Statistics -->
-                <div class="row mb-4">
-                    <div class="col-md-3 col-6 mb-3">
-                        <div class="stat-card text-center">
-                            <i class="fas fa-book-open" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
-                            <h2 class="mt-2">500+</h2>
-                            <p class="small text-muted">Programming Courses</p>
-                            <small class="text-muted">Python, JavaScript, React, AI</small>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-3">
-                        <div class="stat-card text-center">
-                            <i class="fas fa-code" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
-                            <h2 class="mt-2">2000+</h2>
-                            <p class="small text-muted">Coding Exercises</p>
-                            <small class="text-muted">Interactive Challenges</small>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-3">
-                        <div class="stat-card text-center">
-                            <i class="fas fa-certificate" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
-                            <h2 class="mt-2">100+</h2>
-                            <p class="small text-muted">Free Certificates</p>
-                            <small class="text-muted">Verified & Shareable</small>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-6 mb-3">
-                        <div class="stat-card text-center">
-                            <i class="fas fa-users" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
-                            <h2 class="mt-2">100K+</h2>
-                            <p class="small text-muted">Global Students</p>
-                            <small class="text-muted">From 150+ Countries</small>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Course Categories -->
-                <h3 class="mb-4"><i class="fas fa-layer-group me-2" style="color: var(--primary-accent);"></i> Explore by Category</h3>
-                <div class="row mb-4">
-                    <div class="col-md-4 mb-3">
-                        <div class="tutorial-card" onclick="loadTutorial('python')">
-                            <div class="course-icon"><i class="fab fa-python"></i></div>
-                            <h4>Python Development</h4>
-                            <p>Data Science • AI • Automation • Web Scraping • Django</p>
-                            <span class="badge-tech">85+ Lessons</span>
-                            <span class="badge-tech ms-2 badge-hot">🔥 Most Popular</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="tutorial-card" onclick="loadTutorial('javascript')">
-                            <div class="course-icon"><i class="fab fa-js"></i></div>
-                            <h4>JavaScript & Web</h4>
-                            <p>React • Node.js • Vue • Angular • TypeScript</p>
-                            <span class="badge-tech">120+ Lessons</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="tutorial-card" onclick="loadTutorial('webdev')">
-                            <div class="course-icon"><i class="fas fa-laptop-code"></i></div>
-                            <h4>Full Stack Web Dev</h4>
-                            <p>HTML • CSS • MongoDB • Express • React • Node</p>
-                            <span class="badge-tech">95+ Lessons</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="tutorial-card" onclick="loadTutorial('datascience')">
-                            <div class="course-icon"><i class="fas fa-chart-line"></i></div>
-                            <h4>Data Science & AI</h4>
-                            <p>Pandas • NumPy • Machine Learning • Deep Learning</p>
-                            <span class="badge-tech">70+ Lessons</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="tutorial-card" onclick="loadTutorial('sql')">
-                            <div class="course-icon"><i class="fas fa-database"></i></div>
-                            <h4>Databases & SQL</h4>
-                            <p>MySQL • PostgreSQL • MongoDB • Database Design</p>
-                            <span class="badge-tech">55+ Lessons</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 mb-3">
-                        <div class="tutorial-card" onclick="loadTutorial('cybersecurity')">
-                            <div class="course-icon"><i class="fas fa-shield-alt"></i></div>
-                            <h4>Cybersecurity</h4>
-                            <p>Network Security • Encryption • Ethical Hacking</p>
-                            <span class="badge-tech">65+ Lessons</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Platform Features -->
+                <!-- Platform Overview Explanation -->
                 <div class="detailed-explanation">
-                    <h4><i class="fas fa-star me-2" style="color: var(--primary-accent);"></i> Why Choose Abdulrahman Tech Academy?</h4>
+                    <h4><i class="fas fa-info-circle me-2" style="color: var(--primary-accent);"></i> 📖 About This Platform - Complete Guide</h4>
+                    <p><strong>Abdulrahman Tech Academy</strong> is the world's largest free programming education platform. Here's what makes it special:</p>
                     <div class="row mt-3">
                         <div class="col-md-4">
                             <div class="text-center p-2">
-                                <i class="fas fa-gem fa-2x" style="color: var(--primary-accent);"></i>
-                                <p class="mt-2"><strong>100% Free Forever</strong><br>No hidden fees, no credit card required</p>
+                                <i class="fas fa-database fa-2x" style="color: var(--primary-accent);"></i>
+                                <h6 class="mt-2">3000+ Courses</h6>
+                                <p class="small text-muted">Complete curriculum from beginner to advanced</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="text-center p-2">
-                                <i class="fas fa-chalkboard-user fa-2x" style="color: var(--primary-accent);"></i>
-                                <p class="mt-2"><strong>Expert Instructors</strong><br>Industry professionals with real-world experience</p>
+                                <i class="fas fa-code fa-2x" style="color: var(--primary-accent);"></i>
+                                <h6 class="mt-2">15000+ Exercises</h6>
+                                <p class="small text-muted">Interactive coding challenges with instant feedback</p>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="text-center p-2">
                                 <i class="fas fa-certificate fa-2x" style="color: var(--primary-accent);"></i>
-                                <p class="mt-2"><strong>Verified Certificates</strong><br>Share on LinkedIn, resume, and portfolio</p>
+                                <h6 class="mt-2">500+ Certificates</h6>
+                                <p class="small text-muted">Verified certificates shareable on LinkedIn</p>
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Mega Statistics -->
+                <div class="row mb-5">
+                    <div class="col-md-3 col-6 mb-3"><div class="stat-card text-center"><i class="fas fa-book-open" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h2 class="mt-2">3000+</h2><p class="small text-muted">Courses</p><small>Complete learning paths</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="stat-card text-center"><i class="fas fa-code" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h2 class="mt-2">15000+</h2><p class="small text-muted">Exercises</p><small>Practice problems</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="stat-card text-center"><i class="fas fa-certificate" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h2 class="mt-2">500+</h2><p class="small text-muted">Certificates</p><small>Professional credentials</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="stat-card text-center"><i class="fas fa-users" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h2 class="mt-2">1M+</h2><p class="small text-muted">Students</p><small>Global community</small></div></div>
+                </div>
+
+                <!-- 12 Categories Grid -->
+                <h3 class="mb-4"><i class="fas fa-th-large me-2" style="color: var(--primary-accent);"></i> 📂 All Categories (12+ Learning Tracks)</h3>
+                <div class="explanation-box mb-3"><i class="fas fa-hand-pointer me-2"></i><strong>How to use:</strong> Click on any category below to explore all courses in that track!</div>
+                <div class="row mb-5">
+                    <div class="col-md-3 col-6 mb-3"><div class="category-card text-center p-3" onclick="loadCategory('python')"><i class="fab fa-python" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h6 class="mt-2">Python</h6><small>250+ Courses</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="category-card text-center p-3" onclick="loadCategory('javascript')"><i class="fab fa-js" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h6 class="mt-2">JavaScript</h6><small>280+ Courses</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="category-card text-center p-3" onclick="loadCategory('web')"><i class="fab fa-html5" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h6 class="mt-2">Web Dev</h6><small>320+ Courses</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="category-card text-center p-3" onclick="loadCategory('react')"><i class="fab fa-react" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h6 class="mt-2">React</h6><small>150+ Courses</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="category-card text-center p-3" onclick="loadCategory('datascience')"><i class="fas fa-chart-line" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h6 class="mt-2">Data Science</h6><small>200+ Courses</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="category-card text-center p-3" onclick="loadCategory('ai')"><i class="fas fa-brain" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h6 class="mt-2">AI & ML</h6><small>180+ Courses</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="category-card text-center p-3" onclick="loadCategory('cybersecurity')"><i class="fas fa-shield-alt" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h6 class="mt-2">Cybersecurity</h6><small>140+ Courses</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="category-card text-center p-3" onclick="loadCategory('cloud')"><i class="fas fa-cloud" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h6 class="mt-2">Cloud</h6><small>120+ Courses</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="category-card text-center p-3" onclick="loadCategory('backend')"><i class="fas fa-server" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h6 class="mt-2">Backend</h6><small>190+ Courses</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="category-card text-center p-3" onclick="loadCategory('mobile')"><i class="fas fa-mobile-alt" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h6 class="mt-2">Mobile Dev</h6><small>110+ Courses</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="category-card text-center p-3" onclick="loadCategory('database')"><i class="fas fa-database" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h6 class="mt-2">Databases</h6><small>130+ Courses</small></div></div>
+                    <div class="col-md-3 col-6 mb-3"><div class="category-card text-center p-3" onclick="loadCategory('devops')"><i class="fab fa-docker" style="font-size: 2.5rem; color: var(--primary-accent);"></i><h6 class="mt-2">DevOps</h6><small>100+ Courses</small></div></div>
+                </div>
+
+                <!-- Learning Paths Explanation -->
+                <div class="detailed-explanation">
+                    <h4><i class="fas fa-road me-2" style="color: var(--primary-accent);"></i> 🎯 Complete Learning Paths - Your Journey to Becoming a Developer</h4>
+                    <div class="row mt-3">
+                        <div class="col-md-4"><div class="text-center p-2"><i class="fas fa-seedling fa-2x" style="color: var(--success);"></i><h6 class="mt-2">🌱 Beginner Path (0-3 months)</h6><p class="small text-muted">Python Fundamentals → HTML/CSS → JavaScript Basics → Git & GitHub</p><span class="badge-tech">40+ Courses</span></div></div>
+                        <div class="col-md-4"><div class="text-center p-2"><i class="fas fa-rocket fa-2x" style="color: var(--warning);"></i><h6 class="mt-2">🚀 Intermediate Path (3-6 months)</h6><p class="small text-muted">React.js → Node.js → Express → MongoDB → SQL → REST APIs</p><span class="badge-tech">60+ Courses</span></div></div>
+                        <div class="col-md-4"><div class="text-center p-2"><i class="fas fa-trophy fa-2x" style="color: var(--orange);"></i><h6 class="mt-2">🏆 Advanced Path (6-12 months)</h6><p class="small text-muted">TypeScript → Next.js → Docker → AWS → System Design → AI/ML</p><span class="badge-tech">80+ Courses</span></div></div>
+                    </div>
+                </div>
+
+                <!-- Featured Courses -->
+                <h3 class="mb-4"><i class="fas fa-fire me-2" style="color: var(--orange);"></i> 🔥 Most Popular Courses (Updated Weekly)</h3>
+                <div class="row mb-5">
+                    <div class="col-md-4 mb-4"><div class="course-card" onclick="loadTutorial('python')"><div class="course-icon"><i class="fab fa-python"></i></div><h4>Python Complete Mastery</h4><p>200+ lessons • 50 projects • From zero to job-ready</p><div><span class="badge-tech">150 hours</span><span class="badge-tech badge-hot ms-2">🔥 #1 Most Popular</span></div></div></div>
+                    <div class="col-md-4 mb-4"><div class="course-card" onclick="loadTutorial('javascript')"><div class="course-icon"><i class="fab fa-js"></i></div><h4>JavaScript: The Complete Guide</h4><p>180+ lessons • ES6+ • Async • DOM • 40 projects</p><div><span class="badge-tech">120 hours</span><span class="badge-tech badge-hot ms-2">🔥 Trending</span></div></div></div>
+                    <div class="col-md-4 mb-4"><div class="course-card" onclick="loadTutorial('react')"><div class="course-icon"><i class="fab fa-react"></i></div><h4>React.js Masterclass 2026</h4><p>Hooks • Redux • Next.js • 30 real-world projects</p><div><span class="badge-tech">100 hours</span><span class="badge-tech badge-new ms-2">✨ New</span></div></div></div>
+                    <div class="col-md-4 mb-4"><div class="course-card" onclick="loadTutorial('webdev')"><div class="course-icon"><i class="fas fa-laptop-code"></i></div><h4>Full Stack Web Development</h4><p>MERN Stack • 20 complete projects • Portfolio ready</p><div><span class="badge-tech">140 hours</span><span class="badge-tech badge-advanced">Advanced</span></div></div></div>
+                    <div class="col-md-4 mb-4"><div class="course-card" onclick="loadTutorial('datascience')"><div class="course-icon"><i class="fas fa-chart-line"></i></div><h4>Data Science Bootcamp</h4><p>Pandas • NumPy • Matplotlib • Machine Learning • 25 projects</p><div><span class="badge-tech">110 hours</span><span class="badge-tech">Data Science</span></div></div></div>
+                    <div class="col-md-4 mb-4"><div class="course-card" onclick="loadTutorial('ai')"><div class="course-icon"><i class="fas fa-brain"></i></div><h4>Artificial Intelligence</h4><p>Deep Learning • Neural Networks • TensorFlow • PyTorch</p><div><span class="badge-tech">90 hours</span><span class="badge-tech badge-advanced">AI/ML</span></div></div></div>
                 </div>
             </div>
 
             <!-- ==================== COURSES SECTION ==================== -->
-            <div id="coursesSection" style="display: none;">
-                <div class="hero-section">
-                    <h2><i class="fas fa-graduation-cap me-2"></i> All Courses</h2>
-                    <p>500+ courses across 12+ categories. Start your journey today!</p>
-                </div>
-                <div class="row" id="coursesList"></div>
-            </div>
+            <div id="coursesSection" style="display: none;"><div class="hero-section"><h2><i class="fas fa-graduation-cap me-2"></i> All Courses (3000+)</h2><p>Complete programming education from beginner to advanced</p></div><div class="row" id="coursesList"></div></div>
 
             <!-- ==================== LEARN SECTION ==================== -->
-            <div id="learnSection" style="display: none;">
-                <div id="learnContent"></div>
-            </div>
+            <div id="learnSection" style="display: none;"><div id="learnContent"></div></div>
 
             <!-- ==================== PRACTICE SECTION ==================== -->
-            <div id="practiceSection" style="display: none;">
-                <div class="hero-section">
-                    <h2><i class="fas fa-puzzle-piece me-2"></i> Practice Coding</h2>
-                    <p>2000+ interactive exercises to test your knowledge</p>
-                </div>
-                <div class="row" id="practiceList"></div>
-            </div>
+            <div id="practiceSection" style="display: none;"><div class="hero-section"><h2><i class="fas fa-puzzle-piece me-2"></i> Practice Coding (15000+ Exercises)</h2><p>Test your knowledge with interactive challenges</p></div><div class="row" id="practiceList"></div></div>
 
             <!-- ==================== RESOURCES SECTION ==================== -->
-            <div id="resourcesSection" style="display: none;">
-                <div class="hero-section">
-                    <h2><i class="fas fa-book me-2"></i> Free Learning Resources</h2>
-                    <p>Curated resources to accelerate your learning journey</p>
-                </div>
-                <div class="row" id="resourcesList"></div>
-            </div>
+            <div id="resourcesSection" style="display: none;"><div class="hero-section"><h2><i class="fas fa-book me-2"></i> Free Learning Resources</h2><p>Curated resources to accelerate your journey</p></div><div class="row" id="resourcesList"></div></div>
 
             <!-- ==================== GUIDE SECTION ==================== -->
             <div id="guideSection" style="display: none;">
-                <div class="hero-section">
-                    <h2><i class="fas fa-book-open me-2"></i> Complete Platform Guide</h2>
-                    <p>Everything you need to know</p>
-                </div>
-                
-                <div class="detailed-explanation">
-                    <h4><i class="fas fa-graduation-cap me-2" style="color: var(--primary-accent);"></i> 📚 Complete Learning Paths</h4>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h5>🎯 Beginner Path</h5>
-                            <ul>
-                                <li>Python Fundamentals (40 hours)</li>
-                                <li>JavaScript Basics (30 hours)</li>
-                                <li>HTML/CSS (25 hours)</li>
-                                <li>SQL Fundamentals (20 hours)</li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <h5>🚀 Advanced Path</h5>
-                            <ul>
-                                <li>Data Science & Machine Learning (60 hours)</li>
-                                <li>Full Stack Web Development (80 hours)</li>
-                                <li>Cloud Computing & DevOps (50 hours)</li>
-                                <li>Cybersecurity (45 hours)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="explanation-box">
-                    <h5><i class="fas fa-certificate me-2"></i> 🎓 Certification Program</h5>
-                    <p>Complete any course and pass the final assessment to earn a verified certificate. Each certificate includes a unique ID and can be verified online.</p>
-                </div>
-                
-                <div class="explanation-box">
-                    <h5><i class="fas fa-question-circle me-2"></i> ❓ FAQ</h5>
-                    <ul class="list-unstyled">
-                        <li><strong>❓ Is this really free?</strong> Yes! 100% free forever.</li>
-                        <li><strong>❓ How do I get a certificate?</strong> Complete any course and pass the final quiz.</li>
-                        <li><strong>❓ Do I need prior experience?</strong> No! All courses start from basics.</li>
-                        <li><strong>❓ Can I access on mobile?</strong> Yes! Fully responsive design.</li>
-                    </ul>
-                </div>
+                <div class="hero-section"><h2><i class="fas fa-book-open me-2"></i> Complete Platform Guide</h2><p>Everything you need to know</p></div>
+                <div class="detailed-explanation"><h4>📚 Complete Curriculum (3000+ Courses)</h4><div class="row"><div class="col-md-6"><h5>Programming Languages</h5><ul><li>Python (250+ courses) - Data Science, AI, Automation</li><li>JavaScript (280+ courses) - Web, React, Node.js</li><li>Java (150+ courses) - Spring, Android, Enterprise</li><li>C++ (120+ courses) - Game Dev, Systems Programming</li><li>C# (100+ courses) - .NET, Unity Game Dev</li><li>PHP (90+ courses) - Laravel, WordPress</li><li>Go (70+ courses) - Backend, Microservices</li><li>Rust (60+ courses) - Systems, Security</li><li>TypeScript (80+ courses) - Type-safe JavaScript</li></ul></div><div class="col-md-6"><h5>Frameworks & Technologies</h5><ul><li>Frontend: React, Vue, Angular, Svelte, Next.js, Nuxt</li><li>Backend: Django, Flask, Express, Spring Boot, Laravel</li><li>Databases: SQL, PostgreSQL, MongoDB, Redis, Firebase</li><li>Cloud: AWS, Azure, GCP, Cloud Computing</li><li>DevOps: Docker, Kubernetes, CI/CD, Linux, Git</li><li>Mobile: React Native, Flutter, Swift, Kotlin</li><li>Data Science: Pandas, NumPy, Scikit-learn, TensorFlow</li><li>Cybersecurity: Network Security, Ethical Hacking, Cryptography</li></ul></div></div></div>
+                <div class="explanation-box"><h5>🎓 How to Earn Certificates</h5><ol><li>Sign up for free (no credit card required)</li><li>Complete any course (100% completion required)</li><li>Pass the final assessment with 70% or higher</li><li>Get your verified certificate instantly</li><li>Share on LinkedIn, resume, or portfolio</li></ol></div>
+                <div class="explanation-box"><h5>📊 Learning Tracking</h5><p>When you sign in, your progress is automatically saved. Track:</p><ul><li>Courses completed and in progress</li><li>Exercises solved and success rate</li><li>Certificates earned</li><li>Total learning hours</li><li>XP points and level progression</li></ul></div>
             </div>
 
-            <!-- ==================== PROFILE SECTION ==================== -->
-            <div id="profileSection" style="display: none;">
-                <div class="hero-section">
-                    <div class="row align-items-center">
-                        <div class="col-md-3 text-center">
-                            <i class="fas fa-user-circle" style="font-size: 120px; color: var(--primary-accent);"></i>
-                        </div>
-                        <div class="col-md-9 text-start">
-                            <h2 id="profileName"></h2>
-                            <p id="profileEmail" class="text-muted"></p>
-                            <div class="mt-2">
-                                <span class="badge-tech"><i class="fas fa-star"></i> <span id="profilePoints">0</span> XP</span>
-                                <span class="badge-tech ms-2"><i class="fas fa-certificate"></i> <span id="profileCertificates">0</span> Certificates</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="stat-card">
-                            <h5><i class="fas fa-chart-line me-2"></i> Learning Statistics</h5>
-                            <p><i class="fas fa-book-open me-2"></i> Courses Completed: <strong id="profileCoursesCompleted">0</strong></p>
-                            <p><i class="fas fa-tasks me-2"></i> Exercises Done: <strong id="profileExercisesDone">0</strong></p>
-                            <p><i class="fas fa-clock me-2"></i> Total Hours: <strong id="profileHours">0</strong></p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="stat-card">
-                            <h5><i class="fas fa-chart-simple me-2"></i> Progress to Next Level</h5>
-                            <div class="progress mt-3" style="height: 10px; background: var(--primary-dark); border-radius: 10px;">
-                                <div id="profileProgressBar" style="width: 0%; height: 10px; background: var(--primary-accent); border-radius: 10px;"></div>
-                            </div>
-                            <p class="mt-2 small text-muted">Complete 10 courses to reach Level 2!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="footer-tech">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>Abdulrahman Tech Academy</h5>
-                    <p class="small text-muted">World's largest free programming education platform. Empowering 100,000+ developers worldwide.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled small">
-                        <li><a href="#" onclick="showSection('courses'); return false;" class="text-muted">All Courses</a></li>
-                        <li><a href="#" onclick="showSection('practice'); return false;" class="text-muted">Practice Exercises</a></li>
-                        <li><a href="#" onclick="showSection('guide'); return false;" class="text-muted">Platform Guide</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Connect</h5>
-                    <div class="d-flex gap-3">
-                        <i class="fab fa-github fa-lg text-muted"></i>
-                        <i class="fab fa-linkedin fa-lg text-muted"></i>
-                        <i class="fab fa-twitter fa-lg text-muted"></i>
-                        <i class="fab fa-youtube fa-lg text-muted"></i>
-                    </div>
-                </div>
-            </div>
-            <hr class="border-secondary">
-            <div class="text-center small text-muted">© 2026 Abdulrahman Tech Academy - 500+ Courses • 2000+ Exercises • 100K+ Students • 100% Free Forever</div>
-        </div>
-    </footer>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-<script>
-    // ==================== USER MANAGEMENT ====================
-    let currentUser = null;
-    
-    function showToast(message, type = 'success') {
-        const container = document.getElementById('toastContainer');
-        const toast = document.createElement('div');
-        toast.className = `toast align-items-center border-0 show mb-2`;
-        toast.style.background = type === 'success' ? '#10b981' : type === 'error' ? '#ef4444' : '#f59e0b';
-        toast.innerHTML = `
-            <div class="d-flex">
-                <div class="toast-body small">
-                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'} me-2"></i>
-                    ${message}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
-            </div>
-        `;
-        container.appendChild(toast);
-        setTimeout(() => toast.remove(), 3500);
-    }
-    
-    function toggleUserMenu() {
-        document.getElementById('userDropdown').classList.toggle('show');
-    }
-    
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.user-menu') && !e.target.closest('#userDropdown')) {
-            document.getElementById('userDropdown')?.classList.remove('show');
-        }
-    });
-    
-    function updateUIForUser(user) {
-        if (user) {
-            document.getElementById('userLoggedOut').style.display = 'none';
-            document.getElementById('userLoggedIn').style.display = 'flex';
-            document.getElementById('userNameDisplay').innerText = user.name?.split(' ')[0] || 'Student';
-            document.getElementById('userAvatar').src = user.avatar || 'https://via.placeholder.com/42';
-            document.getElementById('dropdownAvatar').src = user.avatar || 'https://via.placeholder.com/40';
-            document.getElementById('dropdownName').innerText = user.name || 'Student';
-            document.getElementById('dropdownEmail').innerText = user.email || 'student@example.com';
-            document.getElementById('profileName').innerText = user.name || 'Student';
-            document.getElementById('profileEmail').innerText = user.email || 'student@example.com';
-            updateProfileStats();
-       
+            <!-- ==================== FAQ SECTION ==================== -->
+            <div id="faqSection" style="display: none;">
+                <div class="hero-section"><h2><i class="fas fa-question-circle me-2"></i> Frequently Asked Questions</h2><p>Find answers to common questions</p></div>
+                <div class="detailed-explanation"><h4>❓ General Questions</h4><div class="row"><div class="col-md-6"><div class="explanation-box"><strong>❓ Is this platform really free?</strong><p>Yes! 100% free forever. No credit card, no hidden fees, no premium tiers.</p></div><div class="explanation-box"><strong>❓ Do I get a certificate?</strong><p>Yes! Complete any course and pass the final assessment to earn a verified certificate.</p></div><div class="explanation-box"><strong>❓ Do I need prior experience?</strong><p>No! All
