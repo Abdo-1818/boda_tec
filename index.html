@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdulrahman Tech | Technical Learning Platform</title>
+    <title>Abdulrahman Tech | Technical Learning Platform - Dashboard</title>
     <meta name="description" content="Advanced technical learning platform for developers, engineers, and tech enthusiasts. Courses, quizzes, and resources by Abdulrahman.">
     <!-- Favicon (modern tech style) -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231a2c3e'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='%2300d8ff' font-family='monospace'%3EAT%3C/text%3E%3C/svg%3E">
@@ -22,6 +22,12 @@
             --border-tech: #233554;
         }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background: linear-gradient(135deg, var(--primary-dark) 0%, #0f172a 100%);
             color: var(--text-light);
@@ -29,90 +35,167 @@
             min-height: 100vh;
         }
 
-        /* Custom wrapper and cards */
-        .login-wrapper {
-            min-height: calc(100vh - 100px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem 1rem;
-        }
-
-        .login-container {
-            max-width: 550px;
-            width: 100%;
-            background: rgba(18, 25, 45, 0.85);
+        /* Navigation Bar */
+        .navbar-tech {
+            background: rgba(10, 25, 47, 0.95);
             backdrop-filter: blur(10px);
-            border-radius: 32px;
-            border: 1px solid var(--border-tech);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(0,216,255,0.1);
-            padding: 2rem 2rem 2rem 2rem;
-            transition: transform 0.2s ease;
+            border-bottom: 1px solid var(--border-tech);
+            padding: 0.8rem 0;
         }
 
-        .login-logo {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-
-        .logo-symbol {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(145deg, var(--primary-accent), #0077b6);
-            border-radius: 24px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1rem;
-            box-shadow: 0 10px 20px -5px rgba(0,216,255,0.3);
-        }
-
-        .logo-symbol i {
-            font-size: 3.2rem;
-            color: #0a192f;
-        }
-
-        .logo-text {
-            font-size: 2rem;
+        .navbar-brand-tech {
+            font-size: 1.5rem;
             font-weight: 800;
-            letter-spacing: -0.5px;
             background: linear-gradient(135deg, #ffffff, var(--primary-accent));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 0;
         }
 
-        .logo-sub {
-            color: var(--text-muted-tech);
+        .navbar-brand-tech i {
+            color: var(--primary-accent);
+            font-size: 1.8rem;
+            margin-right: 8px;
+        }
+
+        .nav-link-tech {
+            color: var(--text-muted-tech) !important;
+            transition: 0.3s;
+            font-weight: 500;
+            margin: 0 8px;
+        }
+
+        .nav-link-tech:hover, .nav-link-tech.active {
+            color: var(--primary-accent) !important;
+        }
+
+        .user-badge {
+            background: var(--card-bg);
+            border: 1px solid var(--border-tech);
+            border-radius: 40px;
+            padding: 6px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .user-badge i {
+            color: var(--primary-accent);
+            font-size: 1.2rem;
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 2rem 0;
+        }
+
+        .welcome-card {
+            background: linear-gradient(135deg, var(--secondary-bg), var(--card-bg));
+            border-radius: 24px;
+            border: 1px solid var(--border-tech);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: rgba(30, 42, 71, 0.6);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            border: 1px solid var(--border-tech);
+            padding: 1.5rem;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-accent);
+        }
+
+        .stat-card i {
+            font-size: 2.5rem;
+            color: var(--primary-accent);
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .course-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border-tech);
+            overflow: hidden;
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-accent);
+            box-shadow: 0 10px 30px rgba(0,216,255,0.1);
+        }
+
+        .course-icon {
+            background: linear-gradient(135deg, var(--primary-accent), #0077b6);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .course-icon i {
+            font-size: 3rem;
+            color: var(--primary-dark);
+        }
+
+        .course-body {
+            padding: 1.5rem;
+        }
+
+        .progress-tech {
+            height: 8px;
+            background: var(--primary-dark);
+            border-radius: 10px;
+        }
+
+        .progress-tech .progress-bar {
+            background: var(--primary-accent);
+            border-radius: 10px;
+        }
+
+        .badge-tech {
+            background: rgba(0,216,255,0.15);
+            color: var(--primary-accent);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+
+        .announcement-item {
+            background: rgba(10, 25, 47, 0.5);
+            border-left: 3px solid var(--primary-accent);
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+        }
+
+        /* Footer */
+        .footer-tech {
+            background: #071426;
+            border-top: 1px solid var(--border-tech);
             font-size: 0.85rem;
-            margin-top: -5px;
-        }
-
-        .form-control-custom {
-            background-color: #0a1a2f !important;
-            border: 1px solid var(--border-tech) !important;
-            color: var(--text-light) !important;
-            border-radius: 16px !important;
-            padding: 12px 20px !important;
-            font-size: 1rem;
-            transition: all 0.2s;
-        }
-
-        .form-control-custom:focus {
-            border-color: var(--primary-accent) !important;
-            box-shadow: 0 0 0 3px rgba(0,216,255,0.2) !important;
-            background-color: #0f1e38 !important;
+            margin-top: 3rem;
+            padding: 2rem 0;
         }
 
         .btn-primary-tech {
             background: linear-gradient(95deg, var(--primary-accent), #0099cc);
             border: none;
             border-radius: 40px;
-            padding: 12px;
+            padding: 8px 24px;
             font-weight: 600;
-            font-size: 1.1rem;
-            width: 100%;
             color: #0a192f;
             transition: all 0.2s;
         }
@@ -120,78 +203,6 @@
         .btn-primary-tech:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0,216,255,0.4);
-            background: linear-gradient(95deg, #33e0ff, #00a6cc);
-            color: #000;
-        }
-
-        .login-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--primary-accent), transparent);
-            margin: 2rem 0;
-        }
-
-        .tech-instruction-card {
-            background: rgba(10, 25, 47, 0.7);
-            border-radius: 24px;
-            padding: 1.2rem;
-            margin-top: 1rem;
-            border-left: 4px solid var(--primary-accent);
-        }
-
-        .list-tech {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .list-tech li {
-            margin-bottom: 1rem;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        .list-tech li i {
-            color: var(--primary-accent);
-            font-size: 1.2rem;
-            margin-top: 3px;
-        }
-
-        .tech-badge {
-            background: rgba(0,216,255,0.15);
-            border-radius: 40px;
-            padding: 4px 12px;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: var(--primary-accent);
-        }
-
-        .footer-tech {
-            background: #071426;
-            border-top: 1px solid var(--border-tech);
-            font-size: 0.85rem;
-        }
-
-        .dropdown-menu-tech {
-            background: #112240;
-            border: 1px solid var(--border-tech);
-        }
-
-        .dropdown-item-tech {
-            color: var(--text-light);
-        }
-
-        .dropdown-item-tech:hover {
-            background: var(--primary-accent);
-            color: #0a192f;
-        }
-
-        a {
-            color: var(--primary-accent);
-            text-decoration: none;
-        }
-
-        a:hover {
-            color: white;
         }
 
         .btn-outline-tech {
@@ -199,6 +210,7 @@
             border-radius: 40px;
             background: transparent;
             color: var(--primary-accent);
+            padding: 6px 20px;
             transition: 0.2s;
         }
 
@@ -207,261 +219,373 @@
             color: #0a192f;
         }
 
-        @media (max-width: 576px) {
-            .login-container {
-                padding: 1.5rem;
+        @media (max-width: 768px) {
+            .stat-card {
+                margin-bottom: 1rem;
             }
-            .logo-text {
-                font-size: 1.6rem;
+            .welcome-card {
+                padding: 1.5rem;
             }
         }
     </style>
 </head>
-<body class="bg-dark">
+<body>
 
-<div class="toast-wrapper mx-auto py-0 fixed-top" role="status" aria-live="polite"></div>
+<!-- Toast Container -->
+<div class="toast-wrapper mx-auto py-0 fixed-top" style="z-index: 9999; position: fixed; top: 20px; right: 20px; max-width: 350px;"></div>
 
 <div id="page-wrapper">
-    <!-- Skip to main content -->
-    <a class="sr-only sr-only-focusable visually-hidden-focusable" href="#maincontent">Skip to main content</a>
+    <!-- Navigation Bar -->
+    <nav class="navbar-tech navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand-tech navbar-brand" href="#">
+                <i class="fas fa-microchip"></i>
+                ABDULRAHMAN<span style="color:white">.TECH</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="background: var(--border-tech);">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link-tech nav-link active" href="#"><i class="fas fa-home me-1"></i> Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-tech nav-link" href="#courses"><i class="fas fa-code me-1"></i> Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-tech nav-link" href="#assignments"><i class="fas fa-tasks me-1"></i> Assignments</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-tech nav-link" href="#quizzes"><i class="fas fa-flask me-1"></i> Quizzes</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link-tech nav-link" href="#announcements"><i class="fas fa-bullhorn me-1"></i> Announcements</a>
+                    </li>
+                </ul>
+                <div class="user-badge">
+                    <i class="fas fa-user-astronaut"></i>
+                    <span>Welcome, <strong id="userNameDisplay">Developer</strong></span>
+                    <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <div id="page" class="container-fluid pt-5 mt-0">
-        <div id="page-content" class="row justify-content-center">
-            <div id="region-main-box" class="col-12 col-md-10 col-lg-8">
-                <div id="region-main" class="h-100">
-                    <div class="login-wrapper">
-                        <div class="login-container">
-                            <div role="main" id="maincontent">
-                                <div class="loginform">
-                                    <!-- Logo & Branding - Abdulrahman Tech -->
-                                    <div id="loginlogo" class="login-logo">
-                                        <div class="logo-symbol">
-                                            <i class="fas fa-microchip"></i>
-                                        </div>
-                                        <h1 class="logo-text">ABDULRAHMAN<span style="color:white">.TECH</span></h1>
-                                        <div class="logo-sub">Advanced Technical Hub · Code · AI · Cloud</div>
-                                        <h2 class="login-heading visually-hidden">Log in to Abdulrahman Technical Learning Platform</h2>
-                                    </div>
-
-                                    <!-- Login Form -->
-                                    <form class="login-form" action="#" method="post" id="login">
-                                        <input type="hidden" name="logintoken" value="TECHTOKEN2025ABD">
-                                        <div class="login-form-username mb-4">
-                                            <label for="username" class="form-label fw-semibold"><i class="fas fa-user-astronaut me-2"></i>Username or Email</label>
-                                            <input type="text" name="username" id="username" class="form-control form-control-custom" value="" placeholder="developer@abdulrahman.tech" autocomplete="username">
-                                        </div>
-                                        <div class="login-form-password mb-4">
-                                            <label for="password" class="form-label fw-semibold"><i class="fas fa-key me-2"></i>Password</label>
-                                            <input type="password" name="password" id="password" value="" class="form-control form-control-custom" placeholder="••••••••" autocomplete="current-password">
-                                        </div>
-                                        <div class="login-form-submit mb-3">
-                                            <button class="btn btn-primary-tech" type="submit" id="loginbtn">
-                                                <i class="fas fa-sign-in-alt me-2"></i> Access Dashboard
-                                            </button>
-                                        </div>
-                                        <div class="login-form-forgotpassword mb-3 text-center">
-                                            <a href="#" class="small"><i class="fas fa-lock me-1"></i>Lost password? Reset credentials</a>
-                                        </div>
-                                    </form>
-
-                                    <div class="login-divider"></div>
-
-                                    <!-- Technical Instructions Section - Fully revamped technical content -->
-                                    <div class="login-instructions tech-instruction-card">
-                                        <h3 class="h5 mb-3"><i class="fas fa-terminal me-2"></i> Technical Learning Ecosystem</h3>
-                                        <ul class="list-tech">
-                                            <li><i class="fas fa-code-branch"></i> <span><strong>Interactive Code Labs:</strong> Hands-on exercises in Python, JavaScript, Rust, and cloud infrastructure. All materials available as interactive notebooks, PDFs, and video walkthroughs.</span></li>
-                                            <li><i class="fas fa-robot"></i> <span><strong>AI-Assisted Grading:</strong> Weekly coding challenges, algorithms assignments, and system design tasks auto-evaluated with instant feedback.</span></li>
-                                            <li><i class="fas fa-cloud-upload-alt"></i> <span><strong>Project Repository:</strong> Submit your full-stack projects, API prototypes, and DevOps pipelines directly via platform. Version control integration (Git) simulated.</span></li>
-                                            <li><i class="fas fa-chalkboard-user"></i> <span><strong>Tech Live Sessions:</strong> Weekly webinars, code reviews, and Q&A with industry mentors. Recordings and resources available on-demand.</span></li>
-                                            <li><i class="fas fa-flask"></i> <span><strong>Assessments & Micro-Credentials:</strong> Short quizzes, midterm technical exams, and capstone projects. Final exams proctored via AI-driven environment.</span></li>
-                                            <li><i class="fas fa-calendar-alt"></i> <span><strong>Roadmap Announcements:</strong> All deadlines, hackathons, and tech challenges announced on the main dashboard. Stay ahead with real-time alerts.</span></li>
-                                            <li><i class="fas fa-comment-dots"></i> <span><strong>Direct Mentor Connect:</strong> Send technical queries via internal messaging. Instructors & TAs respond within 24 hours. No paper — fully digital collaboration.</span></li>
-                                        </ul>
-                                        <div class="mt-3 d-flex flex-wrap justify-content-between align-items-center">
-                                            <span class="tech-badge"><i class="fas-regular fa-circle-check"></i> 100% Digital Ecosystem</span>
-                                            <span class="tech-badge"><i class="fas fa-shield-alt"></i> Secure Cloud Platform</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="login-divider"></div>
-
-                                    <!-- Language & Cookies section like original but enhanced -->
-                                    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
-                                        <div class="login-languagemenu">
-                                            <div class="dropdown">
-                                                <button class="btn btn-outline-tech dropdown-toggle" type="button" id="langDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="fas fa-globe me-1"></i> English (EN)
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-tech" aria-labelledby="langDropdown">
-                                                    <li><a class="dropdown-item dropdown-item-tech" href="#">العربية (AR) - تقنية</a></li>
-                                                    <li><a class="dropdown-item dropdown-item-tech" href="#">English (EN) - Tech</a></li>
-                                                    <li><a class="dropdown-item dropdown-item-tech" href="#">Français (FR)</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                        <div class="divider border-start align-self-center mx-2 d-none d-sm-block" style="height: 30px;"></div>
-                                        <button type="button" class="btn btn-outline-tech btn-sm" data-bs-toggle="modal" data-bs-target="#cookiesModal">
-                                            <i class="fas fa-cookie-bite me-1"></i> Cookies & Privacy
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <!-- Welcome Section -->
+            <div class="welcome-card">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h1 class="display-5 fw-bold">
+                            <i class="fas fa-rocket me-2" style="color: var(--primary-accent);"></i>
+                            Welcome to Abdulrahman Tech Hub
+                        </h1>
+                        <p class="lead mt-3">Your journey to mastering modern technology starts here. Access all learning materials, assignments, and assessments instantly.</p>
+                        <div class="mt-3">
+                            <span class="badge-tech me-2"><i class="fas fa-check-circle"></i> Full Access</span>
+                            <span class="badge-tech me-2"><i class="fas fa-infinity"></i> No Login Required</span>
+                            <span class="badge-tech"><i class="fas fa-cloud-upload-alt"></i> Instant Content</span>
                         </div>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fas fa-laptop-code" style="font-size: 6rem; color: var(--primary-accent); opacity: 0.7;"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="row mb-5">
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="stat-card">
+                        <i class="fas fa-book-open"></i>
+                        <div class="stat-number">24+</div>
+                        <div class="text-muted-tech">Technical Courses</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="stat-card">
+                        <i class="fas fa-code"></i>
+                        <div class="stat-number">156+</div>
+                        <div class="text-muted-tech">Coding Challenges</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="stat-card">
+                        <i class="fas fa-users"></i>
+                        <div class="stat-number">2.5k+</div>
+                        <div class="text-muted-tech">Active Learners</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 mb-3">
+                    <div class="stat-card">
+                        <i class="fas fa-trophy"></i>
+                        <div class="stat-number">98%</div>
+                        <div class="text-muted-tech">Success Rate</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Courses Section -->
+            <h2 class="mb-4" id="courses"><i class="fas fa-graduation-cap me-2" style="color: var(--primary-accent);"></i> Featured Technical Courses</h2>
+            <div class="row mb-5">
+                <div class="col-md-4 mb-4">
+                    <div class="course-card">
+                        <div class="course-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <div class="course-body">
+                            <h4>Advanced Python</h4>
+                            <p class="text-muted-tech">Master Python for AI, Data Science, and Automation.</p>
+                            <div class="mb-2">
+                                <div class="progress-tech progress">
+                                    <div class="progress-bar" style="width: 75%"></div>
+                                </div>
+                                <small class="text-muted-tech">75% completed</small>
+                            </div>
+                            <button class="btn btn-outline-tech btn-sm mt-2">Continue Learning <i class="fas fa-arrow-right ms-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="course-card">
+                        <div class="course-icon">
+                            <i class="fab fa-js"></i>
+                        </div>
+                        <div class="course-body">
+                            <h4>Full Stack JavaScript</h4>
+                            <p class="text-muted-tech">React, Node.js, Express, MongoDB - Complete guide.</p>
+                            <div class="mb-2">
+                                <div class="progress-tech progress">
+                                    <div class="progress-bar" style="width: 45%"></div>
+                                </div>
+                                <small class="text-muted-tech">45% completed</small>
+                            </div>
+                            <button class="btn btn-outline-tech btn-sm mt-2">Continue Learning <i class="fas fa-arrow-right ms-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="course-card">
+                        <div class="course-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <div class="course-body">
+                            <h4>Cloud & DevOps</h4>
+                            <p class="text-muted-tech">AWS, Docker, Kubernetes, CI/CD pipelines.</p>
+                            <div class="mb-2">
+                                <div class="progress-tech progress">
+                                    <div class="progress-bar" style="width: 30%"></div>
+                                </div>
+                                <small class="text-muted-tech">30% completed</small>
+                            </div>
+                            <button class="btn btn-outline-tech btn-sm mt-2">Start Learning <i class="fas fa-arrow-right ms-1"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Assignments & Quizzes Section -->
+            <div class="row mb-5">
+                <div class="col-md-6" id="assignments">
+                    <h3><i class="fas fa-tasks me-2" style="color: var(--primary-accent);"></i> Recent Assignments</h3>
+                    <div class="announcement-item">
+                        <i class="fas fa-code me-2" style="color: var(--primary-accent);"></i>
+                        <strong>Algorithm Optimization Challenge</strong>
+                        <p class="mb-1 small text-muted-tech">Due: March 30, 2026 | Implement sorting algorithm with O(n log n) complexity</p>
+                        <button class="btn btn-primary-tech btn-sm mt-2">Submit Solution</button>
+                    </div>
+                    <div class="announcement-item">
+                        <i class="fas fa-database me-2" style="color: var(--primary-accent);"></i>
+                        <strong>Database Design Project</strong>
+                        <p class="mb-1 small text-muted-tech">Due: April 2, 2026 | Design scalable schema for e-commerce platform</p>
+                        <button class="btn btn-primary-tech btn-sm mt-2">Submit Solution</button>
+                    </div>
+                </div>
+                <div class="col-md-6" id="quizzes">
+                    <h3><i class="fas fa-flask me-2" style="color: var(--primary-accent);"></i> Upcoming Quizzes</h3>
+                    <div class="announcement-item">
+                        <i class="fas fa-terminal me-2" style="color: var(--primary-accent);"></i>
+                        <strong>Python Data Structures Quiz</strong>
+                        <p class="mb-1 small text-muted-tech">Date: March 28, 2026 | 30 minutes | 20 questions</p>
+                        <button class="btn btn-outline-tech btn-sm mt-2">Start Quiz</button>
+                    </div>
+                    <div class="announcement-item">
+                        <i class="fab fa-react me-2" style="color: var(--primary-accent);"></i>
+                        <strong>React Hooks Assessment</strong>
+                        <p class="mb-1 small text-muted-tech">Date: April 1, 2026 | 45 minutes | Practical coding</p>
+                        <button class="btn btn-outline-tech btn-sm mt-2">Start Quiz</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Announcements Section -->
+            <h3 id="announcements"><i class="fas fa-bullhorn me-2" style="color: var(--primary-accent);"></i> Important Announcements</h3>
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="announcement-item">
+                        <i class="fas fa-chalkboard-user me-2"></i>
+                        <strong>Live Tech Webinar: "Future of AI in 2026"</strong>
+                        <p class="mb-0 small">Join us on March 29, 2026 at 7:00 PM with industry experts. Register now!</p>
+                    </div>
+                    <div class="announcement-item">
+                        <i class="fas fa-calendar-alt me-2"></i>
+                        <strong>Midterm Exams Schedule Released</strong>
+                        <p class="mb-0 small">Midterm technical assessments will be held from April 10-15, 2026. Check your course page for details.</p>
+                    </div>
+                    <div class="announcement-item">
+                        <i class="fas fa-gift me-2"></i>
+                        <strong>New Course Added: "Machine Learning Engineering"</strong>
+                        <p class="mb-0 small">Enroll now and get free access to premium resources. Limited spots available!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technical Resources -->
+            <div class="welcome-card mt-3">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h4><i class="fas fa-download me-2"></i> Digital Resources Hub</h4>
+                        <p>All learning materials, lecture recordings, and code repositories are available 24/7. No paper - 100% digital ecosystem.</p>
+                        <button class="btn btn-primary-tech"><i class="fas fa-folder-open me-1"></i> Browse Resources</button>
+                    </div>
+                    <div class="col-md-4 text-center">
+                        <i class="fas fa-cloud-download-alt" style="font-size: 3rem; color: var(--primary-accent);"></i>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modern Footer with technical flavor -->
-    <footer id="page-footer" class="footer-tech mt-5 py-4">
+    <!-- Footer -->
+    <footer class="footer-tech">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
-                    <div class="logininfo small text-muted-tech">
-                        <i class="fas fa-user-secret"></i> You are not logged in. | <i class="fas fa-shield-hooded"></i> Secure zone
+                    <div class="small text-muted-tech">
+                        <i class="fas fa-user-secret"></i> You have full access to all content | <i class="fas fa-shield-hooded"></i> Open Learning Platform
                     </div>
                     <div class="mt-2">
-                        <a href="#" class="text-muted-tech me-3 small">Data retention policy</a>
+                        <a href="#" class="text-muted-tech me-3 small"><i class="fas fa-database"></i> Data policy</a>
                         <a href="#" class="text-muted-tech me-3 small"><i class="fab fa-android"></i> Mobile app</a>
-                        <a href="#" class="text-muted-tech small"><i class="fab fa-github"></i> Open core</a>
+                        <a href="#" class="text-muted-tech small"><i class="fab fa-github"></i> Open source</a>
                     </div>
                 </div>
                 <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
-                    <span class="text-muted-tech small">Powered by <strong class="text-light">Abdulrahman Tech Engine</strong> | <i class="fas fa-crown"></i> Next-Gen Learning</span>
-                    <div class="small text-muted-tech mt-1">© 2025 Abdulrahman Technical Institute — Innovate. Build. Scale.</div>
+                    <span class="text-muted-tech small">Powered by <strong class="text-light">Abdulrahman Tech Engine</strong> | <i class="fas fa-crown"></i> Instant Access Mode</span>
+                    <div class="small text-muted-tech mt-1">© 2026 Abdulrahman Technical Institute — Learn. Build. Innovate. No Barriers.</div>
                 </div>
             </div>
         </div>
     </footer>
 </div>
 
-<!-- Modal for Cookies Notice (technical version) -->
-<div class="modal fade" id="cookiesModal" tabindex="-1" aria-labelledby="cookiesModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content" style="background: #112240; border:1px solid #233554; color:#e6f1ff;">
-            <div class="modal-header border-bottom-0">
-                <h5 class="modal-title" id="cookiesModalLabel"><i class="fas fa-shield-alt me-2"></i>Technical Cookies & Data</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>This platform uses essential cookies for authentication, security, and personalized learning analytics. We also utilize local storage to remember your code snippets and progress. No third-party tracking for ads. Full compliance with GDPR & Tech Data Protection Act.</p>
-                <p class="mt-2"><i class="fas fa-database"></i> <strong>Data handled:</strong> Profile, assignment submissions, quiz results, and system logs. You can request export anytime.</p>
-                <hr class="bg-secondary">
-                <p class="small">By continuing to use Abdulrahman.TECH, you consent to our technical cookie policy.</p>
-            </div>
-            <div class="modal-footer border-top-0">
-                <button type="button" class="btn btn-primary-tech" data-bs-dismiss="modal">Accept & Continue</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Bootstrap JS + Popper for interactive components -->
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-<!-- Custom interactive script for demo purposes: form alert and dynamic feel -->
+
 <script>
-    // Interactive enhancements: console greetings + login simulation with modern feedback
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log("Abdulrahman Tech Platform | Advanced Learning Environment Loaded");
+    // Toast notification function
+    function showTechToast(message, type = "success") {
+        const toastContainer = document.querySelector('.toast-wrapper');
+        if (!toastContainer) return;
         
-        const loginForm = document.getElementById('login');
-        if (loginForm) {
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                const username = document.getElementById('username').value.trim();
-                const password = document.getElementById('password').value.trim();
-                
-                if (!username || !password) {
-                    // Show custom toast-like alert (modern temporary message)
-                    showTechToast("Authentication required: Please enter your developer credentials.", "warning");
-                } else {
-                    // In a real system, we'd send to backend. Here we just simulate success.
-                    showTechToast(`Welcome back, ${username}! Redirecting to developer dashboard...`, "success");
-                    setTimeout(() => {
-                        alert("[Demo Mode] This is a fully functional front-end concept. In production, you'd connect to Laravel/Node backend. Great tech platform ready!");
-                    }, 800);
-                }
-            });
-        }
-
-        // Helper function for toast notifications (tech style)
-        function showTechToast(message, type) {
-            // Simple temporary alert replacement
-            const toastContainer = document.querySelector('.toast-wrapper');
-            if (!toastContainer) return;
-            const toastEl = document.createElement('div');
-            toastEl.className = `toast align-items-center text-bg-${type === 'success' ? 'success' : 'warning'} border-0 show mb-2`;
-            toastEl.setAttribute('role', 'alert');
-            toastEl.setAttribute('aria-live', 'assertive');
-            toastEl.setAttribute('aria-atomic', 'true');
-            toastEl.innerHTML = `
-                <div class="d-flex">
-                    <div class="toast-body">
-                        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'} me-2"></i> ${message}
-                    </div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        const toastEl = document.createElement('div');
+        toastEl.className = `toast align-items-center text-bg-${type === 'success' ? 'success' : 'warning'} border-0 show mb-2`;
+        toastEl.setAttribute('role', 'alert');
+        toastEl.setAttribute('aria-live', 'assertive');
+        toastEl.setAttribute('aria-atomic', 'true');
+        toastEl.innerHTML = `
+            <div class="d-flex">
+                <div class="toast-body">
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'} me-2"></i> ${message}
                 </div>
-            `;
-            toastContainer.appendChild(toastEl);
-            const bsToast = new bootstrap.Toast(toastEl, { delay: 3000 });
-            bsToast.show();
-            toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
-        }
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+            </div>
+        `;
+        toastContainer.appendChild(toastEl);
+        const bsToast = new bootstrap.Toast(toastEl, { delay: 3000 });
+        bsToast.show();
+        toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
+    }
 
-        // Enhance "Lost password?" link with demo feedback
-        const forgotLink = document.querySelector('.login-form-forgotpassword a');
-        if (forgotLink) {
-            forgotLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                showTechToast("🔐 Password recovery system: check your institutional email for reset link. (Demo version)", "info");
-            });
-        }
+    // Welcome message on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log("Abdulrahman Tech Platform | Dashboard Loaded - No Login Required");
         
-        // Language dropdown simulation
-        const langItems = document.querySelectorAll('.dropdown-item-tech');
-        langItems.forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                const selectedLang = this.innerText;
-                showTechToast(`Language preference updated to ${selectedLang}. UI translations coming soon.`, "info");
+        // Show welcome toast
+        setTimeout(() => {
+            showTechToast("✨ Welcome to Abdulrahman Tech Hub! You have full access to all content.", "success");
+        }, 500);
+        
+        // Get user name from localStorage or prompt
+        let userName = localStorage.getItem('abdulrahman_user');
+        if (!userName) {
+            userName = prompt("Welcome! What should we call you?", "Developer");
+            if (userName && userName.trim() !== "") {
+                localStorage.setItem('abdulrahman_user', userName);
+            } else {
+                userName = "Tech Enthusiast";
+            }
+        }
+        document.getElementById('userNameDisplay').innerText = userName;
+        
+        // Add click handlers for all buttons
+        const allButtons = document.querySelectorAll('.btn-outline-tech, .btn-primary-tech');
+        allButtons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const btnText = this.innerText;
+                if (!btnText.includes('Submit') && !btnText.includes('Start')) {
+                    e.preventDefault();
+                    showTechToast(`📚 Opening "${btnText}" module. Content is ready for you!`, "success");
+                } else {
+                    showTechToast(`✅ Action initiated: ${btnText}. This is a demo environment.`, "info");
+                }
             });
         });
         
-        // Mobile app link simulation
-        const mobileLinks = document.querySelectorAll('a[href="#"]');
-        mobileLinks.forEach(link => {
-            if (link.innerText.includes('Mobile app') || link.innerText.includes('Get the mobile')) {
-                link.addEventListener('click', (e) => {
+        // Smooth scroll for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href && href !== '#') {
                     e.preventDefault();
-                    showTechToast("📱 Abdulrahman.Tech Mobile PWA: Install from browser or access via progressive web app.", "success");
-                });
-            }
+                    const targetId = href.substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                        showTechToast(`📖 Navigating to ${targetId} section`, "info");
+                    }
+                }
+            });
         });
     });
     
-    // Additional smoothness: custom styling for active focus
+    // Additional styling for toast
     const style = document.createElement('style');
     style.innerHTML = `
-        .btn-outline-tech:hover i, .btn-outline-tech:hover { transition: all 0.2s; }
-        .form-control-custom:-webkit-autofill,
-        .form-control-custom:-webkit-autofill:focus {
-            -webkit-box-shadow: 0 0 0px 1000px #0a1a2f inset !important;
-            -webkit-text-fill-color: #e6f1ff !important;
-        }
         .toast {
             background: #1e2a47 !important;
             border-left: 4px solid #00d8ff;
             color: white;
+            backdrop-filter: blur(10px);
         }
         .toast .btn-close-white {
             filter: brightness(0) invert(1);
         }
+        .progress-tech .progress-bar {
+            transition: width 0.5s ease;
+        }
     `;
     document.head.appendChild(style);
 </script>
-<!-- Extra utility to emulate AMD-like loading, but platform fully functional -->
-<noscript><div class="alert alert-warning text-center">JavaScript enhances the technical experience. Please enable for full features.</div></noscript>
+
+<noscript>
+    <div class="alert alert-warning text-center m-3">
+        <i class="fas fa-exclamation-triangle"></i> JavaScript is recommended for the best experience.
+    </div>
+</noscript>
+
 </body>
 </html>
