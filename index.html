@@ -3,26 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Abdulrahman Tech Academy | Complete Programming Education Platform</title>
+    <title>Abdulrahman Tech Academy | Learn Programming Free</title>
     
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- SEO -->
-    <meta name="description" content="Complete programming education platform. Learn Python, JavaScript, React, Web Development, SQL, and more. Free courses with certificates.">
-    <meta name="keywords" content="learn programming, python, javascript, web development, coding, free courses, programming tutorial">
+    <meta name="description" content="Free programming education platform. Learn Python, JavaScript, Web Development, SQL, and more. Start coding today!">
+    <meta name="keywords" content="learn programming, python, javascript, web development, coding, free courses">
     <meta name="author" content="Abdulrahman Tech Academy">
     
     <!-- Bootstrap & Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Prism.js for code highlighting -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     
     <style>
         :root {
@@ -152,19 +147,6 @@
             color: var(--primary-dark);
         }
 
-        /* Progress Bar */
-        .progress-tech {
-            height: 6px;
-            background: var(--primary-dark);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .progress-tech .progress-bar {
-            background: var(--primary-accent);
-            border-radius: 10px;
-        }
-
         /* Badges */
         .badge-tech {
             background: rgba(0, 216, 255, 0.15);
@@ -223,7 +205,7 @@
         }
 
         code {
-            font-family: 'Fira Code', monospace;
+            font-family: monospace;
             font-size: 0.85rem;
         }
 
@@ -238,11 +220,6 @@
             font-size: 0.7rem;
             color: var(--primary-dark);
             cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .copy-btn:hover {
-            background: #fff;
         }
 
         /* Explanation Box */
@@ -289,49 +266,6 @@
             max-width: 350px;
         }
 
-        /* Loading */
-        .loading-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(10, 25, 47, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 9999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid var(--border-color);
-            border-top-color: var(--primary-accent);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Rate Limit */
-        .rate-limit-message {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--danger);
-            color: white;
-            padding: 10px 18px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            z-index: 2000;
-            display: none;
-        }
-
         /* Footer */
         .footer-tech {
             background: #071426;
@@ -349,20 +283,8 @@
 </head>
 <body>
 
-<!-- Loading Overlay -->
-<div id="loadingOverlay" class="loading-overlay">
-    <div class="spinner mb-3"></div>
-    <h4>Loading Abdulrahman Tech Academy...</h4>
-    <p class="text-muted mt-2">Secure Platform • Fast Learning • 100% Free</p>
-</div>
-
 <!-- Toast Container -->
 <div id="toastContainer" class="toast-custom"></div>
-
-<!-- Rate Limit Message -->
-<div id="rateLimitMessage" class="rate-limit-message">
-    <i class="fas fa-shield-alt me-2"></i> Too many requests. Please wait.
-</div>
 
 <!-- Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1">
@@ -375,10 +297,10 @@
             <div class="modal-body text-center p-4">
                 <div class="explanation-box mb-3">
                     <i class="fas fa-graduation-cap me-2"></i>
-                    <strong>Sign up to:</strong> Track progress, earn certificates, and join 100K+ learners!
+                    <strong>Sign up to:</strong> Track progress, earn certificates, and join learners!
                 </div>
                 <button id="demoLoginBtn" class="btn btn-primary-tech w-100">
-                    <i class="fas fa-user-graduate me-2"></i> Start Learning (Demo)
+                    <i class="fas fa-user-graduate me-2"></i> Start Learning (Free)
                 </button>
                 <hr class="my-3">
                 <p class="small text-muted">🔒 No personal data required. All features free!</p>
@@ -388,7 +310,7 @@
 </div>
 
 <!-- Main Content -->
-<div id="mainContent" style="display: none;">
+<div id="mainContent">
     <!-- Navigation -->
     <nav class="navbar-tech navbar navbar-expand-lg">
         <div class="container">
@@ -443,7 +365,7 @@
             <div id="homeSection">
                 <div class="hero-section">
                     <h1 class="display-4 fw-bold mb-3">Master Programming <span style="color: var(--primary-accent);">For Free</span></h1>
-                    <p class="lead mb-4">Join 100,000+ students learning Python, JavaScript, Web Development, and more!</p>
+                    <p class="lead mb-4">Join thousands of students learning Python, JavaScript, Web Development, and more!</p>
                     <button class="btn btn-primary-tech me-2" onclick="showSection('learn')">Start Learning →</button>
                     <button class="btn btn-outline-tech" data-bs-toggle="modal" data-bs-target="#loginModal">Sign Up Free</button>
                 </div>
@@ -474,7 +396,7 @@
                     <div class="col-md-3 col-6 mb-3">
                         <div class="stat-card text-center">
                             <i class="fas fa-users" style="font-size: 2rem; color: var(--primary-accent);"></i>
-                            <h3 class="mt-2">100K+</h3>
+                            <h3 class="mt-2">10K+</h3>
                             <p class="small text-muted">Students</p>
                         </div>
                     </div>
@@ -562,12 +484,11 @@
                 <div class="explanation-box">
                     <h5><i class="fas fa-graduation-cap me-2"></i> What You Can Learn</h5>
                     <ul>
-                        <li><strong>Python Programming</strong> - From basics to advanced, data structures, and algorithms</li>
-                        <li><strong>JavaScript</strong> - Web development, DOM manipulation, ES6+ features</li>
+                        <li><strong>Python Programming</strong> - From basics to advanced</li>
+                        <li><strong>JavaScript</strong> - Web development, DOM manipulation</li>
                         <li><strong>HTML/CSS</strong> - Build beautiful responsive websites</li>
-                        <li><strong>SQL</strong> - Database design, queries, and management</li>
+                        <li><strong>SQL</strong> - Database design and queries</li>
                         <li><strong>React.js</strong> - Modern frontend framework</li>
-                        <li><strong>Web Development</strong> - Full stack development with real projects</li>
                     </ul>
                 </div>
                 
@@ -575,31 +496,14 @@
                     <h5><i class="fas fa-certificate me-2"></i> How to Earn Certificates</h5>
                     <ol>
                         <li>Sign up for a free account</li>
-                        <li>Complete any course (100% completion required)</li>
-                        <li>Pass the final assessment with 70% or higher</li>
+                        <li>Complete any course (100% completion)</li>
                         <li>Download your verified certificate instantly</li>
                     </ol>
-                    <p class="small text-muted mt-2">🎓 Certificates are verifiable and can be shared on LinkedIn, resume, or portfolio</p>
                 </div>
                 
                 <div class="explanation-box">
                     <h5><i class="fas fa-shield-alt me-2"></i> Security Features</h5>
-                    <ul>
-                        <li><i class="fas fa-lock me-2"></i> Encrypted connection (HTTPS)</li>
-                        <li><i class="fas fa-shield-virus me-2"></i> XSS Protection with Content Security Policy</li>
-                        <li><i class="fas fa-clock me-2"></i> Rate limiting to prevent abuse</li>
-                        <li><i class="fas fa-user-secret me-2"></i> No personal data stored</li>
-                    </ul>
-                </div>
-                
-                <div class="explanation-box">
-                    <h5><i class="fas fa-lightbulb me-2"></i> Tips for Success</h5>
-                    <ul>
-                        <li>Study regularly - even 20 minutes a day makes a difference</li>
-                        <li>Practice daily - write code every day</li>
-                        <li>Ask questions in the community</li>
-                        <li>Track your progress to stay motivated</li>
-                    </ul>
+                    <p>Your data is protected with encryption and security headers. Safe learning environment.</p>
                 </div>
             </div>
 
@@ -627,21 +531,15 @@
                             <p><i class="fas fa-book-open me-2"></i> Courses Started: <strong id="profileCoursesStarted">0</strong></p>
                             <p><i class="fas fa-check-circle me-2"></i> Courses Completed: <strong id="profileCoursesCompleted">0</strong></p>
                             <p><i class="fas fa-tasks me-2"></i> Exercises Done: <strong id="profileExercisesDone">0</strong></p>
-                            <p><i class="fas fa-clock me-2"></i> Learning Hours: <strong id="profileHours">0</strong></p>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="stat-card">
-                            <h5>Progress to Next Level</h5>
-                            <div class="progress-tech mt-3">
-                                <div class="progress-bar" id="profileProgressBar" style="width: 0%"></div>
+                            <h5>Progress</h5>
+                            <div class="progress mt-3" style="height: 8px; background: var(--primary-dark);">
+                                <div id="profileProgressBar" style="width: 0%; height: 8px; background: var(--primary-accent); border-radius: 4px;"></div>
                             </div>
-                            <p class="mt-2 small text-muted">Complete more courses to level up!</p>
-                            <hr>
-                            <h6>Achievements</h6>
-                            <div id="achievementsList" class="mt-2">
-                                <span class="badge-tech"><i class="fas fa-rocket"></i> Beginner</span>
-                            </div>
+                            <p class="mt-2 small text-muted">Complete courses to level up!</p>
                         </div>
                     </div>
                 </div>
@@ -652,47 +550,14 @@
     <footer class="footer-tech">
         <div class="container text-center">
             <div class="small text-muted">© 2026 Abdulrahman Tech Academy - Free Programming Education for Everyone</div>
-            <div class="small text-muted mt-1">🔒 Secure Platform | 📚 50+ Courses | 🎓 Free Certificates | 🌍 100K+ Students</div>
+            <div class="small text-muted mt-1">🔒 Secure Platform | 📚 50+ Courses | 🎓 Free Certificates</div>
         </div>
     </footer>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-html.min.js"></script>
 
 <script>
-    // ==================== SECURITY & RATE LIMITING ====================
-    let requestCount = 0;
-    let lastReset = Date.now();
-    let isLimited = false;
-    
-    function checkRateLimit() {
-        const now = Date.now();
-        if (now - lastReset > 60000) {
-            requestCount = 0;
-            lastReset = now;
-            isLimited = false;
-            document.getElementById('rateLimitMessage').style.display = 'none';
-        }
-        requestCount++;
-        if (requestCount > 30 && !isLimited) {
-            isLimited = true;
-            document.getElementById('rateLimitMessage').style.display = 'block';
-            setTimeout(() => {
-                document.getElementById('rateLimitMessage').style.display = 'none';
-                isLimited = false;
-                requestCount = 0;
-            }, 60000);
-            return false;
-        }
-        return true;
-    }
-    
     // ==================== USER MANAGEMENT ====================
     let currentUser = null;
     
@@ -715,12 +580,14 @@
     }
     
     function toggleUserMenu() {
-        document.getElementById('userDropdown').classList.toggle('show');
+        const dropdown = document.getElementById('userDropdown');
+        if (dropdown) dropdown.classList.toggle('show');
     }
     
     document.addEventListener('click', function(e) {
         if (!e.target.closest('.user-menu') && !e.target.closest('#userDropdown')) {
-            document.getElementById('userDropdown')?.classList.remove('show');
+            const dropdown = document.getElementById('userDropdown');
+            if (dropdown) dropdown.classList.remove('show');
         }
     });
     
@@ -729,11 +596,9 @@
             document.getElementById('userLoggedOut').style.display = 'none';
             document.getElementById('userLoggedIn').style.display = 'flex';
             document.getElementById('userNameDisplay').innerText = user.name?.split(' ')[0] || 'Student';
-            document.getElementById('userAvatar').src = user.avatar || 'https://via.placeholder.com/40';
-            document.getElementById('dropdownAvatar').src = user.avatar || 'https://via.placeholder.com/35';
-            document.getElementById('dropdownName').innerText = user.name || 'Student';
             document.getElementById('profileName').innerText = user.name || 'Student';
             document.getElementById('profileEmail').innerText = user.email || 'student@example.com';
+            updateProfileStats();
         } else {
             document.getElementById('userLoggedOut').style.display = 'block';
             document.getElementById('userLoggedIn').style.display = 'none';
@@ -747,7 +612,6 @@
             document.getElementById('profileCoursesStarted').innerText = currentUser.coursesStarted || 0;
             document.getElementById('profileCoursesCompleted').innerText = currentUser.coursesCompleted || 0;
             document.getElementById('profileExercisesDone').innerText = currentUser.exercisesDone || 0;
-            document.getElementById('profileHours').innerText = currentUser.hours || 0;
             const progress = ((currentUser.coursesCompleted || 0) / 10) * 100;
             document.getElementById('profileProgressBar').style.width = Math.min(progress, 100) + '%';
         }
@@ -757,16 +621,13 @@
         currentUser = {
             name: 'Demo Student',
             email: 'demo@abdulrahman.tech',
-            avatar: 'https://via.placeholder.com/40',
             points: 250,
             certificates: 2,
             coursesStarted: 3,
             coursesCompleted: 1,
-            exercisesDone: 15,
-            hours: 12
+            exercisesDone: 15
         };
         updateUIForUser(currentUser);
-        updateProfileStats();
         const modal = bootstrap.Modal.getInstance(document.getElementById('loginModal'));
         if (modal) modal.hide();
         showToast('Welcome to Abdulrahman Tech Academy! 🎉', 'success');
@@ -783,8 +644,6 @@
     
     // ==================== NAVIGATION ====================
     function showSection(section) {
-        if (!checkRateLimit()) return;
-        
         const sections = ['home', 'courses', 'learn', 'practice', 'guide', 'profile'];
         sections.forEach(s => {
             const el = document.getElementById(`${s}Section`);
@@ -807,5 +666,139 @@
     // ==================== LOAD COURSES ====================
     function loadCourses() {
         const courses = [
-            { name: "Python Mastery", icon: "fab fa-python", desc: "Learn Python from basics to advanced", lessons: 25, level: "Beginner" },
-            { name: "JavaScript Complete", icon: "fab fa-js",
+            { name: "Python Mastery", icon: "fab fa-python", desc: "Learn Python from basics to advanced", lessons: 25 },
+            { name: "JavaScript Complete", icon: "fab fa-js", desc: "Modern JavaScript for web development", lessons: 30 },
+            { name: "HTML & CSS", icon: "fab fa-html5", desc: "Build beautiful responsive websites", lessons: 20 },
+            { name: "SQL Database", icon: "fas fa-database", desc: "Master database queries and design", lessons: 18 },
+            { name: "React.js", icon: "fab fa-react", desc: "Build modern web applications", lessons: 22 },
+            { name: "Web Development", icon: "fas fa-globe", desc: "Full stack web development", lessons: 35 }
+        ];
+        
+        const container = document.getElementById('coursesList');
+        if (!container) return;
+        
+        container.innerHTML = courses.map(course => `
+            <div class="col-md-4 mb-4">
+                <div class="course-card" onclick="loadTutorial('${course.name.toLowerCase().split(' ')[0]}')">
+                    <div class="course-icon"><i class="${course.icon}"></i></div>
+                    <h5>${course.name}</h5>
+                    <p class="small text-muted">${course.desc}</p>
+                    <div class="d-flex justify-content-between mt-2">
+                        <span class="badge-tech">${course.lessons} lessons</span>
+                        <span class="badge-tech">Free</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    // ==================== LOAD TUTORIAL ====================
+    window.loadTutorial = function(topic) {
+        showSection('learn');
+        
+        const tutorials = {
+            python: `
+                <div class="hero-section">
+                    <h2>🐍 Python Programming Course</h2>
+                    <p>Learn one of the most popular programming languages</p>
+                </div>
+                <div class="explanation-box"><strong>What is Python?</strong> Python is a beginner-friendly language used for web development, data science, AI, and automation.</div>
+                <div class="code-block" style="background:#0d1117; border-radius:12px; padding:1.2rem; margin-bottom:1rem;">
+                    <h5>📝 Lesson 1: Your First Python Program</h5>
+                    <pre><code># This is a comment
+print("Hello, World!")
+
+# Variables
+name = "Student"
+age = 25
+print(f"My name is {name} and I am {age} years old")</code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </div>
+                <div class="code-block" style="background:#0d1117; border-radius:12px; padding:1.2rem;">
+                    <h5>📝 Lesson 2: Variables and Data Types</h5>
+                    <pre><code># Different data types
+name = "Ahmed"        # String
+age = 25              # Integer
+height = 1.75         # Float
+is_student = True     # Boolean
+
+print(f"Name: {name}")
+print(f"Age: {age}")
+print(f"Height: {height}")
+print(f"Is Student: {is_student}")</code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </div>
+            `,
+            javascript: `
+                <div class="hero-section">
+                    <h2>⚡ JavaScript Programming Course</h2>
+                    <p>Learn the language of the web</p>
+                </div>
+                <div class="explanation-box"><strong>What is JavaScript?</strong> JavaScript makes websites interactive and is essential for web development.</div>
+                <div class="code-block" style="background:#0d1117; border-radius:12px; padding:1.2rem;">
+                    <h5>📝 Lesson 1: Your First JavaScript Program</h5>
+                    <pre><code>// This is a comment
+console.log("Hello, World!");
+
+// Variables
+let name = "Student";
+const age = 25;
+console.log(`My name is ${name} and I am ${age} years old`);</code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </div>
+            `,
+            html: `
+                <div class="hero-section">
+                    <h2>🌐 HTML & CSS Course</h2>
+                    <p>Build beautiful websites</p>
+                </div>
+                <div class="code-block" style="background:#0d1117; border-radius:12px; padding:1.2rem;">
+                    <h5>📝 Lesson 1: HTML Structure</h5>
+                    <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;My Website&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Welcome to My Site&lt;/h1&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </div>
+            `,
+            sql: `
+                <div class="hero-section">
+                    <h2>📊 SQL Database Course</h2>
+                    <p>Learn to work with databases</p>
+                </div>
+                <div class="code-block" style="background:#0d1117; border-radius:12px; padding:1.2rem;">
+                    <h5>📝 Lesson 1: Creating Tables</h5>
+                    <pre><code>-- Create a table
+CREATE TABLE students (
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    age INT
+);
+
+-- Insert data
+INSERT INTO students VALUES (1, 'Ahmed', 22);
+
+-- Query data
+SELECT * FROM students;</code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                </div>
+            `,
+            react: `
+                <div class="hero-section">
+                    <h2>⚛️ React.js Course</h2>
+                    <p>Build modern web applications</p>
+                </div>
+                <div class="code-block" style="background:#0d1117; border-radius:12px; padding:1.2rem;">
+                    <h5>📝 Lesson 1: React Component</h5>
+                    <pre><code>function Welcome() {
+    return &lt;h1&gt;Hello, World!&lt;/h1&gt;
+}
+
+export default Welcome;</code></pre>
+                    <button class="copy-btn" onclick="copyCode(this)">Copy
