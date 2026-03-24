@@ -1,16 +1,36 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdulrahman Tech | Technical Learning Platform - Dashboard</title>
-    <meta name="description" content="Advanced technical learning platform for developers, engineers, and tech enthusiasts. Courses, quizzes, and resources by Abdulrahman.">
-    <!-- Favicon (modern tech style) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231a2c3e'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='%2300d8ff' font-family='monospace'%3EAT%3C/text%3E%3C/svg%3E">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>عبدالرحمن تك | تعلم البرمجة والتكنولوجيا - منصة تعليمية متكاملة</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="منصة عبدالرحمن التقنية: تعلم البرمجة من الصفر، كورسات Python، JavaScript، React، تطوير الويب، الذكاء الاصطناعي، وقواعد البيانات. دروس تفاعلية وأكواد عملية">
+    <meta name="keywords" content="تعلم البرمجة, كورسات برمجة, تعلم بايثون, تعلم جافا سكريبت, تطوير الويب, الذكاء الاصطناعي, قواعد البيانات, برمجة للمبتدئين">
+    <meta name="author" content="Abdulrahman Tech">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="عبدالرحمن تك - تعلم البرمجة والتكنولوجيا">
+    <meta property="og:description" content="أكبر منصة عربية لتعلم البرمجة والتقنيات الحديثة. دروس تفاعلية، أكواد عملية، وشهادات معتمدة">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="#">
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Prism.js for code highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
+    
     <style>
-        /* Custom Theme - Modern Tech Style */
         :root {
             --primary-dark: #0a192f;
             --primary-accent: #00d8ff;
@@ -20,6 +40,9 @@
             --text-muted-tech: #8892b0;
             --card-bg: #1e2a47;
             --border-tech: #233554;
+            --code-bg: #0d1117;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
         }
 
         * {
@@ -31,16 +54,19 @@
         body {
             background: linear-gradient(135deg, var(--primary-dark) 0%, #0f172a 100%);
             color: var(--text-light);
-            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, 'Roboto', monospace;
+            font-family: 'Segoe UI', 'Tahoma', 'Arial', sans-serif;
             min-height: 100vh;
         }
 
-        /* Navigation Bar */
+        /* Navigation */
         .navbar-tech {
             background: rgba(10, 25, 47, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-tech);
             padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .navbar-brand-tech {
@@ -55,7 +81,6 @@
         .navbar-brand-tech i {
             color: var(--primary-accent);
             font-size: 1.8rem;
-            margin-right: 8px;
         }
 
         .nav-link-tech {
@@ -63,138 +88,86 @@
             transition: 0.3s;
             font-weight: 500;
             margin: 0 8px;
+            cursor: pointer;
         }
 
         .nav-link-tech:hover, .nav-link-tech.active {
             color: var(--primary-accent) !important;
         }
 
-        .user-badge {
-            background: var(--card-bg);
-            border: 1px solid var(--border-tech);
-            border-radius: 40px;
-            padding: 6px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .user-badge i {
-            color: var(--primary-accent);
-            font-size: 1.2rem;
-        }
-
-        /* Main Content */
-        .main-content {
-            padding: 2rem 0;
-        }
-
-        .welcome-card {
-            background: linear-gradient(135deg, var(--secondary-bg), var(--card-bg));
-            border-radius: 24px;
-            border: 1px solid var(--border-tech);
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-card {
+        /* Cards */
+        .welcome-card, .course-card, .tutorial-card, .code-card {
             background: rgba(30, 42, 71, 0.6);
             backdrop-filter: blur(5px);
             border-radius: 20px;
             border: 1px solid var(--border-tech);
-            padding: 1.5rem;
-            transition: transform 0.3s;
-            text-align: center;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-accent);
-        }
-
-        .stat-card i {
-            font-size: 2.5rem;
-            color: var(--primary-accent);
-            margin-bottom: 1rem;
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: white;
-        }
-
-        .course-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            border: 1px solid var(--border-tech);
-            overflow: hidden;
             transition: all 0.3s;
+        }
+
+        .welcome-card {
+            padding: 2rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, var(--secondary-bg), var(--card-bg));
+        }
+
+        .course-card, .tutorial-card {
+            padding: 1.5rem;
             height: 100%;
         }
 
-        .course-card:hover {
+        .course-card:hover, .tutorial-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary-accent);
-            box-shadow: 0 10px 30px rgba(0,216,255,0.1);
         }
 
         .course-icon {
+            width: 60px;
+            height: 60px;
             background: linear-gradient(135deg, var(--primary-accent), #0077b6);
-            padding: 2rem;
-            text-align: center;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
         }
 
         .course-icon i {
-            font-size: 3rem;
+            font-size: 2rem;
             color: var(--primary-dark);
         }
 
-        .course-body {
+        .code-card {
             padding: 1.5rem;
+            background: var(--code-bg);
+            border-left: 4px solid var(--primary-accent);
         }
 
-        .progress-tech {
-            height: 8px;
-            background: var(--primary-dark);
-            border-radius: 10px;
+        pre {
+            background: var(--code-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 1rem 0;
         }
 
-        .progress-tech .progress-bar {
-            background: var(--primary-accent);
-            border-radius: 10px;
+        code {
+            font-family: 'Fira Code', 'Courier New', monospace;
+            font-size: 0.9rem;
         }
 
         .badge-tech {
-            background: rgba(0,216,255,0.15);
+            background: rgba(0, 216, 255, 0.15);
             color: var(--primary-accent);
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.75rem;
         }
 
-        .announcement-item {
-            background: rgba(10, 25, 47, 0.5);
-            border-left: 3px solid var(--primary-accent);
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 12px;
-        }
-
-        /* Footer */
-        .footer-tech {
-            background: #071426;
-            border-top: 1px solid var(--border-tech);
-            font-size: 0.85rem;
-            margin-top: 3rem;
-            padding: 2rem 0;
-        }
-
         .btn-primary-tech {
             background: linear-gradient(95deg, var(--primary-accent), #0099cc);
             border: none;
             border-radius: 40px;
-            padding: 8px 24px;
+            padding: 10px 24px;
             font-weight: 600;
             color: #0a192f;
             transition: all 0.2s;
@@ -202,7 +175,7 @@
 
         .btn-primary-tech:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,216,255,0.4);
+            box-shadow: 0 8px 20px rgba(0, 216, 255, 0.4);
         }
 
         .btn-outline-tech {
@@ -210,7 +183,7 @@
             border-radius: 40px;
             background: transparent;
             color: var(--primary-accent);
-            padding: 6px 20px;
+            padding: 8px 20px;
             transition: 0.2s;
         }
 
@@ -219,10 +192,48 @@
             color: #0a192f;
         }
 
+        .footer-tech {
+            background: #071426;
+            border-top: 1px solid var(--border-tech);
+            font-size: 0.85rem;
+            margin-top: 3rem;
+            padding: 2rem 0;
+        }
+
+        .toast-custom {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1100;
+            max-width: 350px;
+        }
+
+        .quiz-option {
+            background: var(--card-bg);
+            border: 1px solid var(--border-tech);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary-accent);
+            background: rgba(0, 216, 255, 0.1);
+        }
+
+        .quiz-option.correct {
+            border-color: var(--success-color);
+            background: rgba(16, 185, 129, 0.2);
+        }
+
+        .quiz-option.wrong {
+            border-color: #ef4444;
+            background: rgba(239, 68, 68, 0.2);
+        }
+
         @media (max-width: 768px) {
-            .stat-card {
-                margin-bottom: 1rem;
-            }
             .welcome-card {
                 padding: 1.5rem;
             }
@@ -232,229 +243,159 @@
 <body>
 
 <!-- Toast Container -->
-<div class="toast-wrapper mx-auto py-0 fixed-top" style="z-index: 9999; position: fixed; top: 20px; right: 20px; max-width: 350px;"></div>
+<div id="toastContainer" class="toast-custom"></div>
 
-<div id="page-wrapper">
-    <!-- Navigation Bar -->
-    <nav class="navbar-tech navbar navbar-expand-lg sticky-top">
+<!-- Main Content -->
+<div id="mainContent">
+    <!-- Navigation -->
+    <nav class="navbar-tech navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand-tech navbar-brand" href="#">
                 <i class="fas fa-microchip"></i>
-                ABDULRAHMAN<span style="color:white">.TECH</span>
+                عبدالرحمن<span style="color:white">.تك</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" style="background: var(--border-tech);">
-                <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link-tech nav-link active" href="#"><i class="fas fa-home me-1"></i> Dashboard</a>
+                        <a class="nav-link-tech nav-link active" data-section="home">الرئيسية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link-tech nav-link" href="#courses"><i class="fas fa-code me-1"></i> Courses</a>
+                        <a class="nav-link-tech nav-link" data-section="courses">الكورسات</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link-tech nav-link" href="#assignments"><i class="fas fa-tasks me-1"></i> Assignments</a>
+                        <a class="nav-link-tech nav-link" data-section="tutorials">دروس تعليمية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link-tech nav-link" href="#quizzes"><i class="fas fa-flask me-1"></i> Quizzes</a>
+                        <a class="nav-link-tech nav-link" data-section="exercises">تمارين تفاعلية</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link-tech nav-link" href="#announcements"><i class="fas fa-bullhorn me-1"></i> Announcements</a>
+                        <a class="nav-link-tech nav-link" data-section="resources">مصادر تقنية</a>
                     </li>
                 </ul>
-                <div class="user-badge">
-                    <i class="fas fa-user-astronaut"></i>
-                    <span>Welcome, <strong id="userNameDisplay">Developer</strong></span>
-                    <i class="fas fa-chevron-down" style="font-size: 0.8rem;"></i>
-                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="main-content">
+    <!-- Main Content Area -->
+    <div class="main-content py-4">
         <div class="container">
-            <!-- Welcome Section -->
-            <div class="welcome-card">
-                <div class="row align-items-center">
-                    <div class="col-md-8">
-                        <h1 class="display-5 fw-bold">
-                            <i class="fas fa-rocket me-2" style="color: var(--primary-accent);"></i>
-                            Welcome to Abdulrahman Tech Hub
-                        </h1>
-                        <p class="lead mt-3">Your journey to mastering modern technology starts here. Access all learning materials, assignments, and assessments instantly.</p>
-                        <div class="mt-3">
-                            <span class="badge-tech me-2"><i class="fas fa-check-circle"></i> Full Access</span>
-                            <span class="badge-tech me-2"><i class="fas fa-infinity"></i> No Login Required</span>
-                            <span class="badge-tech"><i class="fas fa-cloud-upload-alt"></i> Instant Content</span>
-                        </div>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <i class="fas fa-laptop-code" style="font-size: 6rem; color: var(--primary-accent); opacity: 0.7;"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Statistics Cards -->
-            <div class="row mb-5">
-                <div class="col-md-3 col-sm-6 mb-3">
-                    <div class="stat-card">
-                        <i class="fas fa-book-open"></i>
-                        <div class="stat-number">24+</div>
-                        <div class="text-muted-tech">Technical Courses</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-3">
-                    <div class="stat-card">
-                        <i class="fas fa-code"></i>
-                        <div class="stat-number">156+</div>
-                        <div class="text-muted-tech">Coding Challenges</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-3">
-                    <div class="stat-card">
-                        <i class="fas fa-users"></i>
-                        <div class="stat-number">2.5k+</div>
-                        <div class="text-muted-tech">Active Learners</div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6 mb-3">
-                    <div class="stat-card">
-                        <i class="fas fa-trophy"></i>
-                        <div class="stat-number">98%</div>
-                        <div class="text-muted-tech">Success Rate</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Featured Courses Section -->
-            <h2 class="mb-4" id="courses"><i class="fas fa-graduation-cap me-2" style="color: var(--primary-accent);"></i> Featured Technical Courses</h2>
-            <div class="row mb-5">
-                <div class="col-md-4 mb-4">
-                    <div class="course-card">
-                        <div class="course-icon">
-                            <i class="fab fa-python"></i>
-                        </div>
-                        <div class="course-body">
-                            <h4>Advanced Python</h4>
-                            <p class="text-muted-tech">Master Python for AI, Data Science, and Automation.</p>
-                            <div class="mb-2">
-                                <div class="progress-tech progress">
-                                    <div class="progress-bar" style="width: 75%"></div>
-                                </div>
-                                <small class="text-muted-tech">75% completed</small>
+            
+            <!-- Home Section -->
+            <div id="homeSection">
+                <div class="welcome-card">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h1 class="display-5 fw-bold">
+                                <i class="fas fa-graduation-cap me-2" style="color: var(--primary-accent);"></i>
+                                تعلم البرمجة والتكنولوجيا
+                            </h1>
+                            <p class="lead mt-3">منصتك الشاملة لتعلم البرمجة من الصفر حتى الاحتراف. دروس تفاعلية، أكواد عملية، وتمارين تطبيقية</p>
+                            <div class="mt-3">
+                                <span class="badge-tech me-2"><i class="fab fa-python"></i> Python</span>
+                                <span class="badge-tech me-2"><i class="fab fa-js"></i> JavaScript</span>
+                                <span class="badge-tech me-2"><i class="fab fa-react"></i> React</span>
+                                <span class="badge-tech me-2"><i class="fas fa-database"></i> SQL</span>
+                                <span class="badge-tech"><i class="fas fa-brain"></i> AI</span>
                             </div>
-                            <button class="btn btn-outline-tech btn-sm mt-2">Continue Learning <i class="fas fa-arrow-right ms-1"></i></button>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <i class="fas fa-laptop-code" style="font-size: 6rem; color: var(--primary-accent); opacity: 0.7;"></i>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <div class="course-card">
-                        <div class="course-icon">
-                            <i class="fab fa-js"></i>
+
+                <!-- Statistics -->
+                <div class="row mb-5">
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <div class="course-card text-center">
+                            <i class="fas fa-code" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
+                            <div class="stat-number mt-2">50+</div>
+                            <div class="text-muted-tech">درس تعليمي</div>
                         </div>
-                        <div class="course-body">
-                            <h4>Full Stack JavaScript</h4>
-                            <p class="text-muted-tech">React, Node.js, Express, MongoDB - Complete guide.</p>
-                            <div class="mb-2">
-                                <div class="progress-tech progress">
-                                    <div class="progress-bar" style="width: 45%"></div>
-                                </div>
-                                <small class="text-muted-tech">45% completed</small>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <div class="course-card text-center">
+                            <i class="fas fa-laptop" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
+                            <div class="stat-number mt-2">30+</div>
+                            <div class="text-muted-tech">مشروع عملي</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <div class="course-card text-center">
+                            <i class="fas fa-tasks" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
+                            <div class="stat-number mt-2">100+</div>
+                            <div class="text-muted-tech">تمرين تفاعلي</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-3">
+                        <div class="course-card text-center">
+                            <i class="fas fa-users" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
+                            <div class="stat-number mt-2">10k+</div>
+                            <div class="text-muted-tech">متعلم نشط</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Tutorials -->
+                <h3 class="mb-4"><i class="fas fa-star me-2" style="color: var(--primary-accent);"></i> دروس مميزة للمبتدئين</h3>
+                <div class="row mb-5">
+                    <div class="col-md-4 mb-4">
+                        <div class="tutorial-card">
+                            <div class="course-icon">
+                                <i class="fab fa-python"></i>
                             </div>
-                            <button class="btn btn-outline-tech btn-sm mt-2">Continue Learning <i class="fas fa-arrow-right ms-1"></i></button>
+                            <h4>بايثون من الصفر</h4>
+                            <p class="text-muted-tech">تعلم أساسيات البرمجة بلغة Python خطوة بخطوة</p>
+                            <button class="btn btn-outline-tech btn-sm" onclick="showTutorial('python')">ابدأ التعلم →</button>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="course-card">
-                        <div class="course-icon">
-                            <i class="fas fa-cloud"></i>
-                        </div>
-                        <div class="course-body">
-                            <h4>Cloud & DevOps</h4>
-                            <p class="text-muted-tech">AWS, Docker, Kubernetes, CI/CD pipelines.</p>
-                            <div class="mb-2">
-                                <div class="progress-tech progress">
-                                    <div class="progress-bar" style="width: 30%"></div>
-                                </div>
-                                <small class="text-muted-tech">30% completed</small>
+                    <div class="col-md-4 mb-4">
+                        <div class="tutorial-card">
+                            <div class="course-icon">
+                                <i class="fab fa-js"></i>
                             </div>
-                            <button class="btn btn-outline-tech btn-sm mt-2">Start Learning <i class="fas fa-arrow-right ms-1"></i></button>
+                            <h4>جافا سكريبت للمبتدئين</h4>
+                            <p class="text-muted-tech">أساسيات JavaScript للمطورين الجدد</p>
+                            <button class="btn btn-outline-tech btn-sm" onclick="showTutorial('javascript')">ابدأ التعلم →</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="tutorial-card">
+                            <div class="course-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4>قواعد البيانات SQL</h4>
+                            <p class="text-muted-tech">تعلم تصميم واستعلام قواعد البيانات</p>
+                            <button class="btn btn-outline-tech btn-sm" onclick="showTutorial('sql')">ابدأ التعلم →</button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Assignments & Quizzes Section -->
-            <div class="row mb-5">
-                <div class="col-md-6" id="assignments">
-                    <h3><i class="fas fa-tasks me-2" style="color: var(--primary-accent);"></i> Recent Assignments</h3>
-                    <div class="announcement-item">
-                        <i class="fas fa-code me-2" style="color: var(--primary-accent);"></i>
-                        <strong>Algorithm Optimization Challenge</strong>
-                        <p class="mb-1 small text-muted-tech">Due: March 30, 2026 | Implement sorting algorithm with O(n log n) complexity</p>
-                        <button class="btn btn-primary-tech btn-sm mt-2">Submit Solution</button>
-                    </div>
-                    <div class="announcement-item">
-                        <i class="fas fa-database me-2" style="color: var(--primary-accent);"></i>
-                        <strong>Database Design Project</strong>
-                        <p class="mb-1 small text-muted-tech">Due: April 2, 2026 | Design scalable schema for e-commerce platform</p>
-                        <button class="btn btn-primary-tech btn-sm mt-2">Submit Solution</button>
-                    </div>
-                </div>
-                <div class="col-md-6" id="quizzes">
-                    <h3><i class="fas fa-flask me-2" style="color: var(--primary-accent);"></i> Upcoming Quizzes</h3>
-                    <div class="announcement-item">
-                        <i class="fas fa-terminal me-2" style="color: var(--primary-accent);"></i>
-                        <strong>Python Data Structures Quiz</strong>
-                        <p class="mb-1 small text-muted-tech">Date: March 28, 2026 | 30 minutes | 20 questions</p>
-                        <button class="btn btn-outline-tech btn-sm mt-2">Start Quiz</button>
-                    </div>
-                    <div class="announcement-item">
-                        <i class="fab fa-react me-2" style="color: var(--primary-accent);"></i>
-                        <strong>React Hooks Assessment</strong>
-                        <p class="mb-1 small text-muted-tech">Date: April 1, 2026 | 45 minutes | Practical coding</p>
-                        <button class="btn btn-outline-tech btn-sm mt-2">Start Quiz</button>
-                    </div>
-                </div>
+            <!-- Courses Section -->
+            <div id="coursesSection" style="display: none;">
+                <h2 class="mb-4"><i class="fas fa-graduation-cap me-2" style="color: var(--primary-accent);"></i> الكورسات التقنية</h2>
+                <div id="coursesList"></div>
             </div>
 
-            <!-- Announcements Section -->
-            <h3 id="announcements"><i class="fas fa-bullhorn me-2" style="color: var(--primary-accent);"></i> Important Announcements</h3>
-            <div class="row mb-4">
-                <div class="col-12">
-                    <div class="announcement-item">
-                        <i class="fas fa-chalkboard-user me-2"></i>
-                        <strong>Live Tech Webinar: "Future of AI in 2026"</strong>
-                        <p class="mb-0 small">Join us on March 29, 2026 at 7:00 PM with industry experts. Register now!</p>
-                    </div>
-                    <div class="announcement-item">
-                        <i class="fas fa-calendar-alt me-2"></i>
-                        <strong>Midterm Exams Schedule Released</strong>
-                        <p class="mb-0 small">Midterm technical assessments will be held from April 10-15, 2026. Check your course page for details.</p>
-                    </div>
-                    <div class="announcement-item">
-                        <i class="fas fa-gift me-2"></i>
-                        <strong>New Course Added: "Machine Learning Engineering"</strong>
-                        <p class="mb-0 small">Enroll now and get free access to premium resources. Limited spots available!</p>
-                    </div>
-                </div>
+            <!-- Tutorials Section -->
+            <div id="tutorialsSection" style="display: none;">
+                <div id="tutorialContent"></div>
             </div>
 
-            <!-- Technical Resources -->
-            <div class="welcome-card mt-3">
-                <div class="row align-items-center">
-                    <div class="col-md-8">
-                        <h4><i class="fas fa-download me-2"></i> Digital Resources Hub</h4>
-                        <p>All learning materials, lecture recordings, and code repositories are available 24/7. No paper - 100% digital ecosystem.</p>
-                        <button class="btn btn-primary-tech"><i class="fas fa-folder-open me-1"></i> Browse Resources</button>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <i class="fas fa-cloud-download-alt" style="font-size: 3rem; color: var(--primary-accent);"></i>
-                    </div>
-                </div>
+            <!-- Exercises Section -->
+            <div id="exercisesSection" style="display: none;">
+                <h2 class="mb-4"><i class="fas fa-puzzle-piece me-2" style="color: var(--primary-accent);"></i> تمارين تفاعلية</h2>
+                <div id="exercisesList"></div>
+            </div>
+
+            <!-- Resources Section -->
+            <div id="resourcesSection" style="display: none;">
+                <h2 class="mb-4"><i class="fas fa-book me-2" style="color: var(--primary-accent);"></i> مصادر تعليمية مجانية</h2>
+                <div class="row" id="resourcesList"></div>
             </div>
         </div>
     </div>
@@ -465,127 +406,393 @@
             <div class="row align-items-center">
                 <div class="col-md-6 text-center text-md-start">
                     <div class="small text-muted-tech">
-                        <i class="fas fa-user-secret"></i> You have full access to all content | <i class="fas fa-shield-hooded"></i> Open Learning Platform
-                    </div>
-                    <div class="mt-2">
-                        <a href="#" class="text-muted-tech me-3 small"><i class="fas fa-database"></i> Data policy</a>
-                        <a href="#" class="text-muted-tech me-3 small"><i class="fab fa-android"></i> Mobile app</a>
-                        <a href="#" class="text-muted-tech small"><i class="fab fa-github"></i> Open source</a>
+                        <i class="fas fa-shield-alt"></i> عبدالرحمن تك | تعلم البرمجة بذكاء
                     </div>
                 </div>
                 <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
-                    <span class="text-muted-tech small">Powered by <strong class="text-light">Abdulrahman Tech Engine</strong> | <i class="fas fa-crown"></i> Instant Access Mode</span>
-                    <div class="small text-muted-tech mt-1">© 2026 Abdulrahman Technical Institute — Learn. Build. Innovate. No Barriers.</div>
+                    <span class="text-muted-tech small">© 2026 عبدالرحمن تك - جميع الدروس مجانية</span>
                 </div>
             </div>
         </div>
     </footer>
 </div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    // Toast notification function
-    function showTechToast(message, type = "success") {
-        const toastContainer = document.querySelector('.toast-wrapper');
-        if (!toastContainer) return;
-        
-        const toastEl = document.createElement('div');
-        toastEl.className = `toast align-items-center text-bg-${type === 'success' ? 'success' : 'warning'} border-0 show mb-2`;
-        toastEl.setAttribute('role', 'alert');
-        toastEl.setAttribute('aria-live', 'assertive');
-        toastEl.setAttribute('aria-atomic', 'true');
-        toastEl.innerHTML = `
+    // Toast function
+    function showToast(message, type = "success") {
+        const container = document.getElementById("toastContainer");
+        const toast = document.createElement("div");
+        toast.className = `toast align-items-center text-bg-${type === "success" ? "success" : type === "error" ? "danger" : "warning"} border-0 show mb-2`;
+        toast.setAttribute("role", "alert");
+        toast.innerHTML = `
             <div class="d-flex">
                 <div class="toast-body">
-                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'info-circle'} me-2"></i> ${message}
+                    <i class="fas fa-${type === "success" ? "check-circle" : type === "error" ? "exclamation-triangle" : "info-circle"} me-2"></i>
+                    ${message}
                 </div>
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
             </div>
         `;
-        toastContainer.appendChild(toastEl);
-        const bsToast = new bootstrap.Toast(toastEl, { delay: 3000 });
+        container.appendChild(toast);
+        const bsToast = new bootstrap.Toast(toast, { delay: 4000 });
         bsToast.show();
-        toastEl.addEventListener('hidden.bs.toast', () => toastEl.remove());
+        toast.addEventListener("hidden.bs.toast", () => toast.remove());
     }
 
-    // Welcome message on page load
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log("Abdulrahman Tech Platform | Dashboard Loaded - No Login Required");
+    // Navigation
+    function showSection(sectionId) {
+        document.getElementById("homeSection").style.display = "none";
+        document.getElementById("coursesSection").style.display = "none";
+        document.getElementById("tutorialsSection").style.display = "none";
+        document.getElementById("exercisesSection").style.display = "none";
+        document.getElementById("resourcesSection").style.display = "none";
+        document.getElementById(`${sectionId}Section`).style.display = "block";
         
-        // Show welcome toast
-        setTimeout(() => {
-            showTechToast("✨ Welcome to Abdulrahman Tech Hub! You have full access to all content.", "success");
-        }, 500);
-        
-        // Get user name from localStorage or prompt
-        let userName = localStorage.getItem('abdulrahman_user');
-        if (!userName) {
-            userName = prompt("Welcome! What should we call you?", "Developer");
-            if (userName && userName.trim() !== "") {
-                localStorage.setItem('abdulrahman_user', userName);
-            } else {
-                userName = "Tech Enthusiast";
+        document.querySelectorAll(".nav-link-tech").forEach(link => {
+            link.classList.remove("active");
+            if(link.getAttribute("data-section") === sectionId) {
+                link.classList.add("active");
             }
+        });
+        
+        if (sectionId === "courses") loadCourses();
+        if (sectionId === "exercises") loadExercises();
+        if (sectionId === "resources") loadResources();
+    }
+
+    // Tutorial Content
+    window.showTutorial = function(topic) {
+        showSection("tutorials");
+        let content = "";
+        
+        if (topic === "python") {
+            content = `
+                <div class="welcome-card">
+                    <h2><i class="fab fa-python me-2"></i> تعلم بايثون من الصفر</h2>
+                    <p class="lead">لغة بايثون هي أفضل لغة للمبتدئين وتستخدم في الذكاء الاصطناعي وتحليل البيانات</p>
+                </div>
+                
+                <div class="code-card mb-4">
+                    <h4><i class="fas fa-play me-2"></i> الدرس 1: طباعة النصوص</h4>
+                    <p>أول برنامج في بايثون - طباعة جملة على الشاشة</p>
+                    <pre><code class="language-python"># هذا أول برنامج في بايثون
+print("مرحباً بك في عالم البرمجة!")
+print("أنا أتعلم بايثون مع عبدالرحمن تك")</code></pre>
+                    <button class="btn btn-primary-tech btn-sm mt-2" onclick="checkCode()">جرب بنفسك</button>
+                </div>
+                
+                <div class="code-card mb-4">
+                    <h4><i class="fas fa-calculator me-2"></i> الدرس 2: المتغيرات والعمليات الحسابية</h4>
+                    <pre><code class="language-python"># تعريف المتغيرات
+الاسم = "أحمد"
+العمر = 25
+الارتفاع = 1.75
+
+# العمليات الحسابية
+الرقم1 = 10
+الرقم2 = 5
+المجموع = الرقم1 + الرقم2
+الفرق = الرقم1 - الرقم2
+الضرب = الرقم1 * الرقم2
+القسمة = الرقم1 / الرقم2
+
+print(f"الاسم: {الاسم}")
+print(f"العمر: {العمر}")
+print(f"المجموع: {المجموع}")</code></pre>
+                </div>
+                
+                <div class="code-card mb-4">
+                    <h4><i class="fas fa-code-branch me-2"></i> الدرس 3: الشروط (If Statements)</h4>
+                    <pre><code class="language-python"># مثال على جمل الشرط
+الدرجة = 85
+
+if الدرجة >= 90:
+    print("ممتاز - تقدير A")
+elif الدرجة >= 80:
+    print("جيد جداً - تقدير B")
+elif الدرجة >= 70:
+    print("جيد - تقدير C")
+else:
+    print("تحتاج للمزيد من المذاكرة")</code></pre>
+                </div>
+                
+                <div class="code-card mb-4">
+                    <h4><i class="fas fa-redo me-2"></i> الدرس 4: التكرار (Loops)</h4>
+                    <pre><code class="language-python"># طباعة الأرقام من 1 إلى 10
+for i in range(1, 11):
+    print(f"الرقم: {i}")
+
+# طباعة جدول الضرب
+for i in range(1, 6):
+    print(f"جدول الضرب للرقم {i}:")
+    for j in range(1, 11):
+        print(f"{i} × {j} = {i * j}")
+    print("-" * 20)</code></pre>
+                </div>
+                
+                <div class="code-card mb-4">
+                    <h4><i class="fas fa-list me-2"></i> الدرس 5: القوائم (Lists)</h4>
+                    <pre><code class="language-python"># التعامل مع القوائم
+الطلاب = ["أحمد", "محمد", "سارة", "فاطمة"]
+
+# إضافة طالب جديد
+الطلاب.append("عمر")
+
+# طباعة جميع الطلاب
+for طالب in الطلاب:
+    print(f"مرحباً {طالب}")
+
+# الوصول لعنصر معين
+print(f"أول طالب: {الطلاب[0]}")
+
+# عدد الطلاب
+print(f"عدد الطلاب: {len(الطلاب)}")</code></pre>
+                </div>
+            `;
+        } else if (topic === "javascript") {
+            content = `
+                <div class="welcome-card">
+                    <h2><i class="fab fa-js me-2"></i> تعلم جافا سكريبت</h2>
+                    <p class="lead">لغة الويب الأساسية - تعلم كيف تجعل المواقع تفاعلية</p>
+                </div>
+                
+                <div class="code-card mb-4">
+                    <h4>الدرس 1: أساسيات جافا سكريبت</h4>
+                    <pre><code class="language-javascript">// تعريف المتغيرات
+let name = "أحمد";
+const age = 25;
+var city = "القاهرة";
+
+// طباعة النتائج
+console.log("الاسم: " + name);
+console.log(`العمر: ${age}`);
+console.log(`المدينة: ${city}`);
+
+// العمليات الحسابية
+let x = 10;
+let y = 5;
+console.log(x + y); // 15
+console.log(x - y); // 5
+console.log(x * y); // 50
+console.log(x / y); // 2</code></pre>
+                </div>
+                
+                <div class="code-card mb-4">
+                    <h4>الدرس 2: الدوال (Functions)</h4>
+                    <pre><code class="language-javascript">// تعريف دالة
+function sayHello(name) {
+    return `مرحباً ${name}، أهلاً بك في موقعنا!`;
+}
+
+// استدعاء الدالة
+console.log(sayHello("أحمد"));
+
+// دالة لجمع رقمين
+function add(a, b) {
+    return a + b;
+}
+
+console.log(add(5, 3)); // 8
+
+// دالة السهم (Arrow Function)
+const multiply = (a, b) => a * b;
+console.log(multiply(4, 5)); // 20</code></pre>
+                </div>
+                
+                <div class="code-card mb-4">
+                    <h4>الدرس 3: التعامل مع المصفوفات</h4>
+                    <pre><code class="language-javascript">// إنشاء مصفوفة
+let fruits = ["تفاح", "موز", "برتقال"];
+
+// إضافة عنصر
+fruits.push("عنب");
+console.log(fruits);
+
+// حذف آخر عنصر
+fruits.pop();
+
+// التكرار على المصفوفة
+fruits.forEach(fruit => {
+    console.log(`فاكهة: ${fruit}`);
+});
+
+// البحث عن عنصر
+let index = fruits.indexOf("موز");
+console.log(`موز موجود في الفهرس: ${index}`);</code></pre>
+                </div>
+            `;
+        } else if (topic === "sql") {
+            content = `
+                <div class="welcome-card">
+                    <h2><i class="fas fa-database me-2"></i> تعلم SQL - قواعد البيانات</h2>
+                    <p class="lead">تعلم كيفية تخزين واسترجاع البيانات بكفاءة</p>
+                </div>
+                
+                <div class="code-card mb-4">
+                    <h4>الدرس 1: إنشاء جدول</h4>
+                    <pre><code class="language-sql">-- إنشاء جدول الطلاب
+CREATE TABLE students (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    age INT,
+    email VARCHAR(100) UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- إنشاء جدول المواد الدراسية
+CREATE TABLE courses (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    hours INT DEFAULT 3
+);</code></pre>
+                </div>
+                
+                <div class="code-card mb-4">
+                    <h4>الدرس 2: إدراج البيانات (INSERT)</h4>
+                    <pre><code class="language-sql">-- إضافة طالب جديد
+INSERT INTO students (name, age, email) 
+VALUES ('أحمد محمد', 22, 'ahmed@example.com');
+
+-- إضافة عدة طلاب
+INSERT INTO students (name, age, email) VALUES 
+('سارة علي', 21, 'sara@example.com'),
+('محمد إبراهيم', 23, 'mohamed@example.com');
+
+-- إضافة مادة دراسية
+INSERT INTO courses (name, hours) 
+VALUES ('برمجة بايثون', 4);</code></pre>
+                </div>
+                
+                <div class="code-card mb-4">
+                    <h4>الدرس 3: استعلامات SELECT</h4>
+                    <pre><code class="language-sql">-- استرجاع جميع البيانات
+SELECT * FROM students;
+
+-- استرجاع بيانات محددة
+SELECT name, email FROM students;
+
+-- استرجاع بشرط
+SELECT * FROM students WHERE age > 21;
+
+-- ترتيب النتائج
+SELECT * FROM students ORDER BY name ASC;
+
+-- البحث باستخدام LIKE
+SELECT * FROM students WHERE name LIKE '%محمد%';</code></pre>
+                </div>
+                
+                <div class="code-card mb-4">
+                    <h4>الدرس 4: تحديث وحذف البيانات</h4>
+                    <pre><code class="language-sql">-- تحديث بيانات طالب
+UPDATE students 
+SET age = 23 
+WHERE name = 'أحمد محمد';
+
+-- حذف طالب
+DELETE FROM students 
+WHERE id = 1;
+
+-- حذف جميع البيانات (بحذر!)
+-- DELETE FROM students;</code></pre>
+                </div>
+            `;
         }
-        document.getElementById('userNameDisplay').innerText = userName;
         
-        // Add click handlers for all buttons
-        const allButtons = document.querySelectorAll('.btn-outline-tech, .btn-primary-tech');
-        allButtons.forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const btnText = this.innerText;
-                if (!btnText.includes('Submit') && !btnText.includes('Start')) {
-                    e.preventDefault();
-                    showTechToast(`📚 Opening "${btnText}" module. Content is ready for you!`, "success");
-                } else {
-                    showTechToast(`✅ Action initiated: ${btnText}. This is a demo environment.`, "info");
-                }
-            });
-        });
-        
-        // Smooth scroll for navigation links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                const href = this.getAttribute('href');
-                if (href && href !== '#') {
-                    e.preventDefault();
-                    const targetId = href.substring(1);
-                    const targetElement = document.getElementById(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                        showTechToast(`📖 Navigating to ${targetId} section`, "info");
-                    }
-                }
-            });
-        });
-    });
+        document.getElementById("tutorialContent").innerHTML = content;
+        Prism.highlightAll();
+    };
     
-    // Additional styling for toast
-    const style = document.createElement('style');
-    style.innerHTML = `
-        .toast {
-            background: #1e2a47 !important;
-            border-left: 4px solid #00d8ff;
-            color: white;
-            backdrop-filter: blur(10px);
-        }
-        .toast .btn-close-white {
-            filter: brightness(0) invert(1);
-        }
-        .progress-tech .progress-bar {
-            transition: width 0.5s ease;
-        }
-    `;
-    document.head.appendChild(style);
-</script>
+    window.checkCode = function() {
+        showToast("جرب كتابة الكود بنفسك في محرر Python! 🐍", "info");
+    };
 
-<noscript>
-    <div class="alert alert-warning text-center m-3">
-        <i class="fas fa-exclamation-triangle"></i> JavaScript is recommended for the best experience.
-    </div>
-</noscript>
+    // Load Courses
+    function loadCourses() {
+        const courses = [
+            { name: "Python للمبتدئين", icon: "fab fa-python", description: "تعلم أساسيات البرمجة بلغة Python من الصفر", lessons: 20, level: "مبتدئ" },
+            { name: "JavaScript الأساسي", icon: "fab fa-js", description: "لغة البرمجة الأساسية للويب", lessons: 18, level: "مبتدئ" },
+            { name: "React.js", icon: "fab fa-react", description: "بناء تطبيقات ويب تفاعلية", lessons: 15, level: "متوسط" },
+            { name: "Node.js", icon: "fab fa-node-js", description: "تطوير الخادم باستخدام JavaScript", lessons: 12, level: "متوسط" },
+            { name: "قواعد البيانات SQL", icon: "fas fa-database", description: "تعلم تصميم وإدارة قواعد البيانات", lessons: 14, level: "مبتدئ" },
+            { name: "HTML & CSS", icon: "fab fa-html5", description: "أساسيات تصميم المواقع", lessons: 16, level: "مبتدئ" }
+        ];
+        
+        const container = document.getElementById("coursesList");
+        container.innerHTML = `<div class="row">`;
+        courses.forEach(course => {
+            container.innerHTML += `
+                <div class="col-md-4 mb-4">
+                    <div class="course-card">
+                        <div class="course-icon">
+                            <i class="${course.icon}"></i>
+                        </div>
+                        <h4>${course.name}</h4>
+                        <p class="text-muted-tech small">${course.description}</p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <span class="badge-tech">${course.lessons} درس</span>
+                            <span class="badge-tech">${course.level}</span>
+                        </div>
+                        <button class="btn btn-primary-tech btn-sm w-100 mt-3" onclick="showToast('جاري تحضير المحتوى التعليمي لهذا الكورس 📚', 'info')">
+                            <i class="fas fa-play me-1"></i> ابدأ التعلم
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML += `</div>`;
+    }
 
-</body>
-</html>
+    // Load Exercises
+    function loadExercises() {
+        const exercises = [
+            { question: "ما هي لغة البرمجة المناسبة لتحليل البيانات والذكاء الاصطناعي؟", options: ["JavaScript", "Python", "C++", "Java"], correct: 1 },
+            { question: "ما هي الوظيفة المستخدمة لطباعة النص في بايثون؟", options: ["console.log()", "echo", "print()", "System.out.println()"], correct: 2 },
+            { question: "كيف نعلن عن متغير في JavaScript؟", options: ["var x = 5", "int x = 5", "x = 5", "let x = 5"], correct: 3 },
+            { question: "ما هو الامتداد المستخدم لملفات SQL؟", options: [".py", ".js", ".sql", ".html"], correct: 2 }
+        ];
+        
+        const container = document.getElementById("exercisesList");
+        container.innerHTML = `<div class="row">`;
+        exercises.forEach((ex, idx) => {
+            container.innerHTML += `
+                <div class="col-md-6 mb-4">
+                    <div class="course-card">
+                        <h5><i class="fas fa-question-circle me-2"></i> ${ex.question}</h5>
+                        <div id="quiz-${idx}" class="mt-3">
+                            ${ex.options.map((opt, optIdx) => `
+                                <div class="quiz-option" onclick="checkAnswer(${idx}, ${optIdx}, ${ex.correct})">
+                                    ${opt}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        container.innerHTML += `</div>`;
+    }
+
+    // Check answer function
+    window.checkAnswer = function(questionIdx, selectedIdx, correctIdx) {
+        const options = document.querySelectorAll(`#quiz-${questionIdx} .quiz-option`);
+        options.forEach(opt => opt.classList.remove('correct', 'wrong'));
+        
+        if (selectedIdx === correctIdx) {
+            options[selectedIdx].classList.add('correct');
+            showToast("✅ إجابة صحيحة! أحسنت!", "success");
+        } else {
+            options[selectedIdx].classList.add('wrong');
+            options[correctIdx].classList.add('correct');
+            showToast("❌ إجابة خاطئة، حاول مرة أخرى!", "error");
+        }
+    };
+
+    // Load Resources
+    function loadResources() {
+        const resources = [
+            { name: "W3Schools", url: "https://www.w3schools.com", description: "أفضل موقع لتعلم البرمجة", icon: "fab fa-chrome" },
+            { name: "MDN Web Docs", url: "https://developer.mozilla.org", description: "مرجع شامل لتطوير الويب", icon: "fab fa-firefox" },
+            { name: "GitHub", url: "https://github.com", description: "منصة للمشاريع البرمجية", icon: "fab fa-github" },
+            { name: "Stack Overflow", url: "https
