@@ -3,33 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Abdulrahman Tech Academy | Simple & Secure Programming Education</title>
+    <title>Abdulrahman Tech Academy | World-Class Programming Education</title>
     
     <!-- Security Headers -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.gstatic.com https://www.googleapis.com https://*.firebaseio.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://*.firebaseio.com https://*.googleapis.com;">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
     
     <!-- SEO -->
-    <meta name="description" content="Learn programming easily with simple explanations. Python, JavaScript, Web Development, and more. Free courses with certificates.">
-    <meta name="keywords" content="learn programming, python tutorial, javascript basics, web development, coding for beginners">
+    <meta name="description" content="World's largest free programming education platform. 500+ courses, 1000+ tutorials, Python, JavaScript, React, AI, and more. Join 100,000+ students worldwide!">
+    <meta name="keywords" content="programming, coding, learn to code, python, javascript, react, web development, data science, AI, machine learning, free courses">
     <meta name="author" content="Abdulrahman Tech Academy">
     
     <!-- Bootstrap & Font Awesome -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Prism.js for code highlighting -->
+    <!-- Prism.js -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
     
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    
     <style>
-        /* ==================== VARIABLES ==================== */
         :root {
             --primary-dark: #0a192f;
             --primary-accent: #00d8ff;
-            --primary-accent-hover: #00a6c4;
             --secondary-bg: #112240;
             --text-light: #e6f1ff;
             --text-muted: #8892b0;
@@ -40,33 +42,28 @@
             --danger: #ef4444;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background: linear-gradient(135deg, var(--primary-dark) 0%, #0f172a 100%);
             color: var(--text-light);
-            font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
             min-height: 100vh;
-            line-height: 1.6;
         }
 
-        /* ==================== NAVIGATION ==================== */
+        /* Navigation */
         .navbar-tech {
             background: rgba(10, 25, 47, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
-            padding: 0.8rem 0;
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
         .navbar-brand-tech {
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             font-weight: 800;
             background: linear-gradient(135deg, #ffffff, var(--primary-accent));
             -webkit-background-clip: text;
@@ -78,7 +75,7 @@
             color: var(--text-muted) !important;
             transition: 0.3s;
             font-weight: 500;
-            margin: 0 8px;
+            margin: 0 12px;
             cursor: pointer;
         }
 
@@ -86,99 +83,114 @@
             color: var(--primary-accent) !important;
         }
 
-        /* ==================== CARDS & CONTAINERS ==================== */
-        .welcome-card, .lesson-card, .topic-card, .code-card {
+        /* User Avatar */
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-accent);
+            cursor: pointer;
+            object-fit: cover;
+        }
+
+        .user-menu {
+            position: relative;
+        }
+
+        .user-dropdown {
+            position: absolute;
+            top: 55px;
+            right: 0;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 0.8rem;
+            min-width: 200px;
+            display: none;
+            z-index: 1001;
+        }
+
+        .user-dropdown.show {
+            display: block;
+        }
+
+        /* Cards */
+        .hero-section {
+            background: linear-gradient(135deg, var(--secondary-bg), var(--card-bg));
+            border-radius: 32px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .stat-card, .course-card, .tutorial-card {
             background: rgba(30, 42, 71, 0.6);
             backdrop-filter: blur(5px);
             border-radius: 24px;
             border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-        }
-
-        .welcome-card {
-            padding: 2rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(135deg, var(--secondary-bg), var(--card-bg));
-        }
-
-        .lesson-card {
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            cursor: pointer;
-        }
-
-        .lesson-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary-accent);
-        }
-
-        .topic-card {
-            padding: 1.5rem;
+            transition: all 0.3s;
+            padding: 1.8rem;
             height: 100%;
-            cursor: pointer;
-            text-align: center;
         }
 
-        .topic-card:hover {
+        .stat-card:hover, .course-card:hover, .tutorial-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary-accent);
         }
 
-        .code-card {
-            padding: 1.5rem;
-            background: #0d1117;
-            border-left: 4px solid var(--primary-accent);
-            margin-bottom: 1.5rem;
+        .course-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-accent), #0077b6);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
         }
 
-        /* ==================== CODE STYLES ==================== */
-        pre {
-            background: #0d1117;
-            padding: 1.2rem;
-            border-radius: 16px;
-            overflow-x: auto;
-            margin: 1rem 0;
-            position: relative;
-        }
-
-        code {
-            font-family: 'Fira Code', 'Courier New', monospace;
-            font-size: 0.9rem;
-        }
-
-        .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--primary-accent);
-            border: none;
-            border-radius: 8px;
-            padding: 5px 12px;
-            font-size: 0.7rem;
+        .course-icon i {
+            font-size: 2.5rem;
             color: var(--primary-dark);
-            cursor: pointer;
-            transition: 0.2s;
         }
 
-        .copy-btn:hover {
-            background: #ffffff;
+        /* Progress Bar */
+        .progress-tech {
+            height: 8px;
+            background: var(--primary-dark);
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        /* ==================== BADGES & BUTTONS ==================== */
+        .progress-tech .progress-bar {
+            background: var(--primary-accent);
+            border-radius: 10px;
+            transition: width 0.5s;
+        }
+
+        /* Badges */
         .badge-tech {
             background: rgba(0, 216, 255, 0.15);
             color: var(--primary-accent);
             padding: 6px 14px;
             border-radius: 30px;
             font-size: 0.75rem;
-            font-weight: 500;
         }
 
+        .badge-level {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+        }
+
+        /* Buttons */
         .btn-primary-tech {
             background: linear-gradient(95deg, var(--primary-accent), #0099cc);
             border: none;
             border-radius: 40px;
-            padding: 12px 28px;
+            padding: 12px 32px;
             font-weight: 600;
             color: #0a192f;
             transition: all 0.2s;
@@ -194,7 +206,7 @@
             border-radius: 40px;
             background: transparent;
             color: var(--primary-accent);
-            padding: 8px 20px;
+            padding: 10px 24px;
             transition: 0.2s;
         }
 
@@ -203,101 +215,78 @@
             color: #0a192f;
         }
 
-        /* ==================== QUIZ STYLES ==================== */
-        .quiz-option {
+        /* Login Modal */
+        .modal-content {
             background: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 0.9rem;
-            margin-bottom: 0.6rem;
-            cursor: pointer;
-            transition: all 0.2s;
+            border-radius: 24px;
         }
 
-        .quiz-option:hover {
-            border-color: var(--primary-accent);
-            background: rgba(0, 216, 255, 0.1);
+        .btn-google {
+            background: #ffffff;
+            color: #333;
+            border: none;
+            border-radius: 40px;
+            padding: 12px;
+            font-weight: 500;
         }
 
-        .quiz-option.correct {
-            border-color: var(--success);
-            background: rgba(16, 185, 129, 0.2);
-        }
-
-        .quiz-option.wrong {
-            border-color: var(--danger);
-            background: rgba(239, 68, 68, 0.2);
-        }
-
-        /* ==================== TOAST MESSAGES ==================== */
+        /* Toast */
         .toast-custom {
             position: fixed;
-            top: 20px;
+            top: 80px;
             right: 20px;
             z-index: 1100;
             max-width: 350px;
         }
 
-        .toast {
-            background: var(--card-bg);
-            border-left: 4px solid var(--primary-accent);
-        }
-
-        /* ==================== RATE LIMIT PROTECTION ==================== */
-        .rate-limit-message {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: var(--danger);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-            z-index: 2000;
-            display: none;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        }
-
-        /* ==================== FOOTER ==================== */
+        /* Footer */
         .footer-tech {
             background: #071426;
             border-top: 1px solid var(--border-color);
-            font-size: 0.85rem;
-            margin-top: 3rem;
-            padding: 2rem 0;
-        }
-
-        /* ==================== UTILITIES ==================== */
-        .simple-explanation {
-            background: rgba(0, 216, 255, 0.05);
-            border-radius: 16px;
-            padding: 1rem;
-            margin: 1rem 0;
-            border-left: 3px solid var(--primary-accent);
+            margin-top: 4rem;
+            padding: 2.5rem 0;
         }
 
         @media (max-width: 768px) {
-            .welcome-card { padding: 1.5rem; }
-            .lesson-card { padding: 1rem; }
+            .hero-section { padding: 2rem; }
+            .stat-card { padding: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- Rate Limit Protection -->
-<div id="rateLimitMessage" class="rate-limit-message">
-    <i class="fas fa-shield-alt me-2"></i> Slow down! Please wait a moment.
-</div>
-
 <!-- Toast Container -->
 <div id="toastContainer" class="toast-custom"></div>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header border-0">
+                <h3 class="modal-title">Welcome to Abdulrahman Tech Academy</h3>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center p-4">
+                <i class="fas fa-microchip" style="font-size: 4rem; color: var(--primary-accent);"></i>
+                <h4 class="mt-3">Join the largest programming community!</h4>
+                <p class="text-muted">100,000+ students learning together</p>
+                <button id="googleLoginBtn" class="btn btn-google w-100 mt-3">
+                    <i class="fab fa-google me-2"></i> Continue with Google
+                </button>
+                <hr class="my-4">
+                <p class="small text-muted">By signing up, you agree to our Terms of Service</p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Main Content -->
 <div id="mainContent">
     <!-- Navigation -->
     <nav class="navbar-tech navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand-tech navbar-brand" href="#" onclick="showSection('home'); return false;">
+            <a class="navbar-brand-tech navbar-brand" href="#" onclick="showSection('home')">
                 <i class="fas fa-microchip"></i>
                 Abdulrahman<span style="color:white">.Tech</span>
             </a>
@@ -307,178 +296,297 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link-tech nav-link active" data-section="home" onclick="showSection('home')">🏠 Home</a></li>
-                    <li class="nav-item"><a class="nav-link-tech nav-link" data-section="learn" onclick="showSection('learn')">📚 Learn</a></li>
+                    <li class="nav-item"><a class="nav-link-tech nav-link" data-section="courses" onclick="showSection('courses')">📚 Courses</a></li>
+                    <li class="nav-item"><a class="nav-link-tech nav-link" data-section="tutorials" onclick="showSection('tutorials')">📖 Tutorials</a></li>
                     <li class="nav-item"><a class="nav-link-tech nav-link" data-section="practice" onclick="showSection('practice')">✍️ Practice</a></li>
-                    <li class="nav-item"><a class="nav-link-tech nav-link" data-section="resources" onclick="showSection('resources')">📖 Resources</a></li>
+                    <li class="nav-item"><a class="nav-link-tech nav-link" data-section="community" onclick="showSection('community')">👥 Community</a></li>
+                    <li class="nav-item"><a class="nav-link-tech nav-link" data-section="certificates" onclick="showSection('certificates')">🎓 Certificates</a></li>
                 </ul>
+                <div id="userInfo" class="d-flex align-items-center gap-3">
+                    <div id="userLoggedOut" style="display: block;">
+                        <button class="btn btn-outline-tech" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <i class="fas fa-user me-2"></i>Sign In
+                        </button>
+                    </div>
+                    <div id="userLoggedIn" style="display: none;" class="user-menu">
+                        <img id="userAvatar" class="user-avatar" onclick="toggleUserMenu()">
+                        <div id="userDropdown" class="user-dropdown">
+                            <div class="d-flex align-items-center gap-3 p-2 border-bottom">
+                                <img id="dropdownAvatar" style="width: 40px; height: 40px; border-radius: 50%;">
+                                <div>
+                                    <div id="dropdownName" class="fw-bold"></div>
+                                    <div id="dropdownLevel" class="small text-muted"></div>
+                                </div>
+                            </div>
+                            <div class="mt-2">
+                                <div class="dropdown-item p-2" onclick="showSection('profile')"><i class="fas fa-user me-2"></i>My Profile</div>
+                                <div class="dropdown-item p-2" onclick="showSection('progress')"><i class="fas fa-chart-line me-2"></i>My Progress</div>
+                                <div class="dropdown-item p-2" onclick="showSection('certificates')"><i class="fas fa-certificate me-2"></i>Certificates</div>
+                                <hr class="my-1">
+                                <div class="dropdown-item p-2 text-danger" onclick="logout()"><i class="fas fa-sign-out-alt me-2"></i>Sign Out</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Main Content Area -->
+    <!-- Main Content -->
     <div class="main-content py-4">
         <div class="container">
             
             <!-- ==================== HOME SECTION ==================== -->
             <div id="homeSection">
-                <div class="welcome-card">
-                    <div class="row align-items-center">
-                        <div class="col-md-8">
-                            <h1 class="display-4 fw-bold">
-                                <i class="fas fa-graduation-cap me-2" style="color: var(--primary-accent);"></i>
-                                Learn Programming<br>with Simple Explanations
-                            </h1>
-                            <p class="lead mt-3">No complicated jargon. Just clear, simple explanations for every concept. Perfect for beginners!</p>
-                            <div class="mt-4">
-                                <button class="btn btn-primary-tech me-2" onclick="showSection('learn')">Start Learning →</button>
-                                <button class="btn btn-outline-tech" onclick="showSection('practice')">Try Exercises</button>
-                            </div>
-                            <div class="mt-4">
-                                <span class="badge-tech me-2"><i class="fab fa-python"></i> Python</span>
-                                <span class="badge-tech me-2"><i class="fab fa-js"></i> JavaScript</span>
-                                <span class="badge-tech me-2"><i class="fab fa-html5"></i> HTML/CSS</span>
-                                <span class="badge-tech"><i class="fas fa-database"></i> SQL</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 text-center">
-                            <i class="fas fa-laptop-code" style="font-size: 6rem; color: var(--primary-accent); opacity: 0.7;"></i>
-                        </div>
-                    </div>
+                <div class="hero-section">
+                    <h1 class="display-3 fw-bold mb-3">Master Programming <span style="color: var(--primary-accent);">For Free</span></h1>
+                    <p class="lead mb-4">Join 100,000+ students learning Python, JavaScript, React, AI, and more. Get certificates, track progress, and build real projects!</p>
+                    <button class="btn btn-primary-tech btn-lg me-3" onclick="showSection('courses')">Start Learning →</button>
+                    <button class="btn btn-outline-tech btn-lg" data-bs-toggle="modal" data-bs-target="#loginModal">Sign Up Free</button>
                 </div>
 
-                <!-- What You'll Learn -->
-                <h3 class="mb-4"><i class="fas fa-question-circle me-2" style="color: var(--primary-accent);"></i> What You'll Learn</h3>
+                <!-- Statistics -->
                 <div class="row mb-5">
                     <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="topic-card" onclick="loadTopic('python')">
-                            <i class="fab fa-python" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
-                            <h5 class="mt-2">Python</h5>
-                            <p class="small text-muted">Easy to learn, powerful language</p>
+                        <div class="stat-card text-center">
+                            <i class="fas fa-book-open" style="font-size: 3rem; color: var(--primary-accent);"></i>
+                            <h2 class="mt-2">500+</h2>
+                            <p class="text-muted">Interactive Courses</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="topic-card" onclick="loadTopic('javascript')">
-                            <i class="fab fa-js" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
-                            <h5 class="mt-2">JavaScript</h5>
-                            <p class="small text-muted">Language of the web</p>
+                        <div class="stat-card text-center">
+                            <i class="fas fa-users" style="font-size: 3rem; color: var(--primary-accent);"></i>
+                            <h2 class="mt-2">100K+</h2>
+                            <p class="text-muted">Active Students</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="topic-card" onclick="loadTopic('web')">
-                            <i class="fab fa-html5" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
-                            <h5 class="mt-2">Web Dev</h5>
-                            <p class="small text-muted">Build websites</p>
+                        <div class="stat-card text-center">
+                            <i class="fas fa-certificate" style="font-size: 3rem; color: var(--primary-accent);"></i>
+                            <h2 class="mt-2">50+</h2>
+                            <p class="text-muted">Professional Certificates</p>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6 mb-3">
-                        <div class="topic-card" onclick="loadTopic('sql')">
-                            <i class="fas fa-database" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
-                            <h5 class="mt-2">SQL</h5>
-                            <p class="small text-muted">Work with data</p>
+                        <div class="stat-card text-center">
+                            <i class="fas fa-code" style="font-size: 3rem; color: var(--primary-accent);"></i>
+                            <h2 class="mt-2">2000+</h2>
+                            <p class="text-muted">Coding Exercises</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Simple Explanation Example -->
-                <div class="welcome-card">
-                    <h4><i class="fas fa-lightbulb me-2" style="color: var(--primary-accent);"></i> How This Platform Works</h4>
-                    <div class="simple-explanation">
-                        <i class="fas fa-check-circle me-2" style="color: var(--success);"></i>
-                        <strong>Simple Explanations:</strong> Every concept is explained in plain English with real-world examples
+                <!-- Featured Categories -->
+                <h3 class="mb-4"><i class="fas fa-star me-2" style="color: var(--primary-accent);"></i> Popular Categories</h3>
+                <div class="row mb-5">
+                    <div class="col-md-2 col-4 mb-3">
+                        <div class="tutorial-card text-center" onclick="loadCategory('python')">
+                            <i class="fab fa-python" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
+                            <h6 class="mt-2">Python</h6>
+                        </div>
                     </div>
-                    <div class="simple-explanation">
-                        <i class="fas fa-code me-2" style="color: var(--primary-accent);"></i>
-                        <strong>Live Code Examples:</strong> Copy, paste, and run the code yourself
+                    <div class="col-md-2 col-4 mb-3">
+                        <div class="tutorial-card text-center" onclick="loadCategory('javascript')">
+                            <i class="fab fa-js" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
+                            <h6 class="mt-2">JavaScript</h6>
+                        </div>
                     </div>
-                    <div class="simple-explanation">
-                        <i class="fas fa-puzzle-piece me-2" style="color: var(--warning);"></i>
-                        <strong>Interactive Exercises:</strong> Test your knowledge with quizzes
+                    <div class="col-md-2 col-4 mb-3">
+                        <div class="tutorial-card text-center" onclick="loadCategory('react')">
+                            <i class="fab fa-react" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
+                            <h6 class="mt-2">React</h6>
+                        </div>
                     </div>
-                    <div class="simple-explanation">
-                        <i class="fas fa-shield-alt me-2" style="color: var(--success);"></i>
-                        <strong>Secure & Fast:</strong> Protected against attacks, optimized for speed
+                    <div class="col-md-2 col-4 mb-3">
+                        <div class="tutorial-card text-center" onclick="loadCategory('web')">
+                            <i class="fab fa-html5" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
+                            <h6 class="mt-2">Web Dev</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-4 mb-3">
+                        <div class="tutorial-card text-center" onclick="loadCategory('data')">
+                            <i class="fas fa-chart-line" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
+                            <h6 class="mt-2">Data Science</h6>
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-4 mb-3">
+                        <div class="tutorial-card text-center" onclick="loadCategory('ai')">
+                            <i class="fas fa-brain" style="font-size: 2.5rem; color: var(--primary-accent);"></i>
+                            <h6 class="mt-2">AI & ML</h6>
+                        </div>
                     </div>
                 </div>
+
+                <!-- Latest Courses -->
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h3><i class="fas fa-graduation-cap me-2" style="color: var(--primary-accent);"></i> Latest Courses</h3>
+                    <a href="#" onclick="showSection('courses')" class="text-primary-accent">View All →</a>
+                </div>
+                <div class="row" id="featuredCourses"></div>
             </div>
 
-            <!-- ==================== LEARN SECTION ==================== -->
-            <div id="learnSection" style="display: none;">
-                <div id="learnContent"></div>
+            <!-- ==================== COURSES SECTION ==================== -->
+            <div id="coursesSection" style="display: none;">
+                <h2 class="mb-4"><i class="fas fa-graduation-cap me-2" style="color: var(--primary-accent);"></i> All Courses</h2>
+                <div class="row" id="allCoursesList"></div>
+            </div>
+
+            <!-- ==================== TUTORIALS SECTION ==================== -->
+            <div id="tutorialsSection" style="display: none;">
+                <div id="tutorialContent"></div>
             </div>
 
             <!-- ==================== PRACTICE SECTION ==================== -->
             <div id="practiceSection" style="display: none;">
-                <div class="welcome-card">
-                    <h2><i class="fas fa-puzzle-piece me-2" style="color: var(--primary-accent);"></i> Test Your Knowledge</h2>
-                    <p>Answer these simple questions to check your understanding. Click on an answer to see if you're correct!</p>
+                <div class="hero-section">
+                    <h2>Practice Coding Challenges</h2>
+                    <p>Test your skills with our interactive exercises</p>
                 </div>
-                <div id="practiceContent" class="row"></div>
+                <div class="row" id="practiceList"></div>
             </div>
 
-            <!-- ==================== RESOURCES SECTION ==================== -->
-            <div id="resourcesSection" style="display: none;">
-                <div class="welcome-card">
-                    <h2><i class="fas fa-book me-2" style="color: var(--primary-accent);"></i> Free Learning Resources</h2>
-                    <p>These are the best places to continue your programming journey - all completely free!</p>
+            <!-- ==================== COMMUNITY SECTION ==================== -->
+            <div id="communitySection" style="display: none;">
+                <div class="hero-section">
+                    <h2><i class="fas fa-users me-2"></i> Student Community</h2>
+                    <p>Connect with 100,000+ learners worldwide</p>
                 </div>
-                <div class="row" id="resourcesContent"></div>
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="stat-card">
+                            <h4><i class="fas fa-comments"></i> Discussion Forum</h4>
+                            <p>Ask questions, share knowledge, and help others</p>
+                            <button class="btn btn-outline-tech">Join Discussion</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="stat-card">
+                            <h4><i class="fas fa-trophy"></i> Leaderboard</h4>
+                            <p>Compete with other students and earn badges</p>
+                            <button class="btn btn-outline-tech">View Rankings</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== CERTIFICATES SECTION ==================== -->
+            <div id="certificatesSection" style="display: none;">
+                <div class="hero-section">
+                    <h2><i class="fas fa-certificate me-2"></i> Earn Professional Certificates</h2>
+                    <p>Complete courses and get verified certificates</p>
+                </div>
+                <div class="row" id="certificatesList"></div>
+            </div>
+
+            <!-- ==================== PROFILE SECTION ==================== -->
+            <div id="profileSection" style="display: none;">
+                <div class="hero-section">
+                    <div class="row align-items-center">
+                        <div class="col-md-3 text-center">
+                            <img id="profileAvatarLarge" style="width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--primary-accent);">
+                        </div>
+                        <div class="col-md-9 text-start">
+                            <h2 id="profileNameLarge"></h2>
+                            <p id="profileEmailLarge" class="text-muted"></p>
+                            <div class="mt-3">
+                                <span class="badge-level" id="profileLevelBadge">Beginner</span>
+                                <span class="badge-tech ms-2"><i class="fas fa-star"></i> <span id="profilePoints">0</span> XP</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="stat-card">
+                            <h4>Learning Statistics</h4>
+                            <div class="mt-3">
+                                <p><i class="fas fa-book-open me-2"></i> Courses Completed: <strong id="profileCompletedCourses">0</strong></p>
+                                <p><i class="fas fa-tasks me-2"></i> Exercises Done: <strong id="profileExercises">0</strong></p>
+                                <p><i class="fas fa-clock me-2"></i> Learning Hours: <strong id="profileHours">0</strong></p>
+                                <p><i class="fas fa-certificate me-2"></i> Certificates: <strong id="profileCertificates">0</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="stat-card">
+                            <h4>Current Level Progress</h4>
+                            <div class="progress-tech mt-3">
+                                <div class="progress-bar" id="profileProgressBar" style="width: 0%"></div>
+                            </div>
+                            <p class="mt-2 text-muted">Complete courses to level up!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== PROGRESS SECTION ==================== -->
+            <div id="progressSection" style="display: none;">
+                <div class="hero-section">
+                    <h2>My Learning Progress</h2>
+                    <p>Track your journey to becoming a professional developer</p>
+                </div>
+                <div class="row" id="progressList"></div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="footer-tech">
         <div class="container">
             <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <div class="small text-muted">
-                        <i class="fas fa-shield-alt me-1"></i> Secure Platform | No Tracking | 100% Free
+                <div class="col-md-4 mb-4">
+                    <h5>Abdulrahman Tech Academy</h5>
+                    <p class="small text-muted">World's largest free programming education platform</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="text-muted">About Us</a></li>
+                        <li><a href="#" class="text-muted">Contact</a></li>
+                        <li><a href="#" class="text-muted">Privacy Policy</a></li>
+                        <li><a href="#" class="text-muted">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Follow Us</h5>
+                    <div class="d-flex gap-3">
+                        <i class="fab fa-facebook fa-lg text-muted"></i>
+                        <i class="fab fa-twitter fa-lg text-muted"></i>
+                        <i class="fab fa-linkedin fa-lg text-muted"></i>
+                        <i class="fab fa-youtube fa-lg text-muted"></i>
                     </div>
                 </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <div class="small text-muted">© 2026 Abdulrahman Tech Academy - Simple. Clear. Effective.</div>
-                </div>
             </div>
+            <hr class="border-secondary">
+            <div class="text-center text-muted small">© 2026 Abdulrahman Tech Academy - Empowering 100,000+ Developers Worldwide</div>
         </div>
     </footer>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-css.min.js"></script>
 
 <script>
-    // ==================== SECURITY & RATE LIMITING ====================
-    let requestCount = 0;
-    let lastReset = Date.now();
-    let isLimited = false;
+    // ==================== FIREBASE CONFIGURATION ====================
+    // IMPORTANT: You need to create a Firebase project at https://console.firebase.google.com
+    // and replace these values with your own
+    const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT.firebaseapp.com",
+        projectId: "YOUR_PROJECT",
+        storageBucket: "YOUR_PROJECT.appspot.com",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID"
+    };
     
-    function checkRateLimit() {
-        const now = Date.now();
-        if (now - lastReset > 60000) {
-            requestCount = 0;
-            lastReset = now;
-            isLimited = false;
-            document.getElementById('rateLimitMessage').style.display = 'none';
-        }
-        requestCount++;
-        if (requestCount > 30 && !isLimited) {
-            isLimited = true;
-            document.getElementById('rateLimitMessage').style.display = 'block';
-            setTimeout(() => {
-                document.getElementById('rateLimitMessage').style.display = 'none';
-                isLimited = false;
-                requestCount = 0;
-            }, 60000);
-            return false;
-        }
-        return true;
-    }
+    // Initialize Firebase (uncomment when you have your config)
+    // firebase.initializeApp(firebaseConfig);
+    // const auth = firebase.auth();
+    // const db = firebase.firestore();
     
-    // ==================== TOAST NOTIFICATION ====================
+    // For demo purposes, we'll use localStorage (remove this when using Firebase)
+    let currentUser = null;
+    
     function showToast(message, type = 'success') {
         const container = document.getElementById('toastContainer');
         const toast = document.createElement('div');
@@ -487,24 +595,25 @@
         toast.innerHTML = `
             <div class="d-flex">
                 <div class="toast-body">
-                    <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-triangle' : 'info-circle'} me-2"></i>
+                    <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'} me-2"></i>
                     ${message}
                 </div>
                 <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
             </div>
         `;
         container.appendChild(toast);
-        setTimeout(() => toast.remove(), 3500);
+        setTimeout(() => toast.remove(), 4000);
     }
     
-    // ==================== NAVIGATION ====================
     function showSection(section) {
-        if (!checkRateLimit()) return;
-        
         document.getElementById('homeSection').style.display = 'none';
-        document.getElementById('learnSection').style.display = 'none';
+        document.getElementById('coursesSection').style.display = 'none';
+        document.getElementById('tutorialsSection').style.display = 'none';
         document.getElementById('practiceSection').style.display = 'none';
-        document.getElementById('resourcesSection').style.display = 'none';
+        document.getElementById('communitySection').style.display = 'none';
+        document.getElementById('certificatesSection').style.display = 'none';
+        document.getElementById('profileSection').style.display = 'none';
+        document.getElementById('progressSection').style.display = 'none';
         document.getElementById(`${section}Section`).style.display = 'block';
         
         document.querySelectorAll('.nav-link-tech').forEach(link => {
@@ -512,174 +621,116 @@
             if (link.getAttribute('data-section') === section) link.classList.add('active');
         });
         
-        if (section === 'learn') loadTopic('python');
+        if (section === 'courses') loadAllCourses();
         if (section === 'practice') loadPractice();
-        if (section === 'resources') loadResources();
+        if (section === 'certificates') loadCertificates();
+        if (section === 'progress') loadProgress();
     }
     
-    // ==================== LOAD TOPIC (SIMPLE EXPLANATIONS) ====================
-    window.loadTopic = function(topic) {
-        if (!checkRateLimit()) return;
-        showSection('learn');
-        
-        const topics = {
-            python: {
-                title: "🐍 Python Programming - Simple Guide",
-                lessons: [
-                    { title: "What is Python?", explanation: "Python is like giving instructions to your computer in simple English. It's one of the easiest programming languages to learn!", code: "# This is a Python program\nprint('Hello, World!')" },
-                    { title: "Variables - Storing Information", explanation: "Variables are like labeled boxes where you store information. You can put numbers, text, or any data in them.", code: "# Storing different types of information\nname = 'Ahmed'        # Text (string)\nage = 25              # Number (integer)\nheight = 1.75         # Decimal (float)\nis_student = True     # Yes/No (boolean)\n\nprint(f'Name: {name}')\nprint(f'Age: {age}')" },
-                    { title: "Making Decisions (If Statements)", explanation: "Computers can make decisions just like humans. If something is true, do this; otherwise, do that.", code: "# Simple decision making\nscore = 85\n\nif score >= 90:\n    print('Excellent! Grade A')\nelif score >= 80:\n    print('Good job! Grade B')\nelif score >= 70:\n    print('Not bad! Grade C')\nelse:\n    print('Keep practicing!')" },
-                    { title: "Repeating Actions (Loops)", explanation: "Loops let you repeat actions. Instead of writing the same code 10 times, you write it once and tell it to repeat.", code: "# Print numbers 1 to 5\nfor i in range(1, 6):\n    print(f'Number: {i}')\n\n# Repeat a message 3 times\nfor x in range(3):\n    print('I am learning Python!')" },
-                    { title: "Functions - Reusable Code", explanation: "Functions are like recipes. You write the instructions once, then you can use them whenever you need.", code: "# Define a function (recipe)\ndef greet(name):\n    return f'Hello, {name}!'\n\ndef add(a, b):\n    return a + b\n\n# Use the functions\nprint(greet('Ahmed'))\nprint(f'Sum: {add(5, 3)}')" }
-                ]
-            },
-            javascript: {
-                title: "⚡ JavaScript - Web Programming",
-                lessons: [
-                    { title: "What is JavaScript?", explanation: "JavaScript makes websites interactive. It runs in your browser and can change what you see on the page without reloading.", code: "// This is JavaScript\nconsole.log('Hello from JavaScript!');\nalert('Welcome!');" },
-                    { title: "Variables in JavaScript", explanation: "Variables store information. Use 'let' for things that change, 'const' for things that stay the same.", code: "// Variables in JavaScript\nlet name = 'Ahmed';\nconst age = 25;\nlet isStudent = true;\n\nconsole.log(name);\nconsole.log(age);" },
-                    { title: "Functions in JavaScript", explanation: "Functions are blocks of code you can reuse. They can take inputs and return outputs.", code: "// Function to greet someone\nfunction greet(name) {\n    return `Hello, ${name}!`;\n}\n\n// Arrow function (modern style)\nconst add = (a, b) => a + b;\n\nconsole.log(greet('Ahmed'));\nconsole.log(add(10, 5));" }
-                ]
-            },
-            web: {
-                title: "🌐 Web Development - HTML & CSS",
-                lessons: [
-                    { title: "HTML - Page Structure", explanation: "HTML is the skeleton of a website. It defines the structure with tags like headings, paragraphs, and images.", code: "<!DOCTYPE html>\n<html>\n<head>\n    <title>My First Page</title>\n</head>\n<body>\n    <h1>Welcome to My Website</h1>\n    <p>This is a paragraph.</p>\n    <img src='photo.jpg' alt='My photo'>\n</body>\n</html>" },
-                    { title: "CSS - Make It Beautiful", explanation: "CSS adds style - colors, fonts, layouts. It makes your website look good!", code: "/* CSS Styling */\nbody {\n    font-family: Arial, sans-serif;\n    background-color: #f0f0f0;\n}\n\nh1 {\n    color: blue;\n    text-align: center;\n}\n\n.button {\n    background-color: green;\n    color: white;\n    padding: 10px 20px;\n    border-radius: 5px;\n}" }
-                ]
-            },
-            sql: {
-                title: "📊 SQL - Working with Databases",
-                lessons: [
-                    { title: "What is SQL?", explanation: "SQL (Structured Query Language) lets you talk to databases. You can store, find, and organize data easily.", code: "-- Create a table\nCREATE TABLE students (\n    id INT,\n    name TEXT,\n    age INT\n);\n\n-- Add data\nINSERT INTO students VALUES (1, 'Ahmed', 22);\nINSERT INTO students VALUES (2, 'Sara', 21);\n\n-- Get data\nSELECT * FROM students;\nSELECT name FROM students WHERE age > 20;" }
-                ]
-            }
+    function toggleUserMenu() {
+        document.getElementById('userDropdown').classList.toggle('show');
+    }
+    
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.user-menu')) {
+            document.getElementById('userDropdown').classList.remove('show');
+        }
+    });
+    
+    // ==================== AUTH FUNCTIONS ====================
+    function updateUIForUser(user) {
+        if (user) {
+            document.getElementById('userLoggedOut').style.display = 'none';
+            document.getElementById('userLoggedIn').style.display = 'flex';
+            document.getElementById('userAvatar').src = user.photoURL || 'https://via.placeholder.com/45';
+            document.getElementById('dropdownAvatar').src = user.photoURL || 'https://via.placeholder.com/40';
+            document.getElementById('dropdownName').innerText = user.displayName || user.email;
+            document.getElementById('dropdownLevel').innerHTML = '<span class="badge-level">Level 1</span>';
+            document.getElementById('profileNameLarge').innerText = user.displayName || user.email;
+            document.getElementById('profileEmailLarge').innerText = user.email;
+            document.getElementById('profileAvatarLarge').src = user.photoURL || 'https://via.placeholder.com/150';
+        } else {
+            document.getElementById('userLoggedOut').style.display = 'block';
+            document.getElementById('userLoggedIn').style.display = 'none';
+        }
+    }
+    
+    function loginWithGoogle() {
+        showToast('Google login coming soon! Create a Firebase project first.', 'info');
+        // Uncomment when Firebase is configured
+        /*
+        const provider = new firebase.auth.GoogleAuthProvider();
+        auth.signInWithPopup(provider).then(result => {
+            currentUser = result.user;
+            updateUIForUser(currentUser);
+            bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+            showToast(`Welcome ${currentUser.displayName}!`, 'success');
+        }).catch(error => {
+            showToast(error.message, 'error');
+        });
+        */
+    }
+    
+    function logout() {
+        currentUser = null;
+        updateUIForUser(null);
+        showToast('Logged out successfully', 'info');
+        showSection('home');
+    }
+    
+    // Demo login for testing
+    function demoLogin() {
+        currentUser = {
+            displayName: 'Demo Student',
+            email: 'student@example.com',
+            photoURL: 'https://via.placeholder.com/45'
         };
+        updateUIForUser(currentUser);
+        bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+        showToast('Welcome to Abdulrahman Tech Academy!', 'success');
+    }
+    
+    document.getElementById('googleLoginBtn').onclick = demoLogin;
+    
+    // ==================== LOAD CONTENT ====================
+    function loadAllCourses() {
+        const courses = [
+            { name: "Python Mastery", icon: "fab fa-python", desc: "From basics to advanced, build real applications", lessons: 50, level: "All Levels" },
+            { name: "JavaScript Deep Dive", icon: "fab fa-js", desc: "Modern ES6+, async programming, frameworks", lessons: 45, level: "Beginner to Advanced" },
+            { name: "React Complete Guide", icon: "fab fa-react", desc: "Build modern web apps with React", lessons: 40, level: "Intermediate" },
+            { name: "Full Stack Web Dev", icon: "fab fa-node-js", desc: "MERN stack, databases, deployment", lessons: 55, level: "Intermediate" },
+            { name: "Data Science & AI", icon: "fas fa-brain", desc: "Pandas, NumPy, Machine Learning", lessons: 48, level: "Advanced" },
+            { name: "Cybersecurity", icon: "fas fa-shield-alt", desc: "Protect systems, ethical hacking", lessons: 35, level: "Intermediate" },
+            { name: "Cloud Computing", icon: "fas fa-cloud", desc: "AWS, Azure, DevOps practices", lessons: 42, level: "Intermediate" },
+            { name: "Mobile Development", icon: "fas fa-mobile-alt", desc: "React Native, Flutter basics", lessons: 38, level: "Beginner" }
+        ];
         
-        const data = topics[topic] || topics.python;
-        let html = `
-            <div class="welcome-card">
-                <h1>${data.title}</h1>
-                <p class="lead">Simple explanations with code examples you can try!</p>
+        const container = document.getElementById('allCoursesList');
+        container.innerHTML = courses.map(course => `
+            <div class="col-md-4 col-lg-3 mb-4">
+                <div class="course-card" onclick="loadCategory('${course.name.toLowerCase().split(' ')[0]}')">
+                    <div class="course-icon"><i class="${course.icon}"></i></div>
+                    <h5>${course.name}</h5>
+                    <p class="small text-muted">${course.desc}</p>
+                    <div class="d-flex justify-content-between mt-2">
+                        <span class="badge-tech">${course.lessons} lessons</span>
+                        <span class="badge-tech">${course.level}</span>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+    
+    window.loadCategory = function(category) {
+        showSection('tutorials');
+        let content = `
+            <div class="hero-section">
+                <h2>${category.toUpperCase()} Programming Course</h2>
+                <p>Master ${category} with our comprehensive tutorials</p>
             </div>
         `;
         
-        data.lessons.forEach((lesson, idx) => {
-            html += `
-                <div class="lesson-card">
-                    <h3><i class="fas fa-book-open me-2" style="color: var(--primary-accent);"></i> ${lesson.title}</h3>
-                    <div class="simple-explanation">
-                        <i class="fas fa-lightbulb me-2" style="color: var(--warning);"></i>
-                        <strong>Simple Explanation:</strong> ${lesson.explanation}
-                    </div>
-                    <div style="position: relative;">
-                        <pre><code class="language-${topic === 'python' ? 'python' : topic === 'javascript' ? 'javascript' : topic === 'web' ? 'html' : 'sql'}">${escapeHtml(lesson.code)}</code></pre>
-                        <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-                    </div>
-                    <div class="simple-explanation mt-2">
-                        <i class="fas fa-play me-2" style="color: var(--success);"></i>
-                        <strong>Try it:</strong> Copy this code, paste it in a Python/JavaScript environment, and see what happens!
-                    </div>
-                </div>
-            `;
-        });
-        
-        document.getElementById('learnContent').innerHTML = html;
-        Prism.highlightAll();
-    };
-    
-    function escapeHtml(str) {
-        return str.replace(/[&<>]/g, function(m) {
-            if (m === '&') return '&amp;';
-            if (m === '<') return '&lt;';
-            if (m === '>') return '&gt;';
-            return m;
-        });
-    }
-    
-    window.copyCode = function(btn) {
-        const code = btn.parentElement.querySelector('code').innerText;
-        navigator.clipboard.writeText(code);
-        btn.textContent = 'Copied!';
-        setTimeout(() => btn.textContent = 'Copy', 2000);
-        showToast('Code copied to clipboard!', 'success');
-    };
-    
-    // ==================== PRACTICE EXERCISES ====================
-    function loadPractice() {
-        const exercises = [
-            { q: "What is the output of: print(2 + 3 * 4)", options: ["20", "14", "24", "10"], correct: 1, explanation: "Multiplication happens first: 3 * 4 = 12, then 2 + 12 = 14" },
-            { q: "Which symbol is used for comments in Python?", options: ["//", "#", "/*", "<!--"], correct: 1, explanation: "In Python, # is used for single-line comments" },
-            { q: "What does HTML stand for?", options: ["Hyper Text Markup Language", "High Tech Modern Language", "Hyper Transfer Markup", "Home Tool Language"], correct: 0, explanation: "HTML = Hyper Text Markup Language" },
-            { q: "How do you write 'Hello' in JavaScript console?", options: ["print('Hello')", "console.log('Hello')", "echo 'Hello'", "System.out.println('Hello')"], correct: 1, explanation: "console.log() is the JavaScript way to print" },
-            { q: "What is the correct way to create a variable in Python?", options: ["var x = 5", "let x = 5", "x = 5", "int x = 5"], correct: 2, explanation: "Python uses simple assignment: variable = value" }
-        ];
-        
-        const container = document.getElementById('practiceContent');
-        container.innerHTML = exercises.map((ex, idx) => `
-            <div class="col-md-6 mb-4">
-                <div class="lesson-card">
-                    <h5><i class="fas fa-question-circle me-2" style="color: var(--primary-accent);"></i> ${ex.q}</h5>
-                    <div id="quiz-${idx}" class="mt-3">
-                        ${ex.options.map((opt, optIdx) => `
-                            <div class="quiz-option" onclick="checkAnswer(${idx}, ${optIdx}, ${ex.correct}, \`${ex.explanation}\`)">
-                                ${opt}
-                            </div>
-                        `).join('')}
-                    </div>
-                    <div id="explanation-${idx}" class="simple-explanation mt-2" style="display: none;"></div>
-                </div>
-            </div>
-        `).join('');
-    }
-    
-    window.checkAnswer = function(qIdx, selected, correct, explanation) {
-        const options = document.querySelectorAll(`#quiz-${qIdx} .quiz-option`);
-        const explanationDiv = document.getElementById(`explanation-${qIdx}`);
-        
-        options.forEach(opt => opt.classList.remove('correct', 'wrong'));
-        
-        if (selected === correct) {
-            options[selected].classList.add('correct');
-            explanationDiv.style.display = 'block';
-            explanationDiv.innerHTML = `<i class="fas fa-check-circle me-2" style="color: var(--success);"></i> ✅ Correct! ${explanation}`;
-            showToast('Great job! Correct answer! 🎉', 'success');
-        } else {
-            options[selected].classList.add('wrong');
-            options[correct].classList.add('correct');
-            explanationDiv.style.display = 'block';
-            explanationDiv.innerHTML = `<i class="fas fa-info-circle me-2" style="color: var(--warning);"></i> 📚 ${explanation}`;
-            showToast('Not quite right. Check the explanation below! 📖', 'info');
-        }
-    };
-    
-    // ==================== RESOURCES ====================
-    function loadResources() {
-        const resources = [
-            { name: "W3Schools", url: "https://www.w3schools.com", desc: "Best for beginners - interactive tutorials", icon: "fab fa-chrome" },
-            { name: "freeCodeCamp", url: "https://www.freecodecamp.org", desc: "Free coding bootcamp with certificates", icon: "fas fa-code" },
-            { name: "MDN Web Docs", url: "https://developer.mozilla.org", desc: "Complete web development reference", icon: "fab fa-firefox" },
-            { name: "Python.org", url: "https://www.python.org", desc: "Official Python documentation and tutorials", icon: "fab fa-python" },
-            { name: "GitHub", url: "https://github.com", desc: "Host and share your code projects", icon: "fab fa-github" },
-            { name: "Stack Overflow", url: "https://stackoverflow.com", desc: "Ask questions and get help from developers", icon: "fas fa-question-circle" }
-        ];
-        
-        const container = document.getElementById('resourcesContent');
-        container.innerHTML = resources.map(res => `
-            <div class="col-md-4 mb-4">
-                <div class="topic-card" onclick="window.open('${res.url}', '_blank')">
-                    <i class="${res.icon}" style="font-size: 2rem; color: var(--primary-accent);"></i>
-                    <h5 class="mt-2">${res.name}</h5>
-                    <p class="small text-muted">${res.desc}</p>
-                    <span class="badge-tech">Free Resource</span>
-                </div>
-            </div>
-        `).join('');
-    }
-    
-    // Initial load
-    console.log('Abdulrahman Tech Academy - Simple, Secure, Professional');
-    showToast('Welcome! Click on any topic to start learning! 🚀', 'success');
-</script>
-</body>
-</html
+        const lessons = [
+            { title: "Introduction", content: "Learn the fundamentals and setup your environment" },
+            { title: "Variables and Data Types", code: `${category === 'python' ? 'name = "Student"\nage = 25\nprint(f"Name: {name}, Age: {age}")' : category === 'javascript' ? 'let name = "Student";\nconst age = 25;\nconsole.log(`Name: ${name}, Age: ${age}`);' : '<!-- HTML Example -->\n<h1>Hello World</h1>'}` },
+            { title: "Control Flow", code
