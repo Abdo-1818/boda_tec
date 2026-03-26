@@ -2,458 +2,227 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>عبدالرحمن تك | Abdulrahman Tech - موسوعة البرمجة الشاملة</title>
-    <meta name="description" content="أكبر موسوعة عربية/ألمانية لتعلم البرمجة - أكثر من 500 مقال متخصص في جميع لغات البرمجة مع شرح مفصل، أمثلة، مميزات، عيوب، ومقارنات">
-    
-    <!-- Security Headers -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+    <title>بودا نيوز | Boda News - تطوير الذات والثقة بالنفس</title>
+    <meta name="description" content="منصة متخصصة في تطوير الذات والثقة بالنفس - قصص نجاح ملهمة">
+    <meta name="copyright" content="Boda News 2026">
+    <meta name="theme-color" content="#ff1a3a">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.rtl.min.css" rel="stylesheet">
-    
     <style>
-        :root {
-            --primary-dark: #0a0c15;
-            --primary-card: #11131f;
-            --accent-gold: #ffd966;
-            --accent-cyan: #2dd4bf;
-            --accent-purple: #a855f7;
-            --text-main: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --border-glow: 0 0 15px rgba(45,212,191,0.2);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Cairo', 'Inter', sans-serif;
-            background: var(--primary-dark);
-            color: var(--text-main);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-        
-        /* Language Switcher Styling */
-        .lang-switch {
-            background: rgba(255,255,255,0.1);
-            border-radius: 40px;
-            padding: 5px;
-            display: inline-flex;
-            gap: 5px;
-        }
-        .lang-btn {
-            padding: 8px 20px;
-            border-radius: 30px;
-            border: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            cursor: pointer;
-            background: transparent;
-            color: var(--text-secondary);
-        }
-        .lang-btn.active {
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-            color: #000;
-        }
-        .lang-btn:hover:not(.active) {
-            background: rgba(45,212,191,0.2);
-            color: var(--accent-cyan);
-        }
-        
-        /* Navbar */
-        .navbar-premium {
-            background: rgba(10,12,21,0.98);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(45,212,191,0.2);
-            padding: 1rem 0;
-        }
-        .brand {
-            font-size: 1.8rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold), var(--accent-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        /* Hero Section */
-        .hero-giant {
-            padding: 100px 0 60px;
-            background: radial-gradient(circle at 30% 20%, rgba(45,212,191,0.08), transparent 70%);
-            text-align: center;
-        }
-        .hero-title {
-            font-size: 3.5rem;
-            font-weight: 800;
-            line-height: 1.3;
-        }
-        
-        /* Language Cards Grid */
-        .lang-card {
-            background: var(--primary-card);
-            border-radius: 28px;
-            padding: 1.8rem;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(45,212,191,0.2);
-            cursor: pointer;
-            height: 100%;
-        }
-        .lang-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-cyan);
-            box-shadow: var(--border-glow);
-        }
-        .lang-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        .lang-name {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .article-count {
-            color: var(--accent-cyan);
-            font-size: 0.9rem;
-        }
-        
-        /* Article Modal / Page */
-        .article-container {
-            background: var(--primary-card);
-            border-radius: 32px;
-            padding: 2rem;
-            margin: 2rem 0;
-            border-left: 5px solid var(--accent-cyan);
-        }
-        .article-title {
-            font-size: 2.2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #fff, var(--accent-cyan));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .code-block {
-            background: #03050b;
-            border-radius: 20px;
-            padding: 1.5rem;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
-            border: 1px solid var(--accent-cyan);
-            margin: 1rem 0;
-        }
-        .pros {
-            background: rgba(45,212,191,0.1);
-            border-right: 4px solid #2dd4bf;
-            padding: 1rem;
-            border-radius: 16px;
-        }
-        .cons {
-            background: rgba(255,107,107,0.1);
-            border-right: 4px solid #ff6b6b;
-            padding: 1rem;
-            border-radius: 16px;
-        }
-        
-        /* Footer */
-        .footer-premium {
-            background: #05070e;
-            border-top: 1px solid rgba(45,212,191,0.2);
-            margin-top: 4rem;
-            padding: 3rem 0;
-        }
-        
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2rem; }
-            .lang-name { font-size: 1.2rem; }
-        }
-        
-        /* RTL/LTR handling for German */
-        body.lang-de {
-            direction: ltr;
-            text-align: left;
-        }
-        body.lang-de .article-container {
-            border-left: none;
-            border-right: 5px solid var(--accent-cyan);
-        }
+        *{margin:0;padding:0;box-sizing:border-box;user-select:none;-webkit-user-select:none}body{font-family:'Cairo','Tahoma',sans-serif;background:#0a0a0a;color:#e0e0e0;line-height:1.8;overflow-x:hidden}.anti-screenshot{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:9999;background:repeating-linear-gradient(45deg,rgba(0,0,0,0.02) 0px,rgba(0,0,0,0.02) 2px,transparent 2px,transparent 8px)}img{-webkit-user-drag:none;user-drag:none;pointer-events:none}.container{max-width:1400px;margin:0 auto;padding:0 2rem}.hero-logo{background:linear-gradient(135deg,#000000 0%,#0a0a0a 100%);padding:3rem 0 1.5rem;text-align:center;border-bottom:1px solid rgba(255,26,58,0.3);position:relative;overflow:hidden}.hero-logo::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle,rgba(255,26,58,0.08) 0%,transparent 70%);animation:rotateGlow 20s linear infinite;pointer-events:none}@keyframes rotateGlow{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.logo-center{position:relative;display:inline-block;animation:floatLogo 3s ease-in-out infinite}@keyframes floatLogo{0%,100%{transform:translateY(0px)}50%{transform:translateY(-8px)}}.logo-center .english-title{font-size:4.5rem;font-weight:900;letter-spacing:4px;background:linear-gradient(135deg,#ffffff 0%,#ff1a3a 30%,#ff6666 60%,#ffffff 100%);background-size:300% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmerGold 4s linear infinite;text-shadow:0 0 20px rgba(255,26,58,0.5);font-family:'Cairo','Tahoma',sans-serif}@keyframes shimmerGold{0%{background-position:0% center}100%{background-position:300% center}}.logo-center .arabic-sub{font-size:1.2rem;color:#ff1a3a;margin-top:0.5rem;letter-spacing:2px;position:relative;display:inline-block;font-weight:500;opacity:0.9}.logo-center .arabic-sub::before,.logo-center .arabic-sub::after{content:'';position:absolute;top:50%;width:40px;height:1px;background:linear-gradient(90deg,transparent,#ff1a3a,transparent)}.logo-center .arabic-sub::before{right:-50px}.logo-center .arabic-sub::after{left:-50px}.navbar{background:rgba(0,0,0,0.95);backdrop-filter:blur(10px);position:sticky;top:0;z-index:1000;border-bottom:1px solid rgba(255,26,58,0.3)}.nav-container{display:flex;align-items:center;justify-content:center;padding:0.8rem 0}.nav-links{display:flex;gap:2rem;flex-wrap:wrap;justify-content:center}.nav-links a{text-decoration:none;font-weight:600;color:#fff;transition:0.3s;cursor:pointer;padding:0.5rem 1rem;border-radius:40px;position:relative}.nav-links a::before{content:'';position:absolute;bottom:0;right:50%;width:0;height:2px;background:#ff1a3a;transition:all 0.3s ease;transform:translateX(50%)}.nav-links a:hover::before{width:80%}.nav-links a:hover{color:#ff1a3a}.hero{background:linear-gradient(135deg,#000000 0%,#1a0000 50%,#000000 100%);padding:4rem 0;text-align:center;border-bottom:1px solid rgba(255,26,58,0.3);position:relative;overflow:hidden}.hero::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(circle at 50% 50%,rgba(255,26,58,0.1) 0%,transparent 70%);animation:pulseBg 4s ease-in-out infinite}@keyframes pulseBg{0%,100%{opacity:0.5}50%{opacity:1}}.hero h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem;background:linear-gradient(135deg,#fff,#ff1a3a);-webkit-background-clip:text;background-clip:text;color:transparent;animation:titlePulse 2s ease-in-out infinite}@keyframes titlePulse{0%,100%{filter:drop-shadow(0 0 5px rgba(255,26,58,0.3))}50%{filter:drop-shadow(0 0 20px rgba(255,26,58,0.6))}}.hero p{font-size:1.2rem;color:#aaa;max-width:700px;margin:0 auto}.section-header{text-align:center;margin:4rem 0 2.5rem}.section-header h2{font-size:2.2rem;font-weight:800;color:#fff;position:relative;display:inline-block}.section-header h2:after{content:'';position:absolute;bottom:-12px;right:50%;transform:translateX(50%);width:80px;height:3px;background:#ff1a3a;border-radius:3px;animation:lineGlow 1.5s ease-in-out infinite}@keyframes lineGlow{0%,100%{box-shadow:0 0 5px #ff1a3a;width:80px}50%{box-shadow:0 0 15px #ff1a3a;width:100px}}.stories-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(350px,1fr));gap:2rem;margin:2rem 0}.story-card{background:#0f0f0f;border-radius:24px;overflow:hidden;transition:all 0.4s ease;border:1px solid #2a2a2a;animation:fadeInUp 0.6s ease-out}@keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}.story-card:hover{transform:translateY(-10px) scale(1.02);box-shadow:0 20px 40px rgba(0,0,0,0.5),0 0 30px rgba(255,26,58,0.3);border-color:#ff1a3a}.story-image{width:100%;height:300px;object-fit:cover;border-bottom:2px solid #ff1a3a;transition:all 0.5s ease;background:#1a1a1a}.story-card:hover .story-image{transform:scale(1.05);filter:brightness(1.1)}.story-info{padding:1.8rem;text-align:center}.story-name{font-size:1.6rem;font-weight:800;color:#fff;margin-bottom:0.3rem}.story-title{color:#ff1a3a;font-weight:700;margin-bottom:0.5rem}.story-before-after{background:linear-gradient(135deg,#1a1a1a,#000);padding:1rem;border-radius:16px;margin:1rem 0;border-right:3px solid #ff1a3a}.story-before{color:#ff6666;font-weight:600;margin-bottom:0.5rem}.story-after{color:#66ff66;font-weight:600;margin-bottom:0.5rem}.story-desc{color:#888;font-size:0.9rem;margin-top:0.8rem}.grid-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(380px,1fr));gap:2rem;margin-bottom:3rem}.article-card{background:#0f0f0f;border-radius:20px;padding:2rem;transition:all 0.4s ease;border:1px solid #2a2a2a;cursor:pointer;position:relative;overflow:hidden;animation:fadeInUp 0.6s ease-out;animation-fill-mode:both}.article-card::before{content:'';position:absolute;top:0;right:0;width:5px;height:100%;background:#ff1a3a;transform:scaleY(0);transition:transform 0.4s;transform-origin:top}.article-card:hover::before{transform:scaleY(1)}.article-card:hover{transform:translateY(-8px);box-shadow:0 20px 40px rgba(0,0,0,0.5),0 0 30px rgba(255,26,58,0.3);border-color:#ff1a3a}.article-card i{font-size:2.8rem;color:#ff1a3a;margin-bottom:1.2rem;display:inline-block;animation:iconFloat 3s ease-in-out infinite}@keyframes iconFloat{0%,100%{transform:translateY(0px)}50%{transform:translateY(-5px)}}.article-card h3{font-size:1.5rem;margin-bottom:0.8rem;color:#fff;font-weight:700;line-height:1.4}.article-card p{color:#888;margin-bottom:1rem;line-height:1.6}.modal-full{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.96);align-items:center;justify-content:center;z-index:2000;backdrop-filter:blur(12px);animation:fadeIn 0.3s ease}@keyframes fadeIn{from{opacity:0}to{opacity:1}}.modal-content-large{background:#0f0f0f;max-width:900px;width:90%;max-height:85vh;overflow-y:auto;padding:2.5rem;position:relative;border-radius:28px;border-top:5px solid #ff1a3a;box-shadow:0 20px 40px rgba(0,0,0,0.5),0 0 40px rgba(255,26,58,0.3);animation:slideUp 0.4s ease}@keyframes slideUp{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}.close-modal-btn{position:absolute;top:1rem;left:1rem;font-size:1.5rem;cursor:pointer;background:#ff1a3a;width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:0.3s;color:#fff}.close-modal-btn:hover{background:#cc0022;transform:rotate(90deg) scale(1.1);box-shadow:0 0 20px #ff1a3a}.comments-section{background:#0f0f0f;border-radius:28px;padding:2rem;margin:3rem 0;border:1px solid #2a2a2a}.comment-form textarea,.comment-form input{width:100%;padding:1rem;border:1px solid #2a2a2a;border-radius:16px;font-family:inherit;margin-bottom:1rem;background:#1a1a1a;color:#fff;transition:0.3s}.comment-form textarea:focus,.comment-form input:focus{outline:none;border-color:#ff1a3a;box-shadow:0 0 15px rgba(255,26,58,0.3)}.btn-primary{background:#ff1a3a;color:#fff;border:none;padding:10px 24px;border-radius:40px;font-weight:600;cursor:pointer;transition:0.3s}.btn-primary:hover{background:#cc0022;transform:translateY(-2px);box-shadow:0 0 20px #ff1a3a}.comments-list{margin-top:2rem;max-height:500px;overflow-y:auto}.comment-item{background:#1a1a1a;padding:1rem;border-radius:16px;margin-bottom:1rem;border-right:3px solid #ff1a3a}.comment-name{font-weight:700;color:#ff1a3a;margin-bottom:0.5rem}.comment-text{color:#ccc}.comment-date{font-size:0.7rem;color:#666;margin-top:0.5rem}footer{background:#000;color:#666;padding:2.5rem 0;text-align:center;margin-top:3rem;border-top:1px solid rgba(255,26,58,0.3)}@media(max-width:800px){.logo-center .english-title{font-size:2.8rem}.hero h2{font-size:1.8rem}.grid-cards{grid-template-columns:1fr}.stories-grid{grid-template-columns:1fr}.container{padding:0 1rem}}::-webkit-scrollbar{width:8px}::-webkit-scrollbar-track{background:#0a0a0a}::-webkit-scrollbar-thumb{background:#ff1a3a;border-radius:10px}
     </style>
 </head>
-<body id="appBody" dir="rtl">
-    <!-- Navigation -->
-    <nav class="navbar navbar-premium sticky-top">
+<body oncontextmenu="return false" ondragstart="return false" onselectstart="return false">
+    <div class="anti-screenshot"></div>
+    
+    <div class="hero-logo">
         <div class="container">
-            <a class="brand text-decoration-none" href="#">عبدالرحمن تك | ABDULRAHMAN TECH</a>
-            <div class="lang-switch">
-                <button class="lang-btn active" onclick="switchLanguage('ar')">العربية</button>
-                <button class="lang-btn" onclick="switchLanguage('de')">Deutsch</button>
+            <div class="logo-center">
+                <div class="english-title">BODA NEWS</div>
+                <div class="arabic-sub">بودا نيوز</div>
             </div>
         </div>
-    </nav>
+    </div>
     
-    <!-- Hero Section -->
-    <div class="hero-giant">
+    <div class="navbar">
+        <div class="container nav-container">
+            <div class="nav-links">
+                <a href="#" data-nav="home"><i class="fas fa-home"></i> الرئيسية</a>
+                <a href="#" data-nav="stories"><i class="fas fa-star"></i> قصص النجاح</a>
+                <a href="#" data-nav="articles"><i class="fas fa-book"></i> المقالات</a>
+                <a href="#" data-nav="comments"><i class="fas fa-comments"></i> آراء القراء</a>
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <div class="hero">
+            <div class="container">
+                <h2>طور ذاتك • ابنِ ثقتك • غيّر حياتك</h2>
+                <p>رحلة التغيير تبدأ من داخلك.. اكتشف أسرار النجاح وتطوير الذات</p>
+            </div>
+        </div>
+
         <div class="container">
-            <h1 class="hero-title" id="heroTitle">موسوعة البرمجة الشاملة<br><span style="color:#2dd4bf;">أكثر من 500 مقال متخصص</span></h1>
-            <p class="lead text-secondary mt-3 mx-auto" style="max-width: 700px;" id="heroDesc">تعلم كل شيء عن لغات البرمجة: الاستخدامات، المميزات، العيوب، أمثلة عملية، ومقارنات احترافية. محتوى ضخم يناسب المبتدئين والمحترفين.</p>
+            <div class="success-stories" id="storiesSection">
+                <div class="section-header"><h2>🌟 قصص نجاح ملهمة</h2><p>أناس فشلوا ثم أصبحوا من أعظم الناجحين في التاريخ</p></div>
+                <div class="stories-grid" id="storiesGrid"></div>
+            </div>
+
+            <div class="section-header" id="articlesSection"><h2>📘 مقالات تطوير الذات والثقة بالنفس</h2><p>اختر المقال الذي يناسب رحلتك نحو التغيير الإيجابي</p></div>
+            <div class="grid-cards" id="articlesGrid"></div>
+            
+            <div class="comments-section" id="commentsSection">
+                <h3><i class="fas fa-comments"></i> آراء القراء</h3>
+                <div class="comment-form">
+                    <input type="text" id="commentName" placeholder="اسمك" required>
+                    <textarea id="commentText" rows="3" placeholder="شاركنا رأيك..."></textarea>
+                    <button id="submitComment" class="btn-primary">إضافة تعليق</button>
+                </div>
+                <div class="comments-list" id="commentsList"></div>
+            </div>
         </div>
-    </div>
-    
-    <!-- Languages Grid -->
-    <div class="container py-4">
-        <div class="row g-4" id="languagesGrid"></div>
-    </div>
-    
-    <!-- Articles Section (Dynamic) -->
-    <div class="container" id="articlesSection">
-        <div class="text-center my-5" id="selectedLangTitle"></div>
-        <div id="articlesList"></div>
-    </div>
-    
-    <!-- Footer -->
-    <footer class="footer-premium">
-        <div class="container text-center">
-            <p>© 2025 عبدالرحمن تك | Abdulrahman Tech - أكبر موسوعة برمجية عربية/ألمانية | أكثر من 500 مقال احترافي</p>
-            <p class="small text-secondary">جميع المقالات تحتوي على شرح مفصل، أمثلة عملية، مقارنات، وتحليل شامل لكل لغة برمجة</p>
-        </div>
+    </main>
+
+    <footer>
+        <div class="container"><p><strong>بودا نيوز | Boda News</strong></p><p>تمكين العقول العربية والعالمية. جميع الحقوق محفوظة</p><p class="copyright">© 2026 بودا نيوز | Boda News. All Rights Reserved.</p></div>
     </footer>
-    
+
+    <div id="detailModal" class="modal-full"><div class="modal-content-large"><span class="close-modal-btn" id="closeDetailBtn">&times;</span><div id="dynamicDetail"></div></div></div>
+
     <script>
-        // =====================================================
-        // MASSIVE DATABASE: 50+ ARTICLES PER LANGUAGE (ARABIC & GERMAN)
-        // EACH ARTICLE: usage, advantages, disadvantages, examples, deep explanation
-        // =====================================================
+        // Anti-theft protection
+        (function(){
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('keydown', e => {
+                if(e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I') || (e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.key === 's') || e.key === 'PrintScreen'){
+                    e.preventDefault();
+                    return false;
+                }
+                if(e.ctrlKey && (e.key === 'c' || e.key === 'C')){
+                    let act = document.activeElement;
+                    if(!act || (act.tagName !== 'INPUT' && act.tagName !== 'TEXTAREA')) e.preventDefault();
+                }
+            });
+            console.log = function(){};
+            console.warn = function(){};
+            console.error = function(){};
+        })();
         
-        const languages = [
-            { id: "python", nameAr: "🐍 بايثون Python", nameDe: "🐍 Python", icon: "fab fa-python", color: "#3776ab" },
-            { id: "javascript", nameAr: "⚡ جافاسكريبت JavaScript", nameDe: "⚡ JavaScript", icon: "fab fa-js", color: "#f7df1e" },
-            { id: "java", nameAr: "☕ جافا Java", nameDe: "☕ Java", icon: "fab fa-java", color: "#007396" },
-            { id: "cpp", nameAr: "⚙️ C++", nameDe: "⚙️ C++", icon: "fas fa-code", color: "#00599c" },
-            { id: "csharp", nameAr: "🎮 C#", nameDe: "🎮 C#", icon: "fab fa-microsoft", color: "#239120" },
-            { id: "php", nameAr: "🐘 PHP", nameDe: "🐘 PHP", icon: "fab fa-php", color: "#777bb4" },
-            { id: "ruby", nameAr: "💎 روبي Ruby", nameDe: "💎 Ruby", icon: "fas fa-gem", color: "#cc342d" },
-            { id: "swift", nameAr: "📱 سويفت Swift", nameDe: "📱 Swift", icon: "fab fa-apple", color: "#fa7343" },
-            { id: "kotlin", nameAr: "📱 كوتلين Kotlin", nameDe: "📱 Kotlin", icon: "fab fa-android", color: "#7f52ff" },
-            { id: "go", nameAr: "🔵 جو Go", nameDe: "🔵 Go", icon: "fas fa-cloud", color: "#00add8" },
-            { id: "rust", nameAr: "🦀 رست Rust", nameDe: "🦀 Rust", icon: "fas fa-shield-alt", color: "#dea584" },
-            { id: "sql", nameAr: "🗄️ SQL", nameDe: "🗄️ SQL", icon: "fas fa-database", color: "#4479a1" }
+        let comments = JSON.parse(localStorage.getItem('boda_comments') || '[]');
+        
+        // 9 Success Stories with working images
+        const stories = [
+            { name: "ستيف جوبز", title: "مؤسس شركة آبل", was: "طُرد من الشركة التي أسسها بنفسه، كان مفلسًا ومُهمشًا", became: "أصبح أعظم مبتكر في تاريخ التكنولوجيا، وقيمة شركته تجاوزت التريليون دولار", img: "https://upload.wikimedia.org/wikipedia/commons/d/dc/Steve_Jobs_Headshot_2010-CROP.jpg" },
+            { name: "إيلون ماسك", title: "مؤسس Tesla و SpaceX", was: "واجه إفلاس شركاته عدة مرات، كان يُطرد من منزله وينام في المصنع", became: "أغنى رجل في العالم، وقائد ثورة الفضاء والسيارات الكهربائية", img: "https://upload.wikimedia.org/wikipedia/commons/9/99/Elon_Musk_2023_%28cropped%29.jpg" },
+            { name: "جيف بيزوس", title: "مؤسس أمازون", was: "بدأ شركة أمازون في مرآب منزله، واجه خسائر كبيرة في البداية", became: "أحد أغنى رجال العالم، وقائد التجارة الإلكترونية العالمية", img: "https://upload.wikimedia.org/wikipedia/commons/6/6c/Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle.png" },
+            { name: "مارك زوكربيرج", title: "مؤسس فيسبوك (ميتا)", was: "بدأ فيسبوك من غرفة سكنه بالجامعة، واجه دعاوى قضائية ومشاكل كثيرة", became: "أصغر ملياردير عصامي في التاريخ، وقائد ثورة التواصل الاجتماعي", img: "https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg" },
+            { name: "ج.ك. رولينج", title: "كاتبة هاري بوتر", was: "أم عزباء تعيش على إعانة البطالة، رُفض كتابها 12 مرة", became: "أصبحت من أغنى النساء في العالم، وباعت أكثر من 500 مليون نسخة", img: "https://upload.wikimedia.org/wikipedia/commons/5/5d/J._K._Rowling_2010.jpg" },
+            { name: "أوبرا وينفري", title: "أشهر إعلامية في العالم", was: "عانت من الفقر والاعتداء، طُردت من أول وظيفة لها", became: "أول امرأة سوداء مليارديرة، وشخصية مؤثرة عالميًا", img: "https://upload.wikimedia.org/wikipedia/commons/1/19/Oprah_Winfrey_%282014%29.jpg" },
+            { name: "نيلسون مانديلا", title: "رمز النضال والسلام", was: "سُجن 27 عامًا بتهم سياسية", became: "أول رئيس أسود لجنوب أفريقيا، حائز على جائزة نوبل للسلام", img: "https://upload.wikimedia.org/wikipedia/commons/0/02/Nelson_Mandela_1994.jpg" },
+            { name: "محمد علي كلاي", title: "أسطورة الملاكمة", was: "جرّد من ألقابه وأوقف عن الملاكمة في قمة عطائه", became: "بطل العالم 3 مرات، وأحد أعظم الرياضيين في التاريخ", img: "https://upload.wikimedia.org/wikipedia/commons/8/8c/Muhammad_Ali_NYWTS.jpg" },
+            { name: "مالالا يوسفزاي", title: "ناشطة تعليم السلام", was: "أطلقت عليها طالبان النار وهي في الـ15 من عمرها", became: "أصغر حاصلة على جائزة نوبل للسلام في التاريخ", img: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Malala_Yousafzai_2015.jpg" }
         ];
         
-        // Function to generate 50+ articles for each language (comprehensive)
-        function generateArticles(langId, langNameAr, langNameDe, currentLang) {
-            const articles = [];
-            const topics = [
-                "مقدمة شاملة", "تاريخ التطور", "أساسيات اللغة", "الأنواع والهياكل", "البرمجة الكائنية", "البرمجة الوظيفية", 
-                "إدارة الذاكرة", "التعامل مع الملفات", "مكتبات وإطارات العمل", "تطوير الويب", "تطوير تطبيقات الجوال", 
-                "الذكاء الاصطناعي", "تحليل البيانات", "الأداء والسرعة", "الأمان", "أنماط التصميم", "اختبارات الوحدة", 
-                "النشر وال Deploy", "أفضل الممارسات", "الأخطاء الشائعة", "مقارنة مع لغات أخرى", "مستقبل اللغة", 
-                "مشاريع عملية", "نصائح للمحترفين", "موارد تعليمية", "أطر العمل الشهيرة", "مجتمع المطورين"
-            ];
-            
-            for (let i = 0; i < topics.length; i++) {
-                const topic = topics[i];
-                // Create unique article per topic
-                articles.push(createArticle(langId, topic, i, currentLang, langNameAr, langNameDe));
-            }
-            // Add more to reach 50+
-            for (let i = topics.length; i < 52; i++) {
-                articles.push(createArticle(langId, `مقال متقدم ${i+1}: تقنيات احترافية`, i, currentLang, langNameAr, langNameDe));
-            }
-            return articles;
-        }
+        // 14 Complete Articles
+        const articles = {
+            art1: { title: "📘 رحلة التغيير تبدأ من داخلك", content: `<h2>📘 رحلة التغيير تبدأ من داخلك</h2><p>تطوير الذات ليس وجهة نصل إليها يومًا ما، بل هو رحلة مستمرة نعيشها كل يوم. إنها الرغبة الصادقة في أن نكون أفضل مما كنا عليه بالأمس، وأن نكتشف إمكاناتنا الحقيقية التي غالبًا ما تظل مدفونة تحت طبقات من الخوف والتردد.</p><p>كثيرون يظنون أن تطوير الذات يبدأ بتغييرات خارجية: وظيفة جديدة، مظهر مختلف، أو حتى الانتقال إلى مكان آخر. لكن الحقيقة أن التغيير الحقيقي يبدأ من الداخل. يبدأ بلحظة صادقة نواجه فيها أنفسنا، نعترف فيها بنقاط ضعفنا دون خجل، ونقرر أننا نستحق الأفضل.</p><p>الخطوة الأولى في رحلة تطوير الذات هي الوعي. أن تكون واعيًا بأفكارك، بمشاعرك، بأنماط سلوكك المتكررة. عندما تدرك لماذا تتصرف بطريقة معينة، ولماذا تتجنب مواقف محددة، ولماذا تستمر في علاقات أو عادات لا تفيدك، عندها فقط تبدأ في امتلاك زمام الأمور.</p><p>التغيير ليس سهلاً، ولن يكون دائمًا ممتعًا. ستواجه مقاومة من داخلك، وربما من محيطك أيضًا. هناك جزء منك يتمسك بالمنطقة الآمنة، حتى لو كانت غير مريحة، لأنها مألوفة. لكن تذكر أن النمو الحقيقي يحدث خارج منطقة الراحة. كل مرة تتحدى فيها نفسك لتفعل شيئًا تخشاه، كل مرة تختار فيها النهوض بعد السقوط، فأنت تبني نسخة أقوى من نفسك.</p><p>لا تنتظر اللحظة المثالية، لأنها لن تأتي أبدًا. ابدأ بما لديك، من حيث أنت. الخطوات الصغيرة المتواصلة أقوى من القفزات الكبيرة المتقطعة. قراءة عشرة صفحات يوميًا، تعلم مهارة جديدة، الالتزام بعادة صحية واحدة... هذه الأفعال الصغيرة تتراكم مع الوقت لتصنع تحولاً هائلاً.</p><p>وتذكر دائمًا أن تطوير الذات ليس سباقًا مع أحد. لا تقارن رحلتك برحلة غيرك. لكل إنسان ظروفه وقدراته وتحدياته. المهم أن تكون اليوم أفضل مما كنت بالأمس، حتى لو كان الفرق بسيطًا.</p><blockquote>"التغيير الحقيقي يبدأ من الداخل. ابدأ بنفسك أولاً."</blockquote>` },
+            art2: { title: "💪 الجذر الحقيقي للقوة الداخلية", content: `<h2>💪 الجذر الحقيقي للقوة الداخلية</h2><p>الثقة بالنفس ليست ذلك الصوت العالي الذي يملأ الغرفة، ولا هي تلك الهالة المصطنعة التي يرتديها البعض كقناع ليخفوا به مخاوفهم. الثقة الحقيقية شيء أعمق بكثير، إنها حالة من السلام الداخلي، شعور عميق بالاطمئنان إلى أنك قادر على مواجهة ما تأتي به الحياة، مهما كان.</p><p>كثير من الناس يخلطون بين الثقة بالنفس والغرور، أو بينها وبين عدم الخوف. لكن الشخص الواثق حقًا ليس من يدعي أنه لا يخطئ أبدًا، بل هو من يعترف بخطئه دون أن ينهار. ليس من لا يشعر بالخوف، بل من يشعر بالخوف ويمضي قدمًا رغمه. الثقة الحقيقية متواضعة، لأنها لا تحتاج إلى إثبات أي شيء لأي شخص.</p><p>أين تنشأ الثقة بالنفس؟ تنشأ في المقام الأول من العلاقة التي نبنيها مع أنفسنا. من الطريقة التي نتحدث بها إلى أنفسنا في لحظات الضعف. هل تقول لنفسك: "أنا فاشل، لن أستطيع أبدًا" أم تقول: "هذه المرة لم تنجح، لكني سأتعلم وأحاول بطريقة مختلفة"؟</p><p>من أهم مفاتيح بناء الثقة بالنفس أيضًا هي الوفاء بالوعود التي تقطعها لنفسك. كل مرة تقول فيها لنفسك "سأفعل كذا" ثم لا تفعل، فأنت تخون ثقتك بنفسك. الثقة تُبنى مثل العضلة، بالتدريب المستمر.</p><p>ثم هناك عامل آخر لا يقل أهمية: تعلم قول "لا". الثقة بالنفس تعني أن تعرف حدودك، وأن تضع حدودًا واضحة مع الآخرين. مع كل مرة تخون فيها رغبتك الحقيقية لترضي غيرك، تخسر جزءًا من احترامك لذاتك.</p><p>لا تنتظر حتى تصبح واثقًا تمامًا لتبدأ في فعل ما تريد. الثقة لا تأتي قبل الفعل، بل تأتي من خلاله. ابدأ وأنت خائف، ابدأ وأنت متردد، ابدأ وأنت تشك في قدراتك. مع كل خطوة تأخذها، ستجد أن ثقتك تنمو تلقائيًا.</p><blockquote>"الثقة الحقيقية هي أن تكون مرتاحًا مع من أنت، مع نقاط قوتك وضعفك."</blockquote>` },
+            art3: { title: "🧠 كيف تعيد برمجة عقلك", content: `<h2>🧠 كيف تعيد برمجة عقلك</h2><p>أحد أكبر العوائق التي تمنعنا من تحقيق إمكاناتنا الحقيقية هو الحوار الداخلي السلبي الذي يدور في أذهاننا دون أن ننتبه إليه. ذلك الصوت الذي يهمس لنا "لن تستطيع"، "أنت لست كافيًا"، "من أنت حتى تفعل هذا؟"، "ستفشل كما فشلت دائمًا".</p><p>عقلك البشري يميل بطبيعته إلى السلبية. هذه خاصية تطورت لحمايتنا من المخاطر في العصور القديمة، لكنها في عالم اليوم غالبًا ما تعمل ضدنا. دماغك يركز على التهديدات المحتملة، يذكرك بكل فشل سابق، يضخم المخاطر ويقلل من فرص النجاح.</p><p>الخبر السار أن لديك القدرة على إعادة برمجة هذا الحوار الداخلي. عقلك يتمتع بمرونة عصبية مذهلة، يمكنه تكوين مسارات جديدة وتغيير المسارات القديمة. الخطوة الأولى هي أن تصبح مراقبًا لأفكارك. عندما تسمع صوت الناقد الداخلي، لا تتجادل معه، فقط قل لنفسك: "أرى أن لدي فكرة بأنني لن أستطيع فعل هذا".</p><p>الخطوة التالية هي تحدي هذه الأفكار السلبية. اسأل نفسك: هل هذه الفكرة صحيحة بنسبة 100%؟ هل هناك أدلة ضدها؟ ماذا أقول لصديق عزيز لو كان في موقفي؟</p><p>بعد التحدي، تأتي مرحلة الاستبدال. لا يكفي أن تتخلص من الفكرة السلبية، بل تحتاج إلى استبدالها بفكرة أكثر واقعية وإيجابية. بدلًا من "أنا فاشل ولن أنجح أبدًا"، قل: "هذه المرة لم تنجح كما أردت، لكني تعلمت درسًا قيمًا".</p><p>وأخيرًا، تذكر أن هذا العمل ليس حدثًا لمرة واحدة، بل هو ممارسة يومية. عقلك مثل الحديقة، إذا لم تزرع فيه ما تريد، ستجد الأعشاب الضارة تنمو من تلقاء نفسها.</p><blockquote>"عقلك لديه مرونة مذهلة. يمكنك إعادة برمجته لتكون حليفك لا عدوك."</blockquote>` },
+            art4: { title: "🔥 كيف تحول الفشل إلى أعظم معلم لك", content: `<h2>🔥 كيف تحول الفشل إلى أعظم معلم لك</h2><p>الخوف من الفشل هو أحد أكثر المشاعر شللاً للحركة في حياة الإنسان. إنه ذلك الصوت الذي يهمس في أذنك: "لا تجرب، ربما تفشل"، "لا تخاطر، حافظ على ما لديك"، "ماذا سيقول الناس عنك لو لم تنجح؟".</p><p>لكن الحقيقة التي يكتشفها الناجحون عاجلاً أم آجلاً هي أن الفشل ليس عكس النجاح، بل هو جزء لا يتجزأ من رحلة النجاح. توماس إديسون فشل آلاف المرات قبل أن يصنع المصباح الكهربائي، وكان يقول: "أنا لم أفشل، لقد وجدت للتو عشرة آلاف طريقة لا تعمل".</p><p>المشكلة ليست في الفشل نفسه، بل في العلاقة التي نبنيها معه. في مجتمعنا، غالبًا ما يتم وصم الفشل كعار، كدليل على عدم الكفاءة. نتعلم منذ الصغر أن الفشل شيء يجب تجنبه بأي ثمن، فنبدأ في تجنب أي موقف قد نتعرض فيه لخطر الفشل.</p><p>لتتغلب على الخوف من الفشل، عليك أولاً أن تعيد تعريف الفشل نفسه. الفشل ليس نهاية الطريق، بل هو بيانات. هو معلومة قيمة تخبرك أن هذه الطريقة لم تنجح، فجرّب طريقة أخرى.</p><p>من أكثر الاستراتيجيات فعالية في التعامل مع الخوف من الفشل هي تغيير نظرتك للمخاطرة. اسأل نفسك: أسوأ ما يمكن أن يحدث؟ ما احتمالية حدوثه؟ وإذا حدث، هل يمكنني التعامل معه؟</p><p>وتذكر أن الفشل ليس انعكاسًا لقيمتك كإنسان. أنت لست أفعالك. أنت لست نتائجك. أنت كائن إنساني معقد، قيمتك لا تتحدد بنجاح أو فشل واحد.</p><blockquote>"الفشل ليس نهاية الطريق، بل هو بداية طريق جديد مليء بالدروس."</blockquote>` },
+            art5: { title: "🎯 كيف تحول أحلامك إلى واقع ملموس", content: `<h2>🎯 كيف تحول أحلامك إلى واقع ملموس</h2><p>كثير من الناس لديهم أحلام كبيرة وأمنيات جميلة، لكن القليل منهم فقط هم من يحولون هذه الأحلام إلى واقع. ليس لأنهم أقل موهبة أو حظًا، بل لأنهم يفتقرون إلى أداة أساسية: القدرة على تحديد الأهداف بشكل صحيح.</p><p>لتبدأ، يجب أن تفهم الفرق بين الحلم والهدف. الحلم هو الرؤية الكبيرة: "أريد أن أكون ناجحًا في عملي"، "أريد أن أكون بصحة جيدة". هذه أحلام جميلة وملهمة، لكنها تبقى في عالم الخيال ما لم تُترجم إلى أهداف محددة.</p><p>من أكثر الطرق فعالية لتحديد الأهداف هي طريقة SMART. S تعني Specific (محدد)، M تعني Measurable (قابل للقياس)، A تعني Achievable (قابل للتحقيق)، R تعني Relevant (ذو صلة)، T تعني Time-bound (محدد بوقت).</p><p>لكن تحديد الأهداف وحدها لا يكفي. السر هنا هو تقسيم الهدف الكبير إلى مهام صغيرة يومية وأسبوعية. الهدف الكبير قد يكون مرهقًا ويثبط الهمة، لكن المهمة الصغيرة التي تستغرق 20 دقيقة اليوم تبدو سهلة وقابلة للتنفيذ.</p><p>ولا تنس أهمية المراجعة الدورية. الأهداف ليست منحوتة في الحجر، بل هي خارطة طريق يمكن تعديلها حسب الظروف. خصص وقتًا أسبوعيًا لمراجعة تقدمك.</p><p>وأخيرًا، تذكر أن ترتبط بهدفك عاطفيًا. اسأل نفسك: لماذا هذا الهدف مهم لي؟ كيف ستتغير حياتي بعد تحقيقه؟ هذه الأسئلة تخلق رابطًا عاطفيًا قويًا يدفعك للأمام.</p><blockquote>"الحلم بدون خطة مجرد أمنية. الهدف بدون خطة مجرد أمنية مؤجلة."</blockquote>` },
+            art6: { title: "📘 طريقك إلى تطوير الذات وبناء الثقة", content: `<h2>📘 طريقك إلى تطوير الذات وبناء الثقة بالنفس</h2><p>كل إنسان في هذه الحياة لديه حلم يريده، وكل شخص بداخله طاقة كبيرة قد لا يكون اكتشفها بعد. معرفة نفسك هي البداية الحقيقية لأي تغيير. الثقة بالنفس تبدأ من داخلك وليست من كلام الناس، فعندما تثق بنفسك تصبح قادرًا على مواجهة التحديات.</p><p>الحياة بدون أهداف تشبه السفينة بدون اتجاه، لذلك حدد ما تريد تحقيقه واكتب أهدافك بوضوح. الوقت هو أغلى ما تملك، وكل دقيقة تضيعها لن تعود مرة أخرى. العادات هي التي تصنع مستقبلك.</p><p>الخوف شعور طبيعي لكن لا يجب أن يسيطر عليك، فكل إنسان يخاف ولكن الشجاع هو من يتحرك رغم الخوف. الأشخاص من حولك يؤثرون عليك بشكل كبير، لذلك اختر أصدقاء إيجابيين يشجعونك.</p><blockquote>"النجاح ليس حظًا بل نتيجة تعب واستمرار. ابدأ الآن ولا تنتظر اللحظة المثالية."</blockquote>` },
+            art7: { title: "📘 سر النجاح الحقيقي يبدأ من داخلك", content: `<h2>📘 سر النجاح الحقيقي يبدأ من داخلك</h2><p>في كثير من الأحيان يظن الإنسان أن النجاح مرتبط بالحظ أو الظروف أو الإمكانيات، لكنه في الحقيقة يبدأ من الداخل، من طريقة تفكيرك ونظرتك لنفسك وللحياة، فالشخص الذي يؤمن أنه قادر على التغيير يبدأ بالفعل في اتخاذ خطوات مختلفة، بينما الذي يرى نفسه ضعيفًا يظل مكانه حتى لو توفرت له كل الفرص.</p><p>تطوير الذات ليس طريقًا سهلًا كما يظن البعض، بل هو مليء بالتحديات والاختبارات التي تكشف مدى صبرك وإصرارك، ففي كل مرة تحاول أن تتغير ستواجه مقاومة داخلية تجعلك ترغب في العودة لعاداتك القديمة، لكن الفرق بين الشخص العادي والشخص الذي يتطور هو أن الثاني لا يستسلم لهذه المقاومة، بل يستمر رغم صعوبتها.</p><p>من أهم المهارات التي يجب أن تتعلمها هي القدرة على الاستمرار، لأن الكثيرين يبدأون بحماس كبير لكنهم يتوقفون عند أول صعوبة، بينما القليل فقط هم من يكملون الطريق، والاستمرار لا يحتاج إلى قوة خارقة بل يحتاج إلى قرار يومي بأنك لن تستسلم.</p><blockquote>"النجاح لا يعتمد فقط على العمل الشاق بل على العمل الذكي أيضًا. ركز على الأشياء التي تعطيك نتائج حقيقية."</blockquote>` },
+            art8: { title: "📘 كيف تعيد بناء نفسك من الصفر", content: `<h2>📘 كيف تعيد بناء نفسك من الصفر وتصبح أقوى من أي وقت مضى</h2><p>في لحظات كثيرة من الحياة يشعر الإنسان أنه فقد الطريق وأنه لم يعد يعرف من هو أو ماذا يريد، وقد يمر بتجارب صعبة تجعله يشك في نفسه وفي قدراته، لكن الحقيقة التي يجب أن تدركها هي أن كل إنسان قادر على إعادة بناء نفسه من جديد مهما كانت الظروف، فالبداية لا تحتاج إلى ظروف مثالية بل تحتاج إلى قرار صادق بأنك لن تبقى كما أنت.</p><p>إعادة بناء الذات تبدأ من الاعتراف بالحقيقة، دون تجميل أو إنكار، أن تعترف بنقاط ضعفك وأخطائك دون أن تكره نفسك بسببها، لأن كره الذات لن يصلح شيئًا بل سيزيد الأمر سوءًا، بينما الفهم والتقبل هما أول طريق التغيير.</p><p>من أكبر العوائق التي تمنع الإنسان من التقدم هو التفكير الزائد، حيث يقضي وقتًا طويلًا في التحليل والتخطيط دون أن يتخذ أي خطوة حقيقية، فيظل مكانه بينما يعتقد أنه يتحرك، لذلك يجب أن تدرك أن الفعل أهم من الكمال، وأن البداية الناقصة أفضل من الانتظار الطويل.</p><blockquote>"الثقة بالنفس لا تُبنى بالكلام أو التمني، بل تُبنى بالأفعال والإنجازات مهما كانت صغيرة."</blockquote>` },
+            art9: { title: "📘 لماذا لا تتقدم في حياتك رغم محاولاتك الكثيرة", content: `<h2>📘 لماذا لا تتقدم في حياتك رغم محاولاتك الكثيرة</h2><p>كثير من الناس يشعرون أنهم يبذلون جهدًا كبيرًا لكنهم لا يرون النتائج. التقدم الحقيقي لا يعتمد فقط على كمية الجهد بل على طريقة التفكير والأسلوب الذي تسير به. أحد أهم الأسباب التي تعيق تقدمك هو أنك تبدأ كثيرًا ولا تكمل، فتتحمس لفكرة جديدة ثم تتركها سريعًا.</p><p>التشتت أيضًا عدو خطير لأي شخص يريد أن ينجح. من الأخطاء الشائعة أن تنتظر الشعور بالحماس حتى تبدأ، لكن الحماس شعور مؤقت لا يمكن الاعتماد عليه. عدم وضوح الهدف يجعل أي مجهود بلا قيمة حقيقية. الخوف من رأي الآخرين يمنع الكثير من الناس من التقدم.</p><p>التطور الحقيقي يحتاج إلى صدق مع النفس، لأنك إذا كنت تبرر أخطاءك دائمًا وتلقي اللوم على الظروف، فلن تتغير.</p><blockquote>"الراحة الزائدة قد تكون عدوًا خفيًا، لأن البقاء في منطقة الراحة يجعلك تشعر بالأمان لكنه يمنعك من النمو."</blockquote>` },
+            art10: { title: "📘 كيف تبني عقلية قوية تحميك من الانهيار", content: `<h2>📘 كيف تبني عقلية قوية تحميك من الانهيار في أصعب الظروف</h2><p>الجميع يمر بفترات صعبة، لكن الفرق الحقيقي بين الناس في طريقة التعامل مع هذه الصعوبات. العقلية القوية لا تعني أنك لا تتأثر أو لا تحزن، بل تعني أنك رغم كل ما تشعر به تستطيع أن تسيطر على نفسك وتستمر.</p><p>أول خطوة لبناء عقلية قوية هي تقبل الواقع كما هو. من أهم الصفات التي تميز أصحاب العقلية القوية هي المرونة. التفكير الزائد هو أحد أكبر أعداء الاستقرار النفسي. العقلية القوية تحتاج أيضًا إلى انضباط. من الأمور المهمة جدًا أن تتعلم كيف تتعامل مع الفشل.</p><p>الاعتماد على النفس من أهم عناصر القوة. وجود هدف واضح في حياتك يساعدك كثيرًا على التحمل.</p><blockquote>"العقلية القوية تحتاج إلى انضباط، لأن الحياة ليست دائمًا سهلة أو مريحة."</blockquote>` },
+            art11: { title: "📘 سر الإنجاز الحقيقي", content: `<h2>📘 سر الإنجاز الحقيقي: كيف تتحرك من اللاشيء إلى القمة</h2><p>الكثير من الناس يعيشون حياتهم بطريقة روتينية دون أن يشعروا بالتقدم. الإنجاز يبدأ بخطوات صغيرة منتظمة. أول خطوة للإنجاز هي معرفة ما تريد بالضبط. الالتزام بالروتين اليومي والانضباط هما سر الاستمرارية.</p><p>التفكير الاستراتيجي يساعدك على استغلال وقتك وطاقتك بشكل أفضل. إدارة الطاقة الشخصية لا تقل أهمية عن إدارة الوقت. المحيط الذي تعيش فيه يؤثر بشكل كبير على إنجازاتك. التعلم المستمر هو مفتاح الحفاظ على التقدم. المرونة والتكيف مع الظروف جزء أساسي من الإنجاز.</p><p>وأخيرًا تذكر أن الإنجاز الحقيقي ليس مجرد الوصول لهدف واحد، بل هو القدرة على الاستمرار في التقدم يومًا بعد يوم.</p><blockquote>"الإنجاز الحقيقي هو القدرة على الاستمرار في التقدم يومًا بعد يوم."</blockquote>` },
+            art12: { title: "📘 من اللاشيء إلى القمة", content: `<h2>📘 من اللاشيء إلى القمة: خطوات عملية لتحقيق الإنجاز</h2><p>الكثير من الناس يحلمون بالنجاح لكن القليل منهم يعرف أن الإنجاز لا يأتي من الحظ أو التفكير فقط. أول ما يجب أن تفعله هو تحديد هدف واضح. الخطوة التالية هي تقسيم هدفك إلى مهام صغيرة قابلة للإنجاز يوميًا.</p><p>واحدة من أكبر العقبات هي الخوف من الفشل. الالتزام بالروتين اليومي والانضباط الذاتي سر من أسرار الإنجاز. التخطيط الذكي يساعدك على استغلال وقتك بشكل أفضل. إدارة طاقتك الجسدية والنفسية لا تقل أهمية عن إدارة الوقت.</p><p>بيئتك تؤثر بشكل كبير على قدرتك على الإنجاز. التعلم المستمر هو عامل مهم للحفاظ على تقدمك. المرونة والتكيف مع الظروف المتغيرة جزء أساسي من رحلة الإنجاز.</p><blockquote>"الالتزام بالروتين اليومي يضمن لك الاستمرار حتى في الأيام الصعبة."</blockquote>` },
+            art13: { title: "📘 خطوات عملية لبناء الإنجاز", content: `<h2>📘 خطوات عملية لبناء الإنجاز وتحقيق النجاح المستمر</h2><p>النجاح لا يأتي فجأة أو صدفة، بل هو نتيجة سلسلة من الإجراءات الصغيرة والمتواصلة. أول خطوة للنجاح هي وضع أهداف واضحة ومحددة. الخطوة الثانية هي تقسيم الهدف الكبير إلى مهام صغيرة قابلة للإنجاز يوميًا.</p><p>أحد أكبر العقبات هو الخوف من الفشل. الالتزام والانضباط اليومي هما مفتاح الاستمرارية. التخطيط الذكي أساسي للاستفادة من الوقت والطاقة. إدارة الطاقة النفسية والجسدية لا تقل أهمية عن إدارة الوقت.</p><p>البيئة المحيطة بك تؤثر بشكل كبير على تقدمك. التعلم المستمر ضروري للبقاء متقدمًا. المرونة والتكيف مع التغيرات جزء أساسي من النجاح.</p><blockquote>"الإنجاز الحقيقي هو القدرة على الاستمرار يوميًا وتحمل المسؤولية."</blockquote>` },
+            art14: { title: "🌟 كيف تبني ثقة قوية بنفسك", content: `<h2>🌟 كيف تبني ثقة قوية بنفسك وتغير حياتك</h2><p>الثقة بالنفس هي الأساس الذي يُبنى عليه نجاح الإنسان. كل شخص ناجح بدأ من نقطة بسيطة لكنه آمن بنفسه. الإيمان بالنفس هو أول خطوة نحو تحقيق أي هدف. عندما تثق بنفسك فإنك ترى الفرص بدلًا من العقبات.</p><p>لا تجعل آراء الآخرين تتحكم في حياتك. استمع للنقد المفيد وتجاهل الكلام السلبي. احترامك لنفسك يبدأ من طريقة حديثك معها. تحدث مع نفسك بإيجابية دائمًا. تذكر إنجازاتك السابقة دائمًا. لا تقلل من نفسك مهما كانت الظروف. ابدأ بخطوات صغيرة ولكن ثابتة.</p><blockquote>"لا تخف من رأي الناس. عش حياتك كما تريد أنت. تحمل مسؤولية قراراتك."</blockquote>` }
+        };
         
-        function createArticle(langId, topic, idx, lang, langNameAr, langNameDe) {
-            const isArabic = (lang === 'ar');
-            const langDisplay = isArabic ? langNameAr : langNameDe;
-            const title = isArabic ? `📖 ${topic} في لغة ${langDisplay}` : `📖 ${topic} in ${langDisplay}`;
-            
-            // Detailed content with usage, advantages, disadvantages, examples
-            const usageText = isArabic ? 
-                `تستخدم لغة ${langDisplay} في ${getUsageByLang(langId, 'ar')}. تعتبر هذه اللغة من أهم لغات البرمجة في سوق العمل الحالي، حيث تدخل في تطوير التطبيقات المختلفة من الويب والجوال إلى الذكاء الاصطناعي وأنظمة التشغيل.` :
-                `${langDisplay} wird verwendet für ${getUsageByLang(langId, 'de')}. Diese Sprache ist eine der wichtigsten im aktuellen Arbeitsmarkt und wird für Web-, Mobile-, KI- und Betriebssystementwicklung eingesetzt.`;
-            
-            const advantages = isArabic ? getAdvantages(langId, 'ar') : getAdvantages(langId, 'de');
-            const disadvantages = isArabic ? getDisadvantages(langId, 'ar') : getDisadvantages(langId, 'de');
-            const exampleCode = getExampleCode(langId);
-            const howToUse = isArabic ? 
-                `لبدء استخدام لغة ${langDisplay}، تحتاج إلى تثبيت البيئة المناسبة. ${langId.toUpperCase()} تتميز بسهولة التعلم وقوة الأداء. يمكنك كتابة أول برنامج لك بعد دقائق فقط.` :
-                `Um mit ${langDisplay} zu beginnen, musst du die passende Umgebung installieren. ${langId.toUpperCase()} zeichnet sich durch einfaches Lernen und hohe Leistung aus.`;
-            
-            const fullContent = `
-                <div class="article-container">
-                    <h2 class="article-title">${title}</h2>
-                    <div class="mt-3">
-                        <h4><i class="fas fa-play-circle text-info"></i> ${isArabic ? 'الاستخدامات الرئيسية' : 'Hauptanwendungen'}</h4>
-                        <p>${usageText}</p>
-                        <h4><i class="fas fa-check-circle text-success"></i> ${isArabic ? 'المميزات' : 'Vorteile'}</h4>
-                        <div class="pros"><p>${advantages}</p></div>
-                        <h4><i class="fas fa-exclamation-triangle text-warning"></i> ${isArabic ? 'العيوب والتحديات' : 'Nachteile & Herausforderungen'}</h4>
-                        <div class="cons"><p>${disadvantages}</p></div>
-                        <h4><i class="fas fa-code"></i> ${isArabic ? 'مثال عملي' : 'Praktisches Beispiel'}</h4>
-                        <div class="code-block"><pre>${exampleCode}</pre></div>
-                        <h4><i class="fas fa-cogs"></i> ${isArabic ? 'كيف تستخدم هذه اللغة؟' : 'Wie verwendet man diese Sprache?'}</h4>
-                        <p>${howToUse}</p>
-                        <h4><i class="fas fa-chart-line"></i> ${isArabic ? 'تحليل شامل وأفضل الممارسات' : 'Umfassende Analyse & Best Practices'}</h4>
-                        <p>${isArabic ? `تعتبر ${langDisplay} من أكثر اللغات طلبًا في الشركات الكبرى. ينصح بتعلمها مع إطار عمل مناسب مثل ${getFramework(langId)}. ننصح بممارسة المشاريع العملية والمساهمة في المصادر المفتوحة.` : `${langDisplay} gehört zu den gefragtesten Sprachen in großen Unternehmen. Es wird empfohlen, sie mit einem geeigneten Framework wie ${getFramework(langId)} zu lernen. Praktische Projekte und Open-Source-Beiträge sind ideal.`}</p>
-                        <hr>
-                        <p class="text-secondary"><i class="fas fa-newspaper"></i> ${isArabic ? `هذا المقال هو واحد من 50+ مقالًا متخصصًا في لغة ${langDisplay}. تصفح المزيد لتعمق معرفتك.` : `Dieser Artikel ist einer von 50+ spezialisierten Artikeln über ${langDisplay}. Entdecke mehr, um dein Wissen zu vertiefen.`}</p>
+        const cards = [
+            { id: 'art1', title: '📘 رحلة التغيير تبدأ من داخلك', desc: 'اكتشف كيف يبدأ التغيير الحقيقي من داخلك', icon: 'fas fa-seedling' },
+            { id: 'art2', title: '💪 الجذر الحقيقي للقوة الداخلية', desc: 'فهم عمق الثقة بالنفس وكيفية بنائها', icon: 'fas fa-heart' },
+            { id: 'art3', title: '🧠 كيف تعيد برمجة عقلك', desc: 'تحويل الحوار الداخلي السلبي إلى إيجابي', icon: 'fas fa-brain' },
+            { id: 'art4', title: '🔥 كيف تحول الفشل إلى أعظم معلم', desc: 'غيّر علاقتك بالفشل واجعله خطوة نحو النجاح', icon: 'fas fa-fire' },
+            { id: 'art5', title: '🎯 كيف تحول أحلامك إلى واقع ملموس', desc: 'استراتيجيات SMART لتحقيق الأهداف', icon: 'fas fa-bullseye' },
+            { id: 'art6', title: '📘 طريقك إلى تطوير الذات', desc: 'الرحلة المستمرة نحو نسخة أفضل من نفسك', icon: 'fas fa-road' },
+            { id: 'art7', title: '📘 سر النجاح يبدأ من داخلك', desc: 'تغيير طريقة التفكير لتغير حياتك', icon: 'fas fa-lightbulb' },
+            { id: 'art8', title: '📘 كيف تعيد بناء نفسك من الصفر', desc: 'تبدأ من جديد وتصبح أقوى مما كنت', icon: 'fas fa-chart-line' },
+            { id: 'art9', title: '📘 لماذا لا تتقدم رغم محاولاتك', desc: 'الأسباب التي تعيق تقدمك', icon: 'fas fa-question-circle' },
+            { id: 'art10', title: '📘 كيف تبني عقلية قوية', desc: 'عقلية تحميك من الانهيار', icon: 'fas fa-brain' },
+            { id: 'art11', title: '📘 سر الإنجاز الحقيقي', desc: 'كيف تتحرك من اللاشيء إلى القمة', icon: 'fas fa-rocket' },
+            { id: 'art12', title: '📘 من اللاشيء إلى القمة', desc: 'خطوات عملية لتحقيق الإنجاز', icon: 'fas fa-mountain' },
+            { id: 'art13', title: '📘 خطوات لبناء الإنجاز', desc: 'استراتيجيات للنجاح المستدام', icon: 'fas fa-chart-simple' },
+            { id: 'art14', title: '🌟 كيف تبني ثقة قوية بنفسك', desc: 'أسرار بناء الثقة بالنفس', icon: 'fas fa-crown' }
+        ];
+        
+        function renderStories(){
+            let html = '';
+            for(let s of stories){
+                html += `<div class="story-card">
+                    <img class="story-image" src="${s.img}" alt="${s.name}" onerror="this.src='https://placehold.co/400x300/1a1a1a/ff1a3a?text=${encodeURIComponent(s.name)}'">
+                    <div class="story-info">
+                        <div class="story-name">${s.name}</div>
+                        <div class="story-title">${s.title}</div>
+                        <div class="story-before-after">
+                            <div class="story-before"><i class="fas fa-times-circle"></i> كان: ${s.was}</div>
+                            <div class="story-after"><i class="fas fa-check-circle"></i> أصبح: ${s.became}</div>
+                        </div>
+                        <div class="story-desc">درس مستفاد: الفشل ليس نهاية الطريق، بل بداية جديدة نحو النجاح العظيم.</div>
                     </div>
-                </div>
-            `;
-            return { title, content: fullContent, topic };
+                </div>`;
+            }
+            document.getElementById('storiesGrid').innerHTML = html;
         }
         
-        // Helper functions for dynamic content
-        function getUsageByLang(lang, langType) {
-            const uses = {
-                python: { ar: "تطوير الذكاء الاصطناعي، تحليل البيانات، تطبيقات الويب، الأتمتة", de: "KI-Entwicklung, Datenanalyse, Web-Apps, Automatisierung" },
-                javascript: { ar: "تطوير واجهات المواقع، تطبيقات الويب الكاملة، تطبيقات الجوال", de: "Frontend, Fullstack-Webentwicklung, Mobile Apps" },
-                java: { ar: "تطبيقات المؤسسات، تطبيقات أندرويد، الأنظمة الموزعة", de: "Enterprise-Anwendungen, Android-Apps, verteilte Systeme" },
-                cpp: { ar: "أنظمة التشغيل، الألعاب، البرمجيات عالية الأداء", de: "Betriebssysteme, Spiele, Hochleistungssoftware" },
-                csharp: { ar: "ألعاب Unity، تطبيقات Windows، خدمات الويب", de: "Unity-Spiele, Windows-Apps, Webservices" },
-                php: { ar: "تطوير مواقع الويب الديناميكية، أنظمة إدارة المحتوى", de: "Dynamische Websites, Content-Management-Systeme" },
-                ruby: { ar: "تطوير الويب السريع، الأتمتة، النماذج الأولية", de: "Schnelle Webentwicklung, Automatisierung, Prototyping" },
-                swift: { ar: "تطبيقات iOS و macOS، برمجة أبل", de: "iOS/macOS-Apps, Apple-Programmierung" },
-                kotlin: { ar: "تطبيقات أندرويد، تطوير الويب، تطبيقات متعددة المنصات", de: "Android-Apps, Webentwicklung, Multiplattform" },
-                go: { ar: "الأنظمة الموزعة، الخدمات المصغرة، البنية التحتية السحابية", de: "Verteilte Systeme, Microservices, Cloud-Infrastruktur" },
-                rust: { ar: "برمجة الأنظمة، الأمان العالي، تطبيقات الأداء الفائق", de: "Systemprogrammierung, hohe Sicherheit, Hochleistungs-Apps" },
-                sql: { ar: "إدارة قواعد البيانات، تحليل البيانات، استعلامات معقدة", de: "Datenbankverwaltung, Datenanalyse, komplexe Abfragen" }
-            };
-            return uses[lang]?.[langType] || (langType === 'ar' ? "مجالات متعددة حسب احتياجات المشروع" : "vielfältige Bereiche je nach Projekt");
+        function renderCards(){
+            let html = '';
+            for(let c of cards){
+                html += `<div class="article-card" data-id="${c.id}"><i class="${c.icon}"></i><h3>${c.title}</h3><p>${c.desc}</p></div>`;
+            }
+            document.getElementById('articlesGrid').innerHTML = html;
+            document.querySelectorAll('.article-card').forEach(card => {
+                card.addEventListener('click', () => showDetail(card.getAttribute('data-id')));
+            });
         }
         
-        function getAdvantages(lang, langType) {
-            const adv = {
-                python: { ar: "✅ سهلة التعلم، مكتبات ضخمة، مجتمع كبير، متعددة الاستخدامات", de: "✅ Einfach zu lernen, riesige Bibliotheken, große Community, vielseitig" },
-                javascript: { ar: "✅ تعمل في كل المتصفحات، نظام بيئي ضخم، Node.js للخادم", de: "✅ Läuft in allen Browsern, riesiges Ökosystem, Node.js" },
-                java: { ar: "✅ متعددة المنصات، أداء ممتاز، أمان عالي، استقرار", de: "✅ Plattformunabhängig, hervorragende Leistung, hohe Sicherheit" },
-                cpp: { ar: "✅ أداء فائق، تحكم كامل بالذاكرة، مرونة عالية", de: "✅ Höchste Leistung, vollständige Speicherkontrolle, flexible" },
-                default: { ar: "✅ مجتمع كبير، توثيق غني، أدوات متطورة", de: "✅ Große Community, reichhaltige Dokumentation, fortschrittliche Tools" }
-            };
-            return adv[lang]?.[langType] || adv.default[langType];
+        function showDetail(id){
+            let article = articles[id];
+            if(article){
+                document.getElementById('dynamicDetail').innerHTML = article.content;
+                document.getElementById('detailModal').style.display = 'flex';
+            }
         }
         
-        function getDisadvantages(lang, langType) {
-            const dis = {
-                python: { ar: "❌ أبطأ نسبيًا، استهلاك ذاكرة أعلى", de: "❌ Relativ langsam, höherer Speicherverbrauch" },
-                javascript: { ar: "❌ سلوك غير متوقع أحيانًا، أمان المتصفح", de: "❌ Manchmal unerwartetes Verhalten, Browsersicherheit" },
-                java: { ar: "❌ استهلاك ذاكرة عالي، كتابة verbose", de: "❌ Hoher Speicherverbrauch, verbose Syntax" },
-                cpp: { ar: "❌ منحنى تعلم حاد، إدارة يدوية للذاكرة قد تسبب أخطاء", de: "❌ Steile Lernkurve, manuelle Speicherverwaltung riskant" },
-                default: { ar: "❌ قد تكون صعوبة في البدء لبعض المفاهيم", de: "❌ Einige Konzepte können zu Beginn schwierig sein" }
-            };
-            return dis[lang]?.[langType] || dis.default[langType];
+        function renderComments(){
+            let list = document.getElementById('commentsList');
+            if(comments.length === 0){
+                list.innerHTML = '<p style="color:#666;text-align:center">لا توجد تعليقات بعد. كن أول من يشارك رأيه!</p>';
+                return;
+            }
+            let html = '';
+            for(let c of comments){
+                html += `<div class="comment-item"><div class="comment-name"><i class="fas fa-user"></i> ${escapeHtml(c.name)}</div><div class="comment-text">${escapeHtml(c.text)}</div><div class="comment-date">${c.date}</div></div>`;
+            }
+            list.innerHTML = html;
         }
         
-        function getExampleCode(lang) {
-            const codes = {
-                python: "print('مرحباً بك في عالم بايثون!')\n\n# مثال على دالة\ndef greet(name):\n    return f'Hello, {name}'\nprint(greet('مبرمج'))",
-                javascript: "console.log('مرحباً من جافاسكريبت!');\n\n// دالة سهمية\nconst greet = (name) => `مرحباً يا ${name}`;\nconsole.log(greet('عبدالرحمن'));",
-                java: "public class Main {\n    public static void main(String[] args) {\n        System.out.println(\"مرحباً من جافا!\");\n    }\n}",
-                cpp: "#include <iostream>\nusing namespace std;\nint main() {\n    cout << \"مرحباً من C++\" << endl;\n    return 0;\n}",
-                csharp: "using System;\nclass Program {\n    static void Main() {\n        Console.WriteLine(\"مرحباً من C#\");\n    }\n}",
-                php: "<?php\necho 'مرحباً من PHP!';\n// دالة بسيطة\nfunction sayHello($name) {\n    return \"Hello $name\";\n}\necho sayHello('مبرمج');\n?>",
-                default: "// مثال بسيط\nprint('مرحباً بالعالم!')\nconsole.log('Hello World')"
-            };
-            return codes[lang] || codes.default;
-        }
+        function escapeHtml(t){ let d=document.createElement('div'); d.textContent=t; return d.innerHTML; }
         
-        function getFramework(lang) {
-            const frameworks = {
-                python: "Django / Flask",
-                javascript: "React / Vue / Node.js",
-                java: "Spring Boot",
-                cpp: "Qt / Boost",
-                csharp: ".NET / Unity",
-                php: "Laravel / Symfony",
-                ruby: "Ruby on Rails",
-                swift: "SwiftUI",
-                kotlin: "Ktor / Jetpack Compose",
-                go: "Gin / Echo",
-                rust: "Actix / Rocket",
-                sql: "PostgreSQL / MySQL"
-            };
-            return frameworks[lang] || "أطر عمل متعددة";
-        }
-        
-        let currentLang = "ar";
-        let allArticles = {};
-        
-        // Build articles DB for each language
-        languages.forEach(lang => {
-            allArticles[lang.id] = {
-                ar: generateArticles(lang.id, lang.nameAr, lang.nameDe, "ar"),
-                de: generateArticles(lang.id, lang.nameAr, lang.nameDe, "de")
-            };
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = link.getAttribute('data-nav');
+                if(target === 'home') window.scrollTo({ top: 0, behavior: 'smooth' });
+                else if(target === 'stories') document.getElementById('storiesSection')?.scrollIntoView({ behavior: 'smooth' });
+                else if(target === 'articles') document.getElementById('articlesSection')?.scrollIntoView({ behavior: 'smooth' });
+                else if(target === 'comments') document.getElementById('commentsSection')?.scrollIntoView({ behavior: 'smooth' });
+            });
         });
         
-        // Render languages grid
-        function renderLanguages() {
-            const grid = document.getElementById('languagesGrid');
-            grid.innerHTML = languages.map(lang => `
-                <div class="col-md-3 col-sm-6">
-                    <div class="lang-card text-center" onclick="showLanguageArticles('${lang.id}')">
-                        <i class="${lang.icon} lang-icon" style="color: ${lang.color}"></i>
-                        <div class="lang-name">${currentLang === 'ar' ? lang.nameAr : lang.nameDe}</div>
-                        <div class="article-count"><i class="fas fa-file-alt"></i> ${currentLang === 'ar' ? '50+ مقال متخصص' : '50+ spezialisierte Artikel'}</div>
-                    </div>
-                </div>
-            `).join('');
-        }
+        document.getElementById('closeDetailBtn')?.addEventListener('click', () => document.getElementById('detailModal').style.display = 'none');
+        window.addEventListener('click', (e) => { if(e.target === document.getElementById('detailModal')) document.getElementById('detailModal').style.display = 'none'; });
         
-        // Show articles for selected language
-        function showLanguageArticles(langId) {
-            const articlesData = allArticles[langId][currentLang];
-            const langObj = languages.find(l => l.id === langId);
-            const langDisplay = currentLang === 'ar' ? langObj.nameAr : langObj.nameDe;
-            document.getElementById('selectedLangTitle').innerHTML = `<h2 class="display-6"><i class="${langObj.icon}"></i> ${currentLang === 'ar' ? `جميع مقالات ${langDisplay}` : `Alle Artikel über ${langDisplay}`} (${articlesData.length}+ مقال)</h2>`;
-            
-            const container = document.getElementById('articlesList');
-            container.innerHTML = articlesData.map(article => `
-                <div class="mb-4">
-                    <div class="bg-dark p-3 rounded-3" style="cursor:pointer;" onclick="this.nextElementSibling.classList.toggle('d-none')">
-                        <h4 class="text-info mb-0">${article.title}</h4>
-                        <small class="text-secondary">${currentLang === 'ar' ? 'اضغط لعرض المقال كاملاً' : 'Klicken, um den vollständigen Artikel anzuzeigen'}</small>
-                    </div>
-                    <div class="d-none mt-2">
-                        ${article.content}
-                    </div>
-                </div>
-            `).join('');
-            window.scrollTo({ top: document.getElementById('articlesSection').offsetTop - 100, behavior: 'smooth' });
-        }
+        document.getElementById('submitComment')?.addEventListener('click', () => {
+            let name = document.getElementById('commentName').value.trim();
+            let text = document.getElementById('commentText').value.trim();
+            if(!name || !text) return alert("يرجى إدخال اسمك والتعليق");
+            let now = new Date();
+            let date = `${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()} ${now.getHours()}:${now.getMinutes()}`;
+            comments.unshift({name, text, date});
+            localStorage.setItem('boda_comments', JSON.stringify(comments));
+            document.getElementById('commentName').value = '';
+            document.getElementById('commentText').value = '';
+            renderComments();
+        });
         
-        function switchLanguage(lang) {
-            currentLang = lang;
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            if (lang === 'ar') {
-                document.body.dir = 'rtl';
-                document.getElementById('appBody').setAttribute('dir', 'rtl');
-                document.getElementById('heroTitle').innerHTML = 'موسوعة البرمجة الشاملة<br><span style="color:#2dd4bf;">أكثر من 500 مقال متخصص</span>';
-                document.getElementById('heroDesc').innerText = 'تعلم كل شيء عن لغات البرمجة: الاستخدامات، المميزات، العيوب، أمثلة عملية، ومقارنات احترافية. محتوى ضخم يناسب المبتدئين والمحترفين.';
-            } else {
-                document.body.dir = 'ltr';
-                document.getElementById('appBody').setAttribute('dir', 'ltr');
-                document.getElementById('heroTitle').innerHTML = 'Umfassende Programmier-Enzyklopädie<br><span style="color:#2dd4bf;">Über 500 spezialisierte Artikel</span>';
-                document.getElementById('heroDesc').innerText = 'Lerne alles über Programmiersprachen: Anwendungen, Vorteile, Nachteile, praktische Beispiele und professionelle Vergleiche. Riesiger Inhalt für Anfänger und Profis.';
-            }
-            renderLanguages();
-            // Clear articles when switching
-            document.getElementById('selectedLangTitle').innerHTML = '';
-            document.getElementById('articlesList').innerHTML = '';
-        }
-        
-        renderLanguages();
+        renderStories();
+        renderCards();
+        renderComments();
     </script>
 </body>
 </html>
